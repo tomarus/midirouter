@@ -55,7 +55,6 @@ begin
         sck <= 0;
         bitno <= 15;
         state <= state_send;
-//        rowpos <= rowpos + 1;
         colpos <= colpos + 1;
     end
     state_send: begin
