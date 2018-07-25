@@ -32,8 +32,8 @@ localparam state_done = 3'b011;
 localparam state_reset= 3'b100;
 reg [2:0] state = state_init;
 reg [3:0] bitno = 4'b0000;
-reg [1:0] rowpos = 2'b11;
-wire [3:0] rowpos_bin = 1 << rowpos;
+reg [2:0] colpos = 3'b111;
+wire [7:0] colpos_bin = 1 << colpos;
 
 // flow:
 // shiftreg 0-7:  in0 in1 .. in7 | out0 out1 .. out7 | in8 in9 .. in15  | out8 out9 .. out15
@@ -55,14 +55,15 @@ begin
         sck <= 0;
         bitno <= 15;
         state <= state_send;
-        rowpos <= rowpos + 1;
+//        rowpos <= rowpos + 1;
+        colpos <= colpos + 1;
     end
     state_send: begin
-        if      (bitno < 9 && rowpos == 2'b00) ser <= in[bitno - 1];
-        else if (bitno < 9 && rowpos == 2'b01) ser <= in[8 + bitno - 1];
-        else if (bitno < 9 && rowpos == 2'b10) ser <= out[bitno - 1];
-        else if (bitno < 9 && rowpos == 2'b11) ser <= out[8 + bitno - 1];
-        else if (bitno >= 10 && bitno <= 13)   ser <= rowpos_bin[13 - bitno];
+        if (bitno < 9)        ser <= colpos_bin[bitno - 1];
+        else if (bitno == 10) ser <= in[colpos];
+        else if (bitno == 11) ser <= in[colpos + 8];
+        else if (bitno == 12) ser <= out[colpos];
+        else if (bitno == 13) ser <= out[colpos + 8];
         else ser <= 0;
         
         sck <= 1;
