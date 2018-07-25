@@ -52,6 +52,7 @@ begin
     case (state)
     state_init: begin
         rck <= 0;
+        sck <= 0;
         bitno <= 15;
         state <= state_send;
         rowpos <= rowpos + 1;

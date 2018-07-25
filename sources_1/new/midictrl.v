@@ -44,7 +44,7 @@ midi_port #(.CLOCK(CLOCK)) ports[PORTS-1:0] (clk, rst2, txdv, outport, txdata, r
 
 //reg [36:0]cfg = 36'b111111111111111111111111111111111111;
 
-reg [3:0]port = 0;
+reg [4:0]port = 0;
 
 reg reset_running = 0;
 reg [4:0] reset_counter = 0;
@@ -101,6 +101,10 @@ begin
     1'b1:
         begin
             case (byte[7:0])
+            8'hfe: begin
+                // send active sensing to all ports for testing
+                allportmsg(byte);
+            end
             8'hf8: begin
                 // skip klok
             end
@@ -118,14 +122,14 @@ begin
                 chcnt <= 0;
             end
             default: begin
-                sendbyte(port, byte);
+                allportmsg(byte);
             end
             endcase
         end
      // data
      1'b0:
         begin
-            sendbyte(port, byte);
+            allportmsg(byte);
 
             case (state[2:0])
 //            s_IDLE:
@@ -246,10 +250,11 @@ begin
 end
 endtask
 
+reg [4:0]port_apmsg = 0;
 task allportmsg;
 input [7:0]msg;
-    for (port=0; port<PORTS; port=port+1) begin
-        sendbyte(port, msg);
+    for (port_apmsg=0; port_apmsg<PORTS; port_apmsg=port_apmsg+1) begin
+        sendbyte(port_apmsg, msg);
     end
 endtask
 

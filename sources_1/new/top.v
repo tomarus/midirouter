@@ -37,7 +37,7 @@ debouncer rst_debouncer (sysclk, btn[0], rst_db);
 
 wire [15:0] activity_in, activity_out;
 
-midictrl #(.PORTS(15),.CLOCK(12_000_000)) midi_controller (
+midictrl #(.PORTS(16),.CLOCK(12_000_000)) midi_controller (
     .clk          (sysclk),
     .rst          (rst_db),
     .inport       (min),
