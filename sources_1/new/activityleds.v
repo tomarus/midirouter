@@ -41,11 +41,11 @@ wire [7:0] colpos_bin = 1 << colpos;
 // First hc494 has 8 leds cathode, 2nd hc494 has 4 anodes with drivers, total 4*8 rows = 32 leds.
 
 // Increase nr of bits if ghosting appears on led matrix.
-// This is about 100khz (76bit) or 3mhz (2bit) assuming a 12mhz clock.
-// The max update speed depends on the specific led driver used.
-reg [7:0] clk_cntr;
+// Max update speed depends on the specific led driver used.
+localparam shiftclk = 7;
+reg [shiftclk:0] clk_cntr;
 always @(posedge clk) clk_cntr <= clk_cntr + 1;
-wire clk2 = clk_cntr[7];
+wire clk2 = clk_cntr[shiftclk];
 
 always @(posedge clk2)
 begin
