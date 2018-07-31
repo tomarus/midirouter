@@ -56,12 +56,12 @@ uart_tx #(.CLKS_PER_BIT(384)) uart_tx_inst(
 reg [2:0]state = 3'b01;
 wire start = !empty && !txactive;
 
-reg [19:0] in_count, out_count;
+reg [20:0] in_count, out_count;
 assign activity_in = in_count != 0;
 assign activity_out = out_count != 0;
 
 // Activity LEDs blink duration.
-localparam DURATION = 300000;
+localparam DURATION = 600000;
 
 always @(posedge clk) begin
     in_count  <= !rxserial ? DURATION : in_count  > 0 ? in_count  - 1 : 0;

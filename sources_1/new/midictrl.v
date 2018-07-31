@@ -103,7 +103,7 @@ begin
             case (byte[7:0])
             8'hfe: begin
                 // send active sensing to all ports for testing
-                allportmsg(byte);
+//                allportmsg(byte);
             end
             8'hf8: begin
                 // skip klok
@@ -156,7 +156,7 @@ endtask
 //      byte(int(bpm) & 0x7f), // current speed lsb
 //      0xf7
 
-reg [11*8-1:0] cfg = 'hf0_7d_2a_4d_40_01_02_02_00_70_f7;
+reg [11*8-1:0] cfg = 'hf0_7d_2a_4d_40_01_0f_0f_00_70_f7;
 
 task runsysex;
 begin
