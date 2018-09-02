@@ -105,9 +105,9 @@ begin
                 // send active sensing to all ports for testing
 //                allportmsg(byte);
             end
-            8'hf8: begin
-                // skip klok
-            end
+//            8'hf8: begin
+//                // skip klok
+//            end
             8'hf0: begin
                 sendbyte(port, byte);
                 portstate[port*2+:2] <= s_SYSEX;
@@ -122,14 +122,14 @@ begin
                 chcnt <= 0;
             end
             default: begin
-                allportmsg(byte);
+                notallportmsg(byte, port);
             end
             endcase
         end
      // data
      1'b0:
         begin
-            allportmsg(byte);
+            notallportmsg(byte, port);
 
             case (state[2:0])
 //            s_IDLE:
@@ -255,6 +255,16 @@ task allportmsg;
 input [7:0]msg;
     for (port_apmsg=0; port_apmsg<PORTS; port_apmsg=port_apmsg+1) begin
         sendbyte(port_apmsg, msg);
+    end
+endtask
+
+task notallportmsg;
+input [7:0]msg;
+input [4:0]current_port;
+    for (port_apmsg=0; port_apmsg<PORTS; port_apmsg=port_apmsg+1) begin
+        if (port_apmsg != current_port) begin
+            sendbyte(port_apmsg, msg);
+        end
     end
 endtask
 

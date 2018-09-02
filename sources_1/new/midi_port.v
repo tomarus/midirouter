@@ -60,12 +60,15 @@ reg [20:0] in_count, out_count;
 assign activity_in = in_count != 0;
 assign activity_out = out_count != 0;
 
+wire act_in  = rxdv && rxdata != 8'hf8;
+wire act_out = txdv && txdata != 8'hf8;
+
 // Activity LEDs blink duration.
 localparam DURATION = 600000;
 
 always @(posedge clk) begin
-    in_count  <= !rxserial ? DURATION : in_count  > 0 ? in_count  - 1 : 0;
-    out_count <= !txserial ? DURATION : out_count > 0 ? out_count - 1 : 0;
+    in_count  <= act_in  ? DURATION : in_count  > 0 ? in_count  - 1 : 0;
+    out_count <= act_out ? DURATION : out_count > 0 ? out_count - 1 : 0;
 
     case (state)
     2'b01: 
