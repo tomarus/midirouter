@@ -36,9 +36,10 @@ reg  [PORTS-1:0]   txdv = 0;
 reg  [PORTS*8-1:0] txdata = 0;
 wire [PORTS*8-1:0] rxdata;
 wire [PORTS-1:0]   rxdv;
+reg  [PORTS*4-1:0] txcurport;
 reg  rst2 = 1;
 
-midi_port #(.CLOCK(CLOCK)) ports[PORTS-1:0] (clk, rst2, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out); 
+midi_port #(.CLOCK(CLOCK)) ports[PORTS-1:0] (clk, rst2, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out, txcurport); 
 
 //
 
@@ -274,6 +275,7 @@ input [7:0] byte;
 begin
     txdata[port*8+:8] <= byte[7:0];
     txdv[port] <= 1;
+    txcurport[port*4+:4] <= port[3:0];
 end
 endtask
 

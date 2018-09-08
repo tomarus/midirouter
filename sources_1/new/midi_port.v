@@ -12,7 +12,8 @@ module midi_port #(
     input  rxserial,
     output [7:0]rxdata,
     output activity_in,
-    output activity_out
+    output activity_out,
+    input  [3:0]inport
 );
 
 // Receive (handle directly, no fifo)
@@ -22,7 +23,7 @@ uart_rx #(.CLKS_PER_BIT(384)) uart_rx_inst (clk, rxserial, rxdv, rxdata[7:0]);
 
 wire txactive;
 wire txdone;
-wire [7:0] frd_data;
+wire [7:0] txbyte;
 wire full;
 wire empty;
 reg send = 0;
@@ -31,9 +32,9 @@ reg fready = 0;
 fifo #(.DEPTH_WIDTH(8), .DATA_WIDTH(8)) fifobus ( // 8 * 8 bit
     .clk        (clk),
     .rst        (rst),
-    .wr_data_i  (txdata),
-    .wr_en_i    (txdv),
-    .rd_data_o  (frd_data),
+    .wr_data_i  (txdata), // from input
+    .wr_en_i    (txdv),   // input ready
+    .rd_data_o  (txbyte),
     .rd_en_i    (fready),
     .full_o     (full),
     .empty_o    (empty)
@@ -42,34 +43,19 @@ fifo #(.DEPTH_WIDTH(8), .DATA_WIDTH(8)) fifobus ( // 8 * 8 bit
 uart_tx #(.CLKS_PER_BIT(384)) uart_tx_inst(
    .i_Clock     (clk),
    .i_Tx_DV     (send),
-   .i_Tx_Byte   (frd_data[7:0]), 
+   .i_Tx_Byte   (txbyte[7:0]), 
    .o_Tx_Active (txactive),
    .o_Tx_Serial (txserial),
    .o_Tx_Done   (txdone)
 );
 
-// Handle activity LEDs
-
-// Blink duration.
-localparam DURATION = 600000;
-
 reg [2:0]state = 3'b01;
-wire start = !empty && !txactive;
-
-reg [20:0] in_count, out_count;
-assign activity_in = in_count != 0;
-assign activity_out = out_count != 0;
-
-wire act_in  = rxdv && rxdata != 8'hf8;
-wire act_out = txdv && txdata != 8'hf8;
+wire start_tx = !empty && !txactive;
 
 always @(posedge clk) begin
-    in_count  <= act_in  ? DURATION : in_count  > 0 ? in_count  - 1 : 0;
-    out_count <= act_out ? DURATION : out_count > 0 ? out_count - 1 : 0;
-
     case (state)
     2'b01: 
-        if (start) begin
+        if (start_tx) begin
             state <= 2'b10;
             fready <= 1;
         end
@@ -83,6 +69,21 @@ always @(posedge clk) begin
         send <= 0;
     end
     endcase
+end
+
+// Handle activity LEDs
+localparam DURATION = 600000; // Blink duration.
+
+reg [20:0] in_count, out_count;
+assign activity_in = in_count != 0;
+assign activity_out = out_count != 0;
+
+wire act_in  = rxdv && rxdata != 8'hf8;
+wire act_out = txdv && txdata != 8'hf8;
+
+always @(posedge clk) begin
+    in_count  <= act_in  ? DURATION : in_count  > 0 ? in_count  - 1 : 0;
+    out_count <= act_out ? DURATION : out_count > 0 ? out_count - 1 : 0;
 end
 
 endmodule

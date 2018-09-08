@@ -78,10 +78,10 @@ activityleds activityleds_instance (
 
 //
 
-assign led[0] = 1;
-assign led[1] = 1;
+assign led[0] = 0;
+assign led[1] = 0;
 assign led0_r = 1;
-assign led0_g = !btn[1];
-assign led0_b = !btn[0];
+assign led0_g = 1;
+assign led0_b = 1;
 
 endmodule
