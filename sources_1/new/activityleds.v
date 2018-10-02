@@ -25,15 +25,13 @@ module activityleds (
     output reg sck, rck, ser
 );
 
-localparam state_init = 3'b000;
-localparam state_send = 3'b001;
-localparam state_loop = 3'b010;
-localparam state_done = 3'b011;
-localparam state_reset= 3'b100;
-reg [2:0] state = state_init;
-reg [3:0] bitno = 4'b0000;
+localparam state_init = 2'b00;
+localparam state_send = 2'b01;
+localparam state_loop = 2'b10;
+localparam state_done = 2'b11;
+reg [1:0] state = state_init;
 reg [2:0] colpos = 3'b111;
-wire [7:0] colpos_bin = 1 << colpos;
+reg [3:0] bitno = 4'b1111;
 
 // flow:
 // shiftreg 0-7:  in0 in1 .. in7 | out0 out1 .. out7 | in8 in9 .. in15  | out8 out9 .. out15
@@ -42,7 +40,7 @@ wire [7:0] colpos_bin = 1 << colpos;
 
 // Increase nr of bits if ghosting appears on led matrix.
 // Max update speed depends on the specific led driver used.
-localparam shiftclk = 7;
+localparam shiftclk = 3;
 reg [shiftclk:0] clk_cntr;
 always @(posedge clk) clk_cntr <= clk_cntr + 1;
 wire clk2 = clk_cntr[shiftclk];
@@ -53,34 +51,30 @@ begin
     state_init: begin
         rck <= 0;
         sck <= 0;
-        bitno <= 15;
-        state <= state_send;
+        bitno <= 4'b1111;
         colpos <= colpos + 1;
+        state <= state_send;
     end
     state_send: begin
-        if (bitno < 9)        ser <= colpos_bin[bitno - 1];
-        else if (bitno == 10) ser <= in[colpos];
-        else if (bitno == 11) ser <= in[colpos + 8];
-        else if (bitno == 12) ser <= out[colpos];
-        else if (bitno == 13) ser <= out[colpos + 8];
+        if (bitno-1 == colpos) ser <= 1;
+        else if (bitno == 10) ser <=  in[colpos & 7];
+        else if (bitno == 11) ser <= out[colpos & 7];
+        else if (bitno == 12) ser <= out[colpos + 8];
+        else if (bitno == 13) ser <=  in[colpos + 8];
         else ser <= 0;
-        
         sck <= 1;
-        state <= bitno == 0 ? state_done : state_loop;
-        bitno <= bitno - 1;
+        state <= state_loop;
     end
     state_loop: begin
         sck <= 0;
-        state <= state_send;
+        bitno <= bitno - 1;
+        state <= bitno == 0 ? state_done : state_send;
     end
     state_done: begin
-        sck <= 0;
-        state <= state_reset;
-    end
-    state_reset: begin
         rck <= 1;
         state <= state_init;
     end
+        default: ;
     endcase
 end
 
