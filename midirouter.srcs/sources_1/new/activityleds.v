@@ -40,7 +40,7 @@ reg [3:0] bitno = 4'b1111;
 
 // Increase nr of bits if ghosting appears on led matrix.
 // Max update speed depends on the specific led driver used.
-localparam shiftclk = 3;
+localparam shiftclk = 8;
 reg [shiftclk:0] clk_cntr;
 always @(posedge clk) clk_cntr <= clk_cntr + 1;
 wire clk2 = clk_cntr[shiftclk];
