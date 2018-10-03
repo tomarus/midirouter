@@ -53,25 +53,26 @@ uart_rx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_rx_inst(
 	.o_Rx_Byte	 (rxdata[7:0])
 );
 
-reg [2:0]state = 3'b01;
+reg [1:0]state = 2'b00;
 wire start_tx = !empty && !txactive;
 
 always @(posedge clk) begin
     case (state)
-    2'b01: 
+    2'b00:
         if (start_tx) begin
-            state <= 2'b10;
+            state <= 2'b01;
             fready <= 1;
         end
-    2'b10: begin
-        state <= 2'b11;
+    2'b01: begin
+        state <= 2'b10;
         fready <= 0;
         send <= 1;
     end
-    2'b11: begin
-        state <= 2'b01;
+    2'b10: begin
+        state <= 2'b00;
         send <= 0;
     end
+	default: ;
     endcase
 end
 

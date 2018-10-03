@@ -46,22 +46,34 @@ int main(int argc, char **argv, char **env) {
 
         switch(i) {
             case 12:
-                sendbyte(0, 0xf8);
+				// first test byte
+                sendbyte(0, 0xf8, 0);
                 break;
             case 16:
-                sendbyte(0, 0x90);
+				// send note off sequence sourceport 0 destport 0
+                sendbyte(0, 0x90, 0);
+                break;
+            case 18:
+				// send note on sequence sourceport 1 destport 0
+				// this should be merged after note off sequence
+                sendbyte(0, 0x80, 1);
                 break;
             case 20:
-                sendbyte(0, 0x55);
+                sendbyte(0, 0x55, 0);
+                break;
+            case 22:
+                sendbyte(0, 0x44, 1);
                 break;
             case 24:
-                sendbyte(0, 0xaa);
+                sendbyte(0, 0xaa, 0);
                 break;
-        }
-		if (i==52) {
-			// top->txdata[0] = 0xf8;
-			// top->txdv[0] = 1;
-			sendbyte(1, 0xf8);
+            case 26:
+                sendbyte(0, 0xcc, 1);
+                break;
+			case 125:
+				// should be merged with priority
+				sendbyte(1, 0xf8, 0);
+				break;
 		}
     }
     tfp->close();

@@ -1,8 +1,8 @@
 /* verilator lint_off STMTDLY */
 `timescale 1ns / 1ps
 
-module top #( 
-    parameter PORTS = 1,
+module top #(
+    parameter PORTS = 2,
     parameter CLOCK = 12_000_000
 ) (
     input wire clk,
@@ -19,18 +19,19 @@ wire [PORTS*8-1:0] rxdata;
 wire [PORTS-1:0]   rxdv;
 reg  [PORTS*4-1:0] txcurport;
 
-midi_port #(.CLKS_PER_BIT(2)) ports[PORTS-1:0] (clk, rst, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out, txcurport); 
+midi_port #(.CLKS_PER_BIT(2)) ports[PORTS-1:0] (clk, rst, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out, txcurport);
 
 export "DPI-C" task sendbyte;
 
 task sendbyte;
 input int port;
 input int inbyte;
+input int srcport;
 begin
     txdata[port*8+:8] = inbyte[7:0];
     txdv[port] = 1;
-    txcurport[port*4+:4] = port[3:0];
-    $display("sendbyte", inbyte[7:0]);
+    txcurport[port*4+:4] = srcport[3:0];
+    $display("sendbyte %0h port %0h", inbyte[7:0], srcport[3:0]);
 end
 endtask
 
@@ -54,4 +55,4 @@ always @(posedge clk) begin
 	// end
 end
 
-endmodule 
+endmodule
