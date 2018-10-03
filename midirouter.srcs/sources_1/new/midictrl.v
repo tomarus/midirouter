@@ -22,7 +22,7 @@
 
 module midictrl #( 
     parameter PORTS = 16,
-    parameter CLOCK = 12_000_000
+    parameter CLKS_PER_BIT = 384
 ) (
     input   clk,
     input   rst,
@@ -39,7 +39,7 @@ wire [PORTS-1:0]   rxdv;
 reg  [PORTS*4-1:0] txcurport;
 reg  rst2 = 1;
 
-midi_port #(.CLOCK(CLOCK)) ports[PORTS-1:0] (clk, rst2, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out, txcurport); 
+midi_port #(.CLKS_PER_BIT(CLKS_PER_BIT)) ports[PORTS-1:0] (clk, rst2, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out, txcurport); 
 
 //
 

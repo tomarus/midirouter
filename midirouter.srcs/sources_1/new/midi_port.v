@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module midi_port #(
-    parameter CLOCK = 12_000_000
+    parameter CLKS_PER_BIT = 384
 ) (
     input  clk,
     input  rst,
@@ -17,7 +17,7 @@ module midi_port #(
 );
 
 // Receive (handle directly, no fifo)
-uart_rx #(.CLKS_PER_BIT(384)) uart_rx_inst (clk, rxserial, rxdv, rxdata[7:0]);
+uart_rx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_rx_inst (clk, rxserial, rxdv, rxdata[7:0]);
 
 // Transmit with fifo
 
@@ -40,7 +40,7 @@ fifo #(.DEPTH_WIDTH(8), .DATA_WIDTH(8)) fifobus ( // 8 * 8 bit
     .empty_o    (empty)
 );
 
-uart_tx #(.CLKS_PER_BIT(384)) uart_tx_inst(
+uart_tx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_tx_inst(
    .i_Clock     (clk),
    .i_Tx_DV     (send),
    .i_Tx_Byte   (txbyte[7:0]), 
@@ -72,13 +72,14 @@ always @(posedge clk) begin
 end
 
 // Handle activity LEDs
-localparam DURATION = 600000; // Blink duration.
+// 1/(12_000_000/600_000) = 50ms
+localparam DURATION = 600_000; // Blink duration.
 
 reg [20:0] in_count, out_count;
 assign activity_in = in_count != 0;
 assign activity_out = out_count != 0;
 
-wire act_in  = rxdv && rxdata != 8'hf8;
+wire act_in  = rxdv && rxdata != 8'hf8 && rxdata != 8'hfe;
 wire act_out = txdv && txdata != 8'hf8;
 
 always @(posedge clk) begin
