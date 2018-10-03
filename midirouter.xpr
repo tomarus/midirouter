@@ -60,70 +60,70 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/activityleds.v">
+      <File Path="$PSRCDIR/sources_1/new/activityleds.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/debouncer.v">
+      <File Path="$PSRCDIR/sources_1/new/debouncer.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/fifo.v">
+      <File Path="$PSRCDIR/sources_1/new/fifo.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/midi_port.v">
+      <File Path="$PSRCDIR/sources_1/new/midi_port.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/midictrl.v">
+      <File Path="$PSRCDIR/sources_1/new/midictrl.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/simple_dpram_sclk.v">
+      <File Path="$PSRCDIR/sources_1/new/simple_dpram_sclk.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/uart_rx.v">
+      <File Path="$PSRCDIR/sources_1/new/uart_rx.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/uart_tx.v">
+      <File Path="$PSRCDIR/sources_1/new/uart_tx.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/top.v">
+      <File Path="$PSRCDIR/sources_1/new/top.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/midirouter.srcs/sources_1/new/onetimeclick.v">
+      <File Path="$PSRCDIR/sources_1/new/onetimeclick.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -141,7 +141,7 @@
       <Filter Type="Constrs"/>
       <File Path="$PSRCDIR/constrs_1/imports/code/CmodA7_Master.xdc">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/midirouter.srcs/constrs_1/imports/code/CmodA7_Master.xdc"/>
+          <Attr Name="ImportPath" Val="$PSRCDIR/constrs_1/imports/code/CmodA7_Master.xdc"/>
           <Attr Name="ImportTime" Val="1536518696"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -152,7 +152,8 @@
       </Config>
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
-      <File Path="$PPRDIR/midirouter.srcs/sim_1/new/activityleds_sim.v">
+      <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/new/activityleds_sim.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -220,7 +221,9 @@
         <Step Id="phys_opt_design"/>
         <Step Id="route_design"/>
         <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <Step Id="write_bitstream">
+          <Option Id="BinFile">1</Option>
+        </Step>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
