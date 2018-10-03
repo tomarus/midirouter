@@ -1,23 +1,9 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+//
+// 74HC594 Led Driver with Screensaver
+//
 // Create Date: 07/18/2018 09:36:28 PM
-// Design Name: 
-// Module Name: activityleds
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+//
 
 module activityleds (
     input      clk,
@@ -25,13 +11,21 @@ module activityleds (
     output reg sck, rck, ser
 );
 
-localparam state_init = 2'b00;
-localparam state_send = 2'b01;
-localparam state_loop = 2'b10;
-localparam state_done = 2'b11;
-reg [1:0] state = state_init;
+localparam STATE_INIT = 2'b00;
+localparam STATE_SEND = 2'b01;
+localparam STATE_LOOP = 2'b10;
+localparam STATE_DONE = 2'b11;
+
+reg [1:0] state = STATE_INIT;
 reg [2:0] colpos = 3'b111;
 reg [3:0] bitno = 4'b1111;
+
+reg [63:0] idle_count = 0;
+wire idle = idle_count[28]; // 28 = 20s, 29 = 40s, 30 = 80s, 31 = 160s (12mhz clock)
+reg [15:0] ssin = 0;
+reg [15:0] ssout = 0;
+wire [15:0] inact  = idle ? ssin  : in;
+wire [15:0] outact = idle ? ssout : out;
 
 // flow:
 // shiftreg 0-7:  in0 in1 .. in7 | out0 out1 .. out7 | in8 in9 .. in15  | out8 out9 .. out15
@@ -45,37 +39,70 @@ reg [shiftclk:0] clk_cntr;
 always @(posedge clk) clk_cntr <= clk_cntr + 1;
 wire clk2 = clk_cntr[shiftclk];
 
+// 74hc594 driver
 always @(posedge clk2)
 begin
     case (state)
-    state_init: begin
+    STATE_INIT: begin
         rck <= 0;
         sck <= 0;
         bitno <= 4'b1111;
         colpos <= colpos + 1;
-        state <= state_send;
+        state <= STATE_SEND;
     end
-    state_send: begin
+    STATE_SEND: begin
         if (bitno-1 == colpos) ser <= 1;
-        else if (bitno == 10) ser <=  in[colpos & 7];
-        else if (bitno == 11) ser <= out[colpos & 7];
-        else if (bitno == 12) ser <= out[colpos + 8];
-        else if (bitno == 13) ser <=  in[colpos + 8];
+        else if (bitno == 10) ser <=  inact[colpos & 7];
+        else if (bitno == 11) ser <= outact[colpos & 7];
+        else if (bitno == 12) ser <= outact[colpos + 8];
+        else if (bitno == 13) ser <=  inact[colpos + 8];
         else ser <= 0;
         sck <= 1;
-        state <= state_loop;
+        state <= STATE_LOOP;
     end
-    state_loop: begin
+    STATE_LOOP: begin
         sck <= 0;
         bitno <= bitno - 1;
-        state <= bitno == 0 ? state_done : state_send;
+        state <= bitno == 0 ? STATE_DONE : STATE_SEND;
     end
-    state_done: begin
+    STATE_DONE: begin
         rck <= 1;
-        state <= state_init;
+        state <= STATE_INIT;
     end
-        default: ;
+    default: ;
     endcase
+end
+
+// screensaver
+always @(posedge clk) begin
+    if (in > 0 || out > 0) begin
+        idle_count <= 0;
+    end
+    if (!idle) begin
+        idle_count <= idle_count + 1;
+    end
+end
+
+reg [2:0] ssbitno = 0;
+
+localparam ssclk = 19;
+reg [ssclk:0] ssclk_cntr;
+always @(posedge clk) ssclk_cntr <= ssclk_cntr + 1;
+wire ssclk2 = ssclk_cntr[ssclk];
+
+always @(posedge ssclk2) begin
+    if (!idle) begin
+        ssbitno <= 0;
+        ssin <= 0;
+        ssout <= 0;
+    end
+    else begin
+        ssbitno <= ssbitno + 1;
+        ssin[7-ssbitno & 7] <= !ssin[7-ssbitno & 7];
+        ssin[7-ssbitno + 8] <= !ssin[7-ssbitno + 8];
+        ssout[7-ssbitno & 7] <= !ssout[7-ssbitno & 7];
+        ssout[7-ssbitno + 8] <= !ssout[7-ssbitno + 8];
+    end
 end
 
 endmodule
