@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v3.3.79 (w)1999-2017 BSI
+[*] Wed Oct  3 18:56:53 2018
+[*]
+[dumpfile] "/home/tommy/src/midirouter/verilator/trace.vcd"
+[dumpfile_mtime] "Wed Oct  3 18:51:14 2018"
+[dumpfile_size] 9096960
+[savefile] "/home/tommy/src/midirouter/verilator/out.sav"
+[timestart] 0
+[size] 1680 757
+[pos] -1 -1
+*-6.000000 62 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.top.
+[treeopen] TOP.top.ports(0).
+[sst_width] 229
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 194
+@28
+TOP.activity_in[1:0]
+TOP.activity_out[1:0]
+TOP.clk
+TOP.rst
+TOP.top.ports(0).txdv
+TOP.top.ports(1).txdv
+@22
+TOP.top.ports(0).txbyte[7:0]
+TOP.top.ports(1).txbyte[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

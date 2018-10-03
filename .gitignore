@@ -2,3 +2,6 @@ midirouter.cache/
 midirouter.runs/
 verilator/obj_dir/
 verilator/trace.vcd
+vivado*.jou
+vivado*.log
+vivado*.str

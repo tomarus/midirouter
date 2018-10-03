@@ -9,4 +9,4 @@ all:
 	obj_dir/Vtop
 
 clean:
-	rm -rf obj_dir trace.vcd trace.sav
+	rm -rf obj_dir trace.vcd
