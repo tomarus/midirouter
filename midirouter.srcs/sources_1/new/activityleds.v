@@ -21,7 +21,7 @@ reg [2:0] colpos = 3'b111;
 reg [3:0] bitno = 4'b1111;
 
 reg [63:0] idle_count = 0;
-wire idle = idle_count[28]; // 28 = 20s, 29 = 40s, 30 = 80s, 31 = 160s (12mhz clock)
+wire idle = idle_count[29]; // 28 = 20s, 29 = 40s, 30 = 80s, 31 = 160s (12mhz clock)
 reg [15:0] ssin = 0;
 reg [15:0] ssout = 0;
 wire [15:0] inact  = idle ? ssin  : in;

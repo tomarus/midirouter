@@ -63,7 +63,7 @@ module fifo
      #(
        .ADDR_WIDTH(AW),
        .DATA_WIDTH(DW),
-       .ENABLE_BYPASS(1)
+       .ENABLE_BYPASS(0)
        )
    fifo_ram
      (

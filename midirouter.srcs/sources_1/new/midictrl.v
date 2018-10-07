@@ -35,11 +35,15 @@ module midictrl #(
 reg  [PORTS-1:0]   txdv = 0;
 reg  [PORTS*8-1:0] txdata = 0;
 wire [PORTS*8-1:0] rxdata;
-wire [PORTS-1:0]   rxdv;
 reg  [PORTS*4-1:0] txcurport;
+wire [PORTS-1:0] rx_empty;
+reg  [PORTS-1:0] rx_rden = 0;
+
 reg  rst2 = 1;
 
-midi_port #(.CLKS_PER_BIT(CLKS_PER_BIT)) ports[PORTS-1:0] (clk, rst2, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out, txcurport); 
+midi_port #(.CLKS_PER_BIT(CLKS_PER_BIT), .PORTS(PORTS)) 
+	ports[PORTS-1:0] 
+	(clk, rst2, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden); 
 
 //
 
@@ -58,6 +62,9 @@ reg [4:0] sxpos = 0;
 
 reg [PORTS*2-1:0] portstate = 0;
 
+reg [3:0] checkport = 0;
+reg [1:0] checkstate = 0;
+
 always @(posedge clk)
 begin
     rst2 <= 0;
@@ -74,11 +81,33 @@ begin
             txdv[port] <= 0;
         end
         if (sysex_running) runsysex();
-        for (port=0; port<PORTS; port=port+1) begin
-            if (rxdv[port]) begin
-                handlebyte(port, rxdata[port*8+:8], portstate[port*2+:2]);
-            end
-        end
+
+		case (checkstate)
+		2'b00: begin
+			checkport <= checkport + 1;
+			if (checkport > PORTS-1) begin
+				checkport <= 0;
+			end
+			checkstate <= 2'b01;
+		end
+		2'b01: begin
+        	if (!rx_empty[checkport]) begin
+				rx_rden[checkport] <= 1;
+				checkstate <= 2'b10;
+			end
+			else begin
+				checkstate <= 2'b00;
+			end
+		end
+		2'b10: begin
+			rx_rden[checkport] <= 0;
+			checkstate <= 2'b11;
+		end
+		2'b11: begin
+            handlebyte(checkport, rxdata[checkport*8+:8], portstate[checkport*2+:2]);
+			checkstate <= 2'b00;
+		end
+		endcase
     end
 end
 
@@ -102,20 +131,15 @@ begin
     1'b1:
         begin
             case (byte[7:0])
-            8'hfe: begin
-                // send active sensing to all ports for testing
-//                allportmsg(byte);
-            end
-//            8'hf8: begin
-//                // skip klok
-//            end
+            8'hff: ; // ignore system reset
+            8'hfe: ; // ignore active sensing
             8'hf0: begin
-                sendbyte(port, byte);
+                sendbyte(port, byte, -1); // TODO: -1
                 portstate[port*2+:2] <= s_SYSEX;
                 sxstate[port*2+:2] <= sx_BEGIN;
             end
             8'hf7: begin
-                sendbyte(port, byte);
+                sendbyte(port, byte, -1); // TODO: -1
                 portstate[port*2+:2] <= s_IDLE;
                 sysex_running <= 1;
 
@@ -255,16 +279,16 @@ reg [4:0]port_apmsg = 0;
 task allportmsg;
 input [7:0]msg;
     for (port_apmsg=0; port_apmsg<PORTS; port_apmsg=port_apmsg+1) begin
-        sendbyte(port_apmsg, msg);
+        sendbyte(port_apmsg, msg, -1); // TODO: -1
     end
 endtask
 
 task notallportmsg;
 input [7:0]msg;
-input [4:0]current_port;
+input [3:0]current_port;
     for (port_apmsg=0; port_apmsg<PORTS; port_apmsg=port_apmsg+1) begin
         if (port_apmsg != current_port) begin
-            sendbyte(port_apmsg, msg);
+            sendbyte(port_apmsg, msg, current_port);
         end
     end
 endtask
@@ -272,10 +296,11 @@ endtask
 task sendbyte;
 input [3:0] port;
 input [7:0] byte;
+input [3:0] srcport;
 begin
     txdata[port*8+:8] <= byte[7:0];
     txdv[port] <= 1;
-    txcurport[port*4+:4] <= port[3:0];
+    txcurport[port*4+:4] <= srcport[3:0];
 end
 endtask
 

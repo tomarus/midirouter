@@ -2,7 +2,7 @@
 `timescale 1ns / 1ps
 
 module top #(
-    parameter PORTS = 2,
+    parameter PORTS = 8,
     parameter CLOCK = 12_000_000
 ) (
     input wire clk,
@@ -16,10 +16,11 @@ module top #(
 reg  [PORTS-1:0]   txdv = 0;
 reg  [PORTS*8-1:0] txdata = 0;
 wire [PORTS*8-1:0] rxdata;
-wire [PORTS-1:0]   rxdv;
 reg  [PORTS*4-1:0] txcurport;
+wire [PORTS-1:0]   rx_empty;
+reg  [PORTS-1:0]   rx_rden = 0;
 
-midi_port #(.CLKS_PER_BIT(2)) ports[PORTS-1:0] (clk, rst, txdv, outport, txdata, rxdv, inport, rxdata, activity_in, activity_out, txcurport);
+midi_port #(.CLKS_PER_BIT(2), .PORTS(PORTS)) ports[PORTS-1:0] (clk, rst, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden);
 
 export "DPI-C" task sendbyte;
 
@@ -31,7 +32,7 @@ begin
     txdata[port*8+:8] = inbyte[7:0];
     txdv[port] = 1;
     txcurport[port*4+:4] = srcport[3:0];
-    $display("sendbyte %0h port %0h", inbyte[7:0], srcport[3:0]);
+    $display("sendbyte %0h port %0h srcport %0h empty: %0h", inbyte[7:0], port, srcport[3:0], rx_empty);
 end
 endtask
 
@@ -43,16 +44,5 @@ begin
     txdv[port] = 0;
 end
 endtask
-
-// initial begin
-// 	sendbyte(3'b000, 16'hf8);
-// end
-
-reg [3:0] port;
-always @(posedge clk) begin
-	// for (port=0; port<PORTS-1; port=port+1) begin
-	// 	txdv[port] = 0;
-	// end
-end
 
 endmodule
