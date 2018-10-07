@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module top (
-    input sysclk,
+    input clk,
     input [15:0]min,
     input [1:0]btn,
     output [15:0]mout,
@@ -32,12 +32,12 @@ module top (
 //
 
 wire rst_db;
-debouncer rst_debouncer (sysclk, btn[0], rst_db);
+debouncer rst_debouncer (clk, btn[0], rst_db);
 
 wire [15:0] activity_in, activity_out;
 
 midictrl #(.PORTS(16),.CLKS_PER_BIT(384)) midi_controller (
-   .clk          (sysclk),
+   .clk          (clk),
    .rst          (rst_db),
    .inport       (min),
    .outport      (mout),
@@ -45,29 +45,8 @@ midictrl #(.PORTS(16),.CLKS_PER_BIT(384)) midi_controller (
    .activity_out (activity_out)
 );
 
-//
-
-//reg [31:0] in_count [15:0]; // = 60_000_000;
-//reg [31:0] out_count [15:0]; // = 60_000_000;
-//reg [15:0] in_activity, out_activity;
-//integer i;
-//always @(posedge sysclk) begin
-//    for (i=0; i<16; i = i + 1) begin
-//        in_count[i]  <= !min[i]  ? 600000 : in_count[i]  > 0 ? in_count[i]  - 1 : 0;
-//        out_count[i] <= !mout[i] ? 600000 : out_count[i] > 0 ? out_count[i] - 1 : 0;
-//        in_activity[i]  <= in_count[i] != 0;
-//        out_activity[i] <= out_count[i] != 0;
-//    end
-//end
-//assign led[0] = in_count[0] != 0;
-//assign led[1] = out_count[0] != 0;
-
-//
-//wire [15:0] in_activity  = 16'b1101000000001111;
-//wire [15:0] out_activity = 16'b1101000000000000;
-
 activityleds activityleds_instance (
-    .clk(sysclk),
+    .clk(clk),
     .sck(SR_SCK),
     .rck(SR_RCK),
     .ser(SR_SER),

@@ -15,7 +15,8 @@ module midi_port #(
     output activity_out,
     input  [3:0]i_srcport,
 	output o_rx_empty,
-	input  i_rx_rden
+	input  i_rx_rden,
+	input  i_ledclken
 );
 
 // Receive uart + fifo
@@ -58,7 +59,7 @@ reg  [PORTS-1:0] src_send = 0;
 reg  [PORTS-1:0] src_fready = 0;
 reg  [PORTS-1:0] src_txdv;
 
-fifo #(.DEPTH_WIDTH(6), .DATA_WIDTH(8)) fifosrcs[PORTS-1:0] (
+fifo #(.DEPTH_WIDTH(5), .DATA_WIDTH(8)) fifosrcs[PORTS-1:0] (
     .clk        (clk),
     .rst        (rst),
     .wr_data_i  (insrc_txdata), // from input
@@ -193,20 +194,24 @@ always @(posedge clk) begin
 end
 
 // Handle activity LEDs
-// 1/(12_000_000/600_000) = 50ms
-localparam DURATION = 600_000; // Blink duration.
+// localparam DURATION = 600_000; // Blink duration ca 50ms with 12mhz clk.
+localparam DURATION = 20; // Blink duration ca 50ms with 12mhz/16bit clk.
 
-reg [20:0] in_count, out_count;
+reg [4:0] in_count, out_count;
 assign activity_in = in_count != 0;
 assign activity_out = out_count != 0;
 
-// 0xf8 = clock, 0xfe = active sensing.
+// 0xf8 = clock, 0xfe = active sensing. Those are ignored on activity led output.
 wire act_in  = o_fifo_rxdv && o_fifo_rxdata != 8'hf8 && o_fifo_rxdata != 8'hfe;
 wire act_out = i_txdv && i_txdata != 8'hf8;
 
 always @(posedge clk) begin
-    in_count  <= act_in  ? DURATION : in_count  > 0 ? in_count  - 1 : 0;
-    out_count <= act_out ? DURATION : out_count > 0 ? out_count - 1 : 0;
+	if (act_in) in_count <= DURATION;
+	if (act_out) out_count <= DURATION;
+	if (i_ledclken) begin
+	    in_count  <= in_count  > 0 ? in_count  - 1 : 0;
+	    out_count <= out_count > 0 ? out_count - 1 : 0;
+	end
 end
 
 endmodule

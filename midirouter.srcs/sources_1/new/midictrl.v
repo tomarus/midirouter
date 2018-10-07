@@ -41,11 +41,17 @@ reg  [PORTS-1:0] rx_rden = 0;
 
 reg  rst2 = 1;
 
+reg [15:0] ledclk;
+reg ledclken;
+always @(posedge clk) begin
+	ledclk <= ledclk + 1;
+	if (ledclk == 0) ledclken <= 1;
+	else ledclken <= 0;
+end
+
 midi_port #(.CLKS_PER_BIT(CLKS_PER_BIT), .PORTS(PORTS)) 
 	ports[PORTS-1:0] 
-	(clk, rst2, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden); 
-
-//
+	(clk, rst2, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden, ledclken); 
 
 //reg [36:0]cfg = 36'b111111111111111111111111111111111111;
 

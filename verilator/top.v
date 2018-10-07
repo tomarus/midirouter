@@ -19,8 +19,9 @@ wire [PORTS*8-1:0] rxdata;
 reg  [PORTS*4-1:0] txcurport;
 wire [PORTS-1:0]   rx_empty;
 reg  [PORTS-1:0]   rx_rden = 0;
+reg  ledclk_en = 0;
 
-midi_port #(.CLKS_PER_BIT(2), .PORTS(PORTS)) ports[PORTS-1:0] (clk, rst, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden);
+midi_port #(.CLKS_PER_BIT(2), .PORTS(PORTS)) ports[PORTS-1:0] (clk, rst, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden, ledclk_en);
 
 export "DPI-C" task sendbyte;
 
