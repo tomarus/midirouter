@@ -7,12 +7,12 @@ module midi_port #(
     input  clk,
     input  rst,
     input  i_txdv,
-    output txserial,
+    output o_txserial,
     input  [7:0]i_txdata,
-    input  rxserial,
+    input  i_rxserial,
     output [7:0]o_rxdata,
-    output activity_in,
-    output activity_out,
+    output o_activity_in,
+    output o_activity_out,
     input  [3:0]i_srcport,
 	output o_rx_empty,
 	input  i_rx_rden,
@@ -26,14 +26,14 @@ wire [7:0] o_fifo_rxdata;
 
 uart_rx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_rx_inst(
 	.i_Clock	 (clk),
-	.i_Rx_Serial (rxserial),
+	.i_Rx_Serial (i_rxserial),
 	.o_Rx_DV	 (o_fifo_rxdv),
 	.o_Rx_Byte	 (o_fifo_rxdata[7:0])
 );
 
 always @(posedge clk) begin
 	if (o_fifo_rxdv) begin
-		$display("%m: o_fifo_rxdv set, serial: %0b, data: %0h", rxserial, o_fifo_rxdata);
+		$display("%m: o_fifo_rxdv set, serial: %0b, data: %0h", i_rxserial, o_fifo_rxdata);
 	end
 end
 
@@ -53,7 +53,7 @@ fifo #(.DEPTH_WIDTH(2), .DATA_WIDTH(8)) fifo_rx (
 // 16 fifo's with 3 bit address
 // Queues all input data from all source ports
 wire [PORTS*8-1:0] src_txbyte;
-reg  [7:0] insrc_txdata;
+reg  [PORTS*8-1:0] src_txdata;
 wire [PORTS-1:0] src_empty;
 reg  [PORTS-1:0] src_send = 0;
 reg  [PORTS-1:0] src_fready = 0;
@@ -62,7 +62,7 @@ reg  [PORTS-1:0] src_txdv;
 fifo #(.DEPTH_WIDTH(5), .DATA_WIDTH(8)) fifosrcs[PORTS-1:0] (
     .clk        (clk),
     .rst        (rst),
-    .wr_data_i  (insrc_txdata), // from input
+    .wr_data_i  (src_txdata), // from input
     .wr_en_i    (src_txdv),   // input ready
     .rd_data_o  (src_txbyte),
     .rd_en_i    (src_fready),
@@ -81,7 +81,7 @@ uart_tx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_tx_inst(
    .i_Tx_DV     (send),
    .i_Tx_Byte   (txbyte[7:0]), 
    .o_Tx_Active (txactive),
-   .o_Tx_Serial (txserial),
+   .o_Tx_Serial (o_txserial),
    .o_Tx_Done   (txdone)
 );
 
@@ -107,19 +107,23 @@ reg [2:0]state = 3'b000;
 always @(posedge clk) begin
 	// if we receive input data for sending, store
 	// it in the appropiate fifo.
-	// src_txdata[i_srcport*8+:8] <= i_txdata;
-	insrc_txdata <= i_txdata;
-	/* verilator lint_off WIDTH */
-	src_txdv[i_srcport] <= i_txdv;
+	src_txdata[i_srcport*8+:8] <= i_txdata;
+	// src_txdata <= i_txdata;
 	for (i=0; i!=PORTS-1; i = i + 1) begin
 		if (i != i_srcport) begin
+			/* verilator lint_off WIDTH */
 			src_txdv[i] <= 0;
 		end	
 	end
+	/* verilator lint_off WIDTH */
+	src_txdv[i_srcport] <= i_txdv;
+end
 
+always @(posedge clk) begin
 	// read current data from currently selected fifo/port
 	// and set expectations based on the midi data.
 	// TODO: implements the timeouts..
+	// TODO: If data occurs when command expected, resend last command first.
     case (state)
     3'b000:
         if (!src_empty[active_port] && !txactive) begin
@@ -166,7 +170,6 @@ always @(posedge clk) begin
         state <= 3'b000;
 		if (expect_byte > 0) begin
 			if (txbyte == expect_byte) begin
-				nextactiveport();
 				expect_byte <= 0;
 			end
 		end
@@ -198,8 +201,8 @@ end
 localparam DURATION = 20; // Blink duration ca 50ms with 12mhz/16bit clk.
 
 reg [4:0] in_count, out_count;
-assign activity_in = in_count != 0;
-assign activity_out = out_count != 0;
+assign o_activity_in = in_count != 0;
+assign o_activity_out = out_count != 0;
 
 // 0xf8 = clock, 0xfe = active sensing. Those are ignored on activity led output.
 wire act_in  = o_fifo_rxdv && o_fifo_rxdata != 8'hf8 && o_fifo_rxdata != 8'hfe;
