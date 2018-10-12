@@ -50,15 +50,15 @@ int main(int argc, char **argv, char **env) {
         }
 
         switch(i) {
-            case 12:
-				// first test byte
-                sendbyte(0, 0xf8, 0);
-                break;
-            case 16:
+            // case 12:
+			// 	// first test byte
+            //     sendbyte(0, 0xf8, 0);
+            //     break;
+            case 10:
 				// send note off sequence sourceport 0 destport 0
                 sendbyte(0, 0x90, 0); // 0x90 0x55 0x33
                 break;
-            case 18:
+            case 14:
 				// send note on sequence sourceport 1 destport 0
 				// this should be merged after note off sequence
                 sendbyte(0, 0x80, 1); // 0x80 0x44 0x22
@@ -66,27 +66,41 @@ int main(int argc, char **argv, char **env) {
             case 20:
                 sendbyte(0, 0x55, 0);
                 break;
-            case 22:
+            case 24:
                 sendbyte(0, 0x44, 1);
                 break;
-            case 24:
+            case 28:
                 sendbyte(0, 0x33, 0);
                 break;
             case 500:
                 sendbyte(0, 0xb3, 5); // 0xb3 0x11 0x12
                 break;
-            case 502:
+            case 504:
                 sendbyte(0, 0xb9, 3); // 0xb3 0x11 0x12
                 break;
-            case 504:
+            case 508:
                 sendbyte(0, 0x11, 3);
+                break;
+            case 512:
                 sendbyte(0, 0x11, 5);
                 break;
-            case 508:
+            case 516:
                 sendbyte(0, 0x12, 3);
                 break;
-            case 510:
+            case 520:
                 sendbyte(0, 0x12, 5);
+                break;
+            case 524:
+                sendbyte(0, 0x15, 5);
+                break;
+            case 528:
+                sendbyte(0, 0x15, 5);
+                break;
+            case 532:
+                sendbyte(0, 0x13, 3);
+                break;
+            case 536:
+                sendbyte(0, 0x13, 3);
                 break;
             case 260: // XXX: hehe
                 sendbyte(0, 0x22, 1);

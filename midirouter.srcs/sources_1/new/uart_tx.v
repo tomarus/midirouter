@@ -45,6 +45,7 @@ module uart_tx
             r_Tx_Done     <= 1'b0;
             r_Clock_Count <= 0;
             r_Bit_Index   <= 0;
+            r_Tx_Active   <= 1'b0;
              
             if (i_Tx_DV == 1'b1)
               begin
@@ -111,17 +112,15 @@ module uart_tx
             o_Tx_Serial <= 1'b1;
              
             // Wait CLKS_PER_BIT-1 clock cycles for Stop bit to finish
-            if (r_Clock_Count < (CLKS_PER_BIT-1))
+            if (r_Clock_Count < CLKS_PER_BIT-1)
               begin
                 r_Clock_Count <= r_Clock_Count + 1;
                 r_SM_Main     <= s_TX_STOP_BIT;
               end
             else
               begin
-                r_Tx_Done     <= 1'b1;
                 r_Clock_Count <= 0;
-                r_SM_Main     <= s_IDLE;
-                r_Tx_Active   <= 1'b0;
+                r_SM_Main     <= s_CLEANUP;
               end
           end // case: s_Tx_STOP_BIT
          
@@ -131,6 +130,8 @@ module uart_tx
           begin
             r_Tx_Done <= 1'b1;
             r_SM_Main <= s_IDLE;
+            r_Tx_Active <= 1'b0;
+            o_Tx_Serial <= 1'b1;
           end
          
          
