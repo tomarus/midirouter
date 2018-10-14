@@ -44,7 +44,7 @@ midi_out #(.CLKS_PER_BIT(CLKS_PER_BIT), .PORTS(PORTS)) midi_out_inst (
 
 // Handle activity LEDs
 // localparam DURATION = 600_000; // Blink duration ca 50ms with 12mhz clk.
-localparam DURATION = 20; // Blink duration ca 50ms with 12mhz/16bit clk.
+localparam DURATION = 10; // Blink duration ca 50ms with 12mhz/16bit clk.
 
 reg [4:0] in_count, out_count;
 assign o_activity_in = in_count != 0;

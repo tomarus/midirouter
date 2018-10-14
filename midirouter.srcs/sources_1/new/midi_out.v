@@ -14,7 +14,8 @@ module midi_out #(
 
 reg  [PORTS*8-1:0] src_lastcmd = 0;
 wire [PORTS*8-1:0] src_txbyte;
-reg  [PORTS*8-1:0] src_txdata = 0;
+// reg  [PORTS*8-1:0] src_txdata = 0;
+reg  [7:0] src_txdata = 0;
 wire [PORTS-1:0] src_empty;
 reg  [PORTS-1:0] src_send = 0;
 reg  [PORTS-1:0] src_fready = 0;
@@ -69,7 +70,8 @@ always @(posedge clk) begin
 	s_IN_IDLE: begin
 		if (i_txdv) begin
 			sp <= i_srcport;
-			src_txdata[i_srcport*8+:8] <= i_txdata;
+			// src_txdata[i_srcport*8+:8] <= i_txdata;
+			src_txdata <= i_txdata;
 			/* verilator lint_off WIDTH */
 			src_txdv[i_srcport] <= 1;
 			input_state <= s_IN_TX;

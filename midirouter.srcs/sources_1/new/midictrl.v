@@ -39,8 +39,6 @@ reg  [PORTS*4-1:0] txcurport = 0;
 wire [PORTS-1:0] rx_empty;
 reg  [PORTS-1:0] rx_rden = 0;
 
-reg  rst2 = 1;
-
 reg [15:0] ledclk;
 reg ledclken;
 always @(posedge clk) begin
@@ -51,7 +49,7 @@ end
 
 midi_port #(.CLKS_PER_BIT(CLKS_PER_BIT), .PORTS(PORTS)) 
 	ports[PORTS-1:0] 
-	(clk, rst2, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden, ledclken); 
+	(clk, rst, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden, ledclken);
 
 reg [63:0] cfg_in_filter = 64'hffffffffffffffff;
 reg [63:0] cfg_in_router = 64'hffffffffffffffff;
@@ -74,12 +72,11 @@ reg [2:0] checkstate = 0;
 
 always @(posedge clk)
 begin
-	rst2 <= 0;
 	txdv[PORTS-1:0] <= 0;
 
 	if (reset_running)
 		runreset();
-	else if (rst2 || rst) begin
+	else if (rst) begin
 		reset_counter <= 0;
 		reset_running <= 1;
 		chcnt <= 0;
@@ -112,6 +109,9 @@ begin
 			checkstate <= 3'b100;
 		end
 		3'b100: begin
+			checkstate <= 3'b000;
+		end
+		default: begin
 			checkstate <= 3'b000;
 		end
 		endcase
@@ -290,6 +290,8 @@ begin
 			chcnt <= chcnt + 1;
 		end
 	end
+	default:
+		msgcnt <= 0;
 	endcase
 end
 endtask

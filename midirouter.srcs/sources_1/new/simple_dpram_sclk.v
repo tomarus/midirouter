@@ -25,7 +25,7 @@ module simple_dpram_sclk
     output [DATA_WIDTH-1:0] dout
     );
 
-   (* ram_style = "block" *) reg [DATA_WIDTH-1:0]     mem[(1<<ADDR_WIDTH)-1:0];
+   (* ram_style = "distributed" *) reg [DATA_WIDTH-1:0]     mem[(1<<ADDR_WIDTH)-1:0];
    reg [DATA_WIDTH-1:0]     rdata;
 
 generate
