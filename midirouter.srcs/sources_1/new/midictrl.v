@@ -75,7 +75,7 @@ reg [2:0] checkstate = 0;
 always @(posedge clk)
 begin
 	rst2 <= 0;
-	txdv[PORTS-1:0] = 0;
+	txdv[PORTS-1:0] <= 0;
 
 	if (reset_running)
 		runreset();
@@ -133,8 +133,6 @@ input [3:0]port;
 input [7:0]byte;
 input [2:0]state;
 begin
-	notallportmsg(byte, port);
-
 	case (byte[7])
 	// command
 	1'b1:
@@ -142,26 +140,27 @@ begin
 			case (byte[7:0])
 			8'hff: ; // ignore system reset
 			8'hfe: ; // ignore active sensing
-			8'hf8: ; // FIXME:
 			8'hf0: begin
 				portstate[port*2+:2] <= s_SYSEX;
 				sxstate[port*2+:2] <= sx_BEGIN;
+				notallportmsg(byte, port);
 			end
 			8'hf7: begin
 				portstate[port*2+:2] <= s_IDLE;
 				sysex_running <= 1;
 				reset_counter <= 0;
 				chcnt <= 0;
+				notallportmsg(byte, port);
 			end
 			default: begin
-				// notallportmsg(byte, port);
+				notallportmsg(byte, port);
 			end
 			endcase
 		end
 	 // data
 	 1'b0:
 		begin
-			// notallportmsg(byte, port);
+			notallportmsg(byte, port);
 
 			case (state[2:0])
 //            s_IDLE:

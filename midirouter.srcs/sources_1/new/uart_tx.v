@@ -119,6 +119,7 @@ module uart_tx
               end
             else
               begin
+                r_Tx_Active <= 1'b0;
                 r_Clock_Count <= 0;
                 r_SM_Main     <= s_CLEANUP;
               end
@@ -130,7 +131,6 @@ module uart_tx
           begin
             r_Tx_Done <= 1'b1;
             r_SM_Main <= s_IDLE;
-            r_Tx_Active <= 1'b0;
             o_Tx_Serial <= 1'b1;
           end
          

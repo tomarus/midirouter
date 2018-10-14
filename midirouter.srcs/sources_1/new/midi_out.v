@@ -108,6 +108,7 @@ localparam s_READEND  = 3'b011;
 localparam s_TRANSMIT = 3'b100;
 localparam s_TXEND    = 3'b101;
 localparam s_FINISH   = 3'b110;
+localparam s_CLKEND   = 3'b111;
 
 reg [2:0] state = s_IDLE;
 
@@ -149,7 +150,6 @@ if (!txactive)
 	end
 	s_TRANSMIT: begin // transmit byte
 		send <= 1;
-		state <= s_TXEND;
 
 		// Check for continuous MIDI messages.
 		if (~src_txbyte[active_port*8+:8]>>7&1 && expect_bytes == 0 && expect_byte == 0) begin
@@ -161,9 +161,17 @@ if (!txactive)
 			nextbyte <= 0;
 		end
 
-		if (src_txbyte[active_port*8+:8]>>7&1)
-			src_lastcmd[active_port*8+:8] <= src_txbyte[active_port*8+:8];
-
+		if (src_txbyte[active_port*8+:8] == 8'hf8)
+			state <= s_CLKEND;
+		else begin
+			state <= s_TXEND;
+			if (src_txbyte[active_port*8+:8]>>7&1)
+				src_lastcmd[active_port*8+:8] <= src_txbyte[active_port*8+:8];
+		end
+	end
+	s_CLKEND: begin
+		send <= 0;
+		state <= s_FINISH;
 	end
 	s_TXEND: begin // end transmit byte
 		send <= 0;
@@ -181,16 +189,19 @@ if (!txactive)
 			expect_bytes <= 1;
 		4'hf:
 			case (txbyte)
-			16'hf0: begin // sysex
+			8'hf0: begin // sysex
 				expect_byte <= 16'hf7;
 				expect_bytes <= 0;
 			end
-			16'hf1, // timecode frame
-			16'hf3: // song select
+			8'hf1, // timecode frame
+			8'hf3: // song select
 				expect_bytes <= 1;
-			16'hf2: // song position
+			8'hf2: // song position
 				expect_bytes <= 2;
+			// 8'hf8: ;
+				// expect_bytes <= expect_bytes;
 			default:
+				// expect_bytes <= expect_bytes;
 				expect_bytes <= 0;
 			endcase
 		default:

@@ -86,14 +86,18 @@ func main() {
 		if *optI && pkt.Data == 0xf8 {
 			continue
 		}
-		if pkt.Data>>7 == 1 && cmd != pkt.Data {
+		col := color
+		if pkt.Data == 0xf8 {
+			col = ansi.Fg(ansi.Green)
+		} else if pkt.Data>>7 == 1 && cmd != pkt.Data {
 			cmd = pkt.Data
 			if color != ansi.Fg(ansi.White) {
 				color = ansi.Fg(ansi.White)
 			} else {
 				color = ansi.Bold
 			}
+			col = color
 		}
-		fmt.Printf("%s%.2x%s ", color, pkt.Data, ansi.Reset)
+		fmt.Printf("%s%.2x%s ", col, pkt.Data, ansi.Reset)
 	}
 }

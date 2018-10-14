@@ -100,6 +100,9 @@ int main(int argc, char **argv, char **env) {
                 sendbyte(0, 0x13, 3);
                 break;
             case 536:
+                sendbyte(0, 0xf8, 3);
+                break;
+            case 540:
                 sendbyte(0, 0x13, 3);
                 break;
             case 260: // XXX: hehe
