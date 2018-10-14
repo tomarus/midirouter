@@ -3,13 +3,13 @@ module midi_out #(
 	parameter CLKS_PER_BIT = 384,
 	parameter PORTS = 16
 ) (
-	input		clk,
-	input		rst,
-	output		o_serial,
-	input		i_txdv,
+	input       clk,
+	input       rst,
+	output      o_serial,
+	input       i_txdv,
 	input [7:0] i_txdata,
 	input [3:0] i_srcport,
-	output		o_active
+	output      o_active
 );
 
 reg  [PORTS*8-1:0] src_lastcmd = 0;

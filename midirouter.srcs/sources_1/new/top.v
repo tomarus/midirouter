@@ -3,12 +3,12 @@
 // Module Name: top
 
 module top (
-	input clk,
-	input [15:0]min,
-	output [15:0]mout,
-	output [1:0]led,
-	output led0_r, led0_g, led0_b,
-	output SR_SCK, SR_RCK, SR_SER
+	input         clk,
+	input  [15:0] min,
+	output [15:0] mout,
+	output [1:0]  led,
+	output        led0_r, led0_g, led0_b,
+	output        SR_SCK, SR_RCK, SR_SER
 );
 
 wire [15:0] activity_in, activity_out;

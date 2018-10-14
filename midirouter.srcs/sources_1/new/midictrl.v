@@ -1,24 +1,6 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
 // Create Date: 07/06/2018 12:52:50 PM
-// Design Name: 
 // Module Name: midictrl
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module midictrl #( 
 	parameter PORTS = 16,
@@ -36,8 +18,8 @@ reg  [PORTS-1:0]   txdv = 0;
 reg  [PORTS*8-1:0] txdata = 0;
 wire [PORTS*8-1:0] rxdata;
 reg  [PORTS*4-1:0] txcurport = 0;
-wire [PORTS-1:0] rx_empty;
-reg  [PORTS-1:0] rx_rden = 0;
+wire [PORTS-1:0]   rx_empty;
+reg  [PORTS-1:0]   rx_rden = 0;
 
 reg [15:0] ledclk;
 reg ledclken;

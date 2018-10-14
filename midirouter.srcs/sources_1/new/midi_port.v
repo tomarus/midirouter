@@ -4,42 +4,42 @@ module midi_port #(
 	parameter CLKS_PER_BIT = 384,
 	parameter PORTS = 16
 ) (
-	input  clk,
-	input  rst,
-	input  i_txdv,
-	output o_txserial,
-	input  [7:0]i_txdata,
-	input  i_rxserial,
-	output [7:0]o_rxdata,
-	output o_activity_in,
-	output o_activity_out,
-	input  [3:0]i_srcport,
-	output o_rx_empty,
-	input  i_rx_rden,
-	input  i_ledclken
+	input        clk,
+	input        rst,
+	input        i_txdv,
+	output       o_txserial,
+	input  [7:0] i_txdata,
+	input        i_rxserial,
+	output [7:0] o_rxdata,
+	output       o_activity_in,
+	output       o_activity_out,
+	input  [3:0] i_srcport,
+	output       o_rx_empty,
+	input        i_rx_rden,
+	input        i_ledclken
 );
 
 wire act_in;
 wire act_out;
 
 midi_in #(.CLKS_PER_BIT(CLKS_PER_BIT)) midi_in_inst (
-	.clk		(clk),
-	.rst		(rst),
-	.i_serial	(i_rxserial),
-	.i_rx_rden	(i_rx_rden),
-	.o_rxdata	(o_rxdata),
-	.o_rx_empty	(o_rx_empty),
-	.o_active	(act_in)
+	.clk        (clk),
+	.rst        (rst),
+	.i_serial   (i_rxserial),
+	.i_rx_rden  (i_rx_rden),
+	.o_rxdata   (o_rxdata),
+	.o_rx_empty (o_rx_empty),
+	.o_active   (act_in)
 );
 
 midi_out #(.CLKS_PER_BIT(CLKS_PER_BIT), .PORTS(PORTS)) midi_out_inst (
-	.clk		(clk),
-	.rst		(rst),
-	.o_serial	(o_txserial),
-	.i_txdv		(i_txdv),
-	.i_txdata	(i_txdata),
-	.i_srcport	(i_srcport),
-	.o_active	(act_out)
+	.clk       (clk),
+	.rst       (rst),
+	.o_serial  (o_txserial),
+	.i_txdv    (i_txdv),
+	.i_txdata  (i_txdata),
+	.i_srcport (i_srcport),
+	.o_active  (act_out)
 );
 
 // Handle activity LEDs

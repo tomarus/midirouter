@@ -2,23 +2,23 @@
 module midi_in #(
 	parameter CLKS_PER_BIT = 384
 ) (
-	input		clk,
-	input		rst,
-	input		i_serial,
-	input		i_rx_rden,
-	output [7:0]o_rxdata,
-	output		o_rx_empty,
-	output		o_active
+	input        clk,
+	input        rst,
+	input        i_serial,
+	input        i_rx_rden,
+	output [7:0] o_rxdata,
+	output       o_rx_empty,
+	output       o_active
 );
 
 wire rxdv;
 wire [7:0] rxdata;
 
 uart_rx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_rx_inst (
-	.i_Clock	 (clk),
+	.i_Clock     (clk),
 	.i_Rx_Serial (i_serial),
-	.o_Rx_DV	 (rxdv),
-	.o_Rx_Byte	 (rxdata[7:0])
+	.o_Rx_DV     (rxdv),
+	.o_Rx_Byte   (rxdata[7:0])
 );
 
 fifo #(.DEPTH_WIDTH(2), .DATA_WIDTH(8)) fifo_rx (
