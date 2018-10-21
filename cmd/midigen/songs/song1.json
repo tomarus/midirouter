@@ -1,0 +1,58 @@
+
+{
+	"Comment": "Test Pattern",
+	"Channels": [
+		{
+			"Midi": 1,
+			"Patterns": [
+				{"Len": 8, "Loop": 4, "Scale": "minor", "Speed": 3, "Transpose": 0, "Seed": 1540064431556415018, "Key": "g", "Velocity": 100},
+				{"Len": 8, "Loop": 4, "Scale": "minor", "Speed": 3, "Transpose": 0, "Seed": 1540064431556415018, "Key": "c", "Velocity": 100}
+			]
+		},
+		{
+			"Midi": 2,
+			"Patterns": [
+				{"Len": 8, "Loop": 8, "Scale": "minor", "Speed": 6, "Transpose": 0, "Seed": 1, "Key": "c", "Velocity": 0},
+
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 1540074529374698974, "Key": "g", "Velocity": 100},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 1540074227804456880, "Key": "c", "Velocity": 100},
+				{"Len": 4, "Loop": 8, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540075302124003164, "Key": "g", "Velocity": 100},
+				{"Len": 4, "Loop": 8, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540075361975429460, "Key": "c", "Velocity": 100},
+
+				{"Len": 4, "Loop": 2, "Scale": "minor", "Speed": 12, "Transpose": -12, "Seed": 1540078190352452946, "Key": "g", "Velocity": 100},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 1540078086020736257, "Key": "c", "Velocity": 100},
+
+				{"Len": 4, "Loop": 8, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 7095606922137102317, "Key": "g", "Velocity": 100},
+				{"Len": 4, "Loop": 8, "Scale": "minor", "Speed": 3, "Transpose": 0, "Seed": 5201402957075458301, "Key": "c", "Velocity": 100},
+				{"Len": 4, "Loop": 4, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 7095606922137102317, "Key": "a#", "Velocity": 100},
+				{"Len": 4, "Loop": 4, "Scale": "minor", "Speed": 3, "Transpose": 0, "Seed": 7095606922137102317, "Key": "c#", "Velocity": 100},
+				{"Len": 4, "Loop": 6, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 5201402957075458301, "Key": "c", "Velocity": 100},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": 0, "Seed": 5201402957075458301, "Key": "c", "Velocity": 100},
+				{"Len": 2, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": 0, "Seed": 5201402957075458301, "Key": "g", "Velocity": 100},
+				{"Len": 2, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": 0, "Seed": 5201402957075458301, "Key": "a#", "Velocity": 100},
+
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 1540074529374698974, "Key": "g", "Velocity": 100},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 1540074227804456880, "Key": "c", "Velocity": 100},
+				{"Len": 4, "Loop": 8, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540075302124003164, "Key": "g", "Velocity": 100},
+				{"Len": 4, "Loop": 8, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540075361975429460, "Key": "c", "Velocity": 100},
+
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 1540074529374698974, "Key": "g", "Velocity": 100},
+				{"Len": 8, "Loop": 3, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540078086020736257, "Key": "c", "Velocity": 100},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540078086020736257, "Key": "d", "Velocity": 95},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540078086020736257, "Key": "g", "Velocity": 90},
+
+				{"Len": 1, "Loop": 1, "Scale": "minor", "Speed": 192, "Transpose": -12, "Seed": 4200990795209601870, "Key": "g", "Velocity": 100}
+			]
+		},
+		{
+			"Midi": 3,
+			"Patterns": [
+				{"Len": 8, "Loop": 8, "Scale": "minor", "Speed": 6, "Transpose": 0, "Seed": 1, "Key": "c", "Velocity": 0},
+				{"Len": 2, "Loop": 1, "Scale": "minor", "Speed": 48, "Transpose": 0, "Seed": 871725036519775974, "Key": "g", "Velocity": 100},
+				{"Len": 2, "Loop": 1, "Scale": "minor", "Speed": 48, "Transpose": 0, "Seed": 2130130016596713596, "Key": "c", "Velocity": 100},
+				{"Len": 2, "Loop": 1, "Scale": "minor", "Speed": 48, "Transpose": 0, "Seed": 871725036519775974, "Key": "g", "Velocity": 100},
+				{"Len": 2, "Loop": 1, "Scale": "minor", "Speed": 48, "Transpose": 0, "Seed": 2130130016596713596, "Key": "c", "Velocity": 100}
+			]
+		}
+	]
+}
