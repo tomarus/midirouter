@@ -88,7 +88,7 @@ func (p *pattern) generate() error {
 	}
 	scale, ok := scales[s]
 	if !ok {
-		return fmt.Errorf("scale not found: %s", p.Scale)
+		return fmt.Errorf("scale not found: %s", s)
 	}
 	notes := scale.allowNotes(offset)
 	p.sequence = scale.generate(p.Len, notes)
@@ -159,7 +159,10 @@ func main() {
 			for c := range song.Channels {
 				for p := range song.Channels[c].Patterns {
 					song.Channels[c].clear()
-					song.Channels[c].Patterns[p].generate()
+					err := song.Channels[c].Patterns[p].generate()
+					if err != nil {
+						log.Fatal(err)
+					}
 				}
 			}
 
