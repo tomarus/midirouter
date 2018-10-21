@@ -1,0 +1,23 @@
+
+{
+	"Comment": "Piano Pattern",
+	"Channels": [
+		{
+			"Midi": 1,
+			"Patterns": [
+				{"Len": 8, "Loop": 2, "Scale": "major_blues", "Speed": 6, "Transpose": -24, "Seed": 7145440438171381396, "Key": "g", "Velocity": 100},
+				{"Len": 8, "Loop": 2, "Scale": "major_blues", "Speed": 6, "Transpose": -24, "Seed": 6185614200331728768, "Key": "a#", "Velocity": 100},
+				{"Len": 8, "Loop": 4, "Scale": "major_blues", "Speed": 6, "Transpose": -24, "Seed": 7476799329354719059, "Key": "d", "Velocity": 100}
+			]
+		},
+		{
+			"Midi": 2,
+			"Patterns": [
+				{"Len": 16, "Loop": 2, "Scale": "major_blues", "Speed": 3, "Transpose": -12, "Seed": 3344034583071774069, "Key": "g", "Velocity": 100},
+				{"Len": 16, "Loop": 1, "Scale": "major_blues", "Speed": 3, "Transpose": -12, "Seed": 1513971999758825077, "Key": "a#", "Velocity": 100},
+				{"Len": 16, "Loop": 1, "Scale": "major_blues", "Speed": 3, "Transpose": -12, "Seed": 1513971999758825077, "Key": "c", "Velocity": 100},
+				{"Len": 16, "Loop": 4, "Scale": "major_blues", "Speed": 3, "Transpose": -12, "Seed": 3115129120272410363, "Key": "d", "Velocity": 100}
+			]
+		}
+	]
+}
