@@ -10,7 +10,6 @@ import (
 	"math/rand"
 	"os"
 	"os/signal"
-	"sync"
 	"syscall"
 	"time"
 
@@ -149,59 +148,8 @@ func main() {
 	}
 
 	quiter := make(chan bool, 1)
-	ch, err := device.Packets()
-	if err != nil {
-		log.Fatal(err)
-	}
 
-	go func() {
-		for {
-			for c := range song.Channels {
-				for p := range song.Channels[c].Patterns {
-					song.Channels[c].clear()
-					err := song.Channels[c].Patterns[p].generate()
-					if err != nil {
-						log.Fatal(err)
-					}
-				}
-			}
-
-			log.Printf("Waiting for MIDI start message")
-			for pkt := range ch {
-				if pkt.Data[0] == 0xfa {
-					break
-				}
-			}
-			log.Printf("Running..")
-
-			var wg sync.WaitGroup
-			wg.Add(1)
-			go func(quitch chan bool) {
-				defer wg.Done()
-				for {
-					select {
-					case <-quiter:
-						return
-					case pkt := <-ch:
-						if pkt.Data[0] == 0xf8 {
-							for i := range song.Channels {
-								if !playNote(device, &song.Channels[i]) {
-									os.Exit(0)
-								}
-							}
-						} else if pkt.Data[0] == 0xfc {
-							log.Printf("MIDI stop received")
-							for i := range song.Channels {
-								noteOff(device, &song.Channels[i])
-							}
-							return
-						}
-					}
-				}
-			}(quiter)
-			wg.Wait()
-		}
-	}()
+	go player(quiter, device, song)
 
 	sig := make(chan os.Signal, 2)
 	signal.Notify(sig, syscall.SIGTERM, syscall.SIGINT)
@@ -212,6 +160,55 @@ func main() {
 	quiter <- true
 	for i := range song.Channels {
 		noteOff(device, &song.Channels[i])
+	}
+}
+
+func player(quiter chan bool, device *midi.Device, song *song) {
+	ch, err := device.Packets()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for {
+		for c := range song.Channels {
+			for p := range song.Channels[c].Patterns {
+				song.Channels[c].clear()
+				err := song.Channels[c].Patterns[p].generate()
+				if err != nil {
+					log.Fatal(err)
+				}
+			}
+		}
+
+		log.Printf("Waiting for MIDI start message")
+		for pkt := range ch {
+			if pkt.Data[0] == 0xfa {
+				break
+			}
+		}
+		log.Printf("Running..")
+
+	looper:
+		for {
+			select {
+			case <-quiter:
+				return
+			case pkt := <-ch:
+				if pkt.Data[0] == 0xf8 {
+					for i := range song.Channels {
+						if !playNote(device, &song.Channels[i]) {
+							os.Exit(0)
+						}
+					}
+				} else if pkt.Data[0] == 0xfc {
+					log.Printf("MIDI stop received")
+					for i := range song.Channels {
+						noteOff(device, &song.Channels[i])
+					}
+					break looper
+				}
+			}
+		}
 	}
 }
 
