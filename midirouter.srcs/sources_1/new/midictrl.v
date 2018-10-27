@@ -39,9 +39,9 @@ reg [63:0] cfg_in_router = 64'hffffffffffffffff;
 reg [4:0]port = 0;
 
 reg reset_running = 0;
-reg [4:0] reset_counter = 0;
-reg [4:0] chcnt = 0;
-reg [3:0] msgcnt = 0;
+reg [3:0] reset_counter = 0;
+reg [3:0] chcnt = 0;
+reg [2:0] msgcnt = 0;
 
 reg sysex_running = 0;
 reg [16*8-1:0] sxdata = 0; // 16 * 8 bits of sysex command max
@@ -60,7 +60,7 @@ begin
 		runreset();
 	else if (rst) begin
 		reset_counter <= 0;
-		reset_running <= 1;
+		// reset_running <= 1;
 		chcnt <= 0;
 		msgcnt <= 0;
 	end
@@ -70,6 +70,9 @@ begin
 		case (checkstate)
 		3'b000: begin
 			checkport <= checkport + 1;
+			if (checkport == 6) begin
+				checkport <= 8;
+			end
 			checkstate <= 3'b001;
 		end
 		3'b001: begin
@@ -111,46 +114,47 @@ localparam sx_BUF = 2'b11;
 reg [PORTS*2-1:0] sxstate = 0;
 
 task handlebyte;
-input [3:0]port;
-input [7:0]byte;
-input [2:0]state;
+input [3:0] port;
+input [7:0] inbyte;
+input [1:0] state;
 begin
-	case (byte[7])
+	case (inbyte[7])
 	// command
 	1'b1:
 		begin
-			case (byte[7:0])
+			case (inbyte[7:0])
 			8'hff: ; // ignore system reset
 			8'hfe: ; // ignore active sensing
 			8'hf0: begin
 				portstate[port*2+:2] <= s_SYSEX;
 				sxstate[port*2+:2] <= sx_BEGIN;
-				notallportmsg(byte, port);
+				notallportmsg(inbyte, port);
 			end
 			8'hf7: begin
 				portstate[port*2+:2] <= s_IDLE;
 				sysex_running <= 1;
 				reset_counter <= 0;
 				chcnt <= 0;
-				notallportmsg(byte, port);
+				notallportmsg(inbyte, port);
 			end
 			default: begin
-				notallportmsg(byte, port);
+				notallportmsg(inbyte, port);
 			end
 			endcase
 		end
 	 // data
 	 1'b0:
 		begin
-			notallportmsg(byte, port);
+			notallportmsg(inbyte, port);
 
-			case (state[2:0])
+			case (state[1:0])
 //            s_IDLE:
 //            s_DATA:
 			s_SYSEX:
 				begin
-				 handlesysex(port, byte[7:0]);
+				 handlesysex(port, inbyte[7:0]);
 				end
+			default: ;
 			endcase
 		end
 	endcase
@@ -169,7 +173,7 @@ endtask
 //      byte(int(bpm) & 0x7f), // current speed lsb
 //      0xf7
 
-reg [11*8-1:0] cfg = 'hf0_7d_2a_4d_40_01_0f_0f_00_70_f7;
+reg [11*8-1:0] cfg = 88'hf0_7d_2a_4d_40_01_0f_0f_00_70_f7;
 
 reg [13:0] sxdelay = 0;
 
@@ -185,7 +189,7 @@ begin
 			sxdelay <= 0;
 			allportmsg(cfg[(11-reset_counter)*8+:8]);
 			reset_counter <= reset_counter + 1;
-			if (reset_counter == 8'd11) begin
+			if (reset_counter == 4'd11) begin
 				sysex_running <= 0;
 			end
 		end
@@ -195,24 +199,24 @@ endtask
 
 task handlesysex;
 input [3:0]port;
-input [7:0]byte;
+input [7:0]inbyte;
 begin
    case (sxstate[port*2+:2])
 	sx_BEGIN: begin
-		if (byte[7:0] == 8'h7d) sxstate[port*2+:2] <= sx_ID1;
+		if (inbyte[7:0] == 8'h7d) sxstate[port*2+:2] <= sx_ID1;
 	end
 	sx_ID1: begin
-		if (byte[7:0] == 8'h2a) sxstate[port*2+:2] <= sx_ID2;
+		if (inbyte[7:0] == 8'h2a) sxstate[port*2+:2] <= sx_ID2;
 	end
 	sx_ID2: begin
-		if (byte[7:0] == 8'h4d) begin
+		if (inbyte[7:0] == 8'h4d) begin
 			sxstate[port*2+:2] <= sx_BUF;
-			sxpos[4:0] <= 4'b0000;
+			sxpos[4:0] <= 0;
 		end
 	end
 	sx_BUF:
 		begin
-			sxdata[sxpos*8+:8] <= byte[7:0];
+			sxdata[sxpos*8+:8] <= inbyte[7:0];
 			sxpos <= sxpos + 1;
 		end
 	endcase
@@ -227,22 +231,24 @@ begin
 	if (sxdelay == 3840) begin
 		sxdelay <= 0;
 	case (reset_counter)
-	3'h0: begin
+	4'h0: begin
 		allportmsg(8'hfc);
 		reset_counter <= reset_counter + 1;
 	end
-	3'h1: begin
+	4'h1: begin
 		allportallchmsg(8'hb0, 8'h78, 8'h00); // All sound off
 	end
-	3'h2: begin
+	4'h2: begin
 		allportallchmsg(8'hb0, 8'h79, 8'h00); // Reset all controllers
 	end
-	3'h3: begin
+	4'h3: begin
 		allportallchmsg(8'hb0, 8'h7b, 8'h00); // All notes off
 	end
-	3'h4: begin
+	4'h4: begin
 		reset_running <= 0;
 	end
+	default:
+		reset_running <= 0;
 	endcase
 	end
 end
@@ -298,10 +304,10 @@ endtask
 
 task sendbyte;
 input [3:0] port;
-input [7:0] byte;
+input [7:0] inbyte;
 input [3:0] srcport;
 begin
-	txdata[port*8+:8] <= byte[7:0];
+	txdata[port*8+:8] <= inbyte[7:0];
 	txdv[port] <= 1;
 	txcurport[port*4+:4] <= srcport[3:0];
 end
