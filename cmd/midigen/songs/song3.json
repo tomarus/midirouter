@@ -5,15 +5,21 @@
 		{
 			"Midi": 3,
 			"Patterns": [
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 0, "Key": "c", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 0, "Key": "e", "Velocity": 100, "Always": true}
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 8628138727319565571, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 5715461947573010064, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -24, "Seed": 8628138727319565571, "Key": "g", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -24, "Seed": 5715461947573010064, "Key": "g", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 8628138727319565571, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 5715461947573010064, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -24, "Seed": 8628138727319565571, "Key": "g", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -29, "Seed": 0, "Key": "g", "Velocity": 100, "Always": true}
 			]
 		},
 		{
-			"Midi": 2,
+			"Midi": 0,
 			"Patterns": [
-				{"Len": 4, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 0, "Key": "c", "Velocity": 100},
-				{"Len": 4, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 0, "Key": "e", "Velocity": 100}
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -0, "Seed": 3925890848481427416, "Key": "c", "Velocity": 100},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 3925890848481427416, "Key": "g", "Velocity": 100}
 			]
 		},
 		{
@@ -25,7 +31,7 @@
 		{
 			"Midi": 9,
 			"Patterns": [
-				{"Len": 8, "Loop": 4, "Note": 38, "Speed": 6, "Seed": 0, "Velocity": 100},
+				{"Len": 8, "Loop": 4, "Note": 38, "Speed": 6, "Seed": 257917251362047980, "Velocity": 100},
 				{"Len": 8, "Loop": 4, "Note": 38, "Speed": 6, "Seed": 8578815503838369469, "Velocity": 100}
 			]
 		},
@@ -33,14 +39,14 @@
 			"Midi": 9,
 			"Patterns": [
 				{"Len": 16, "Loop": 4, "Note": 42, "Speed": 3, "Seed": 0, "Velocity": 100},
-				{"Len": 16, "Loop": 4, "Note": 42, "Speed": 3, "Seed": 8201023114199089789, "Velocity": 100}
+				{"Len": 16, "Loop": 4, "Note": 42, "Speed": 3, "Seed": 0, "Velocity": 100}
 			]
 		},
 		{
 			"Midi": 9,
 			"Patterns": [
 				{"Len": 16, "Loop": 4, "Note": 46, "Speed": 3, "Seed": 0, "Velocity": 100},
-				{"Len": 16, "Loop": 4, "Note": 46, "Speed": 3, "Seed": 6623208609992344642, "Velocity": 100}
+				{"Len": 16, "Loop": 4, "Note": 46, "Speed": 3, "Seed": 0, "Velocity": 100}
 			]
 		}
 	]

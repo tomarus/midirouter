@@ -29,7 +29,7 @@ type pattern struct {
 	Note      int  // if we have a note, transpose+scale+key dont matter
 
 	sequence []byte
-	onoff    []bool
+	gate     []bool
 }
 
 type channel struct {
@@ -103,28 +103,16 @@ func (p *pattern) generate() error {
 		p.sequence = scale.generate(p.Len, notes)
 	}
 
-	p.onoff = make([]bool, len(p.sequence))
+	p.gate = make([]bool, len(p.sequence))
 	for i := 0; i < len(p.sequence); i++ {
 		if p.Always || rand.Int31()&1 == 1 {
-			p.onoff[i] = true
+			p.gate[i] = true
 		} else {
-			p.onoff[i] = false
+			p.gate[i] = false
 		}
 	}
-	log.Printf("Notes: %+v Onoff: %+v", p.sequence, p.onoff)
+	log.Printf("Notes: %+v Gate: %+v", p.sequence, p.gate)
 	return nil
-}
-
-func test(seed int64) {
-	rand.Seed(seed)
-
-	seq := make([]byte, 16)
-	for i := 0; i < 16; i++ {
-		oneorzero := rand.Int31() & 1
-		seq[i] = byte(oneorzero)
-	}
-
-	fmt.Printf("%v\n", seq)
 }
 
 //
@@ -139,13 +127,7 @@ func main() {
 	optL := flag.Bool("l", false, "List devices")
 	optD := flag.String("d", "", "Device to use")
 	optFile := flag.String("f", "", "Song filename")
-	optTest := flag.Int("test", 0, "Test stuff")
 	flag.Parse()
-	if *optTest > 0 {
-		test(int64(*optTest))
-		return
-	}
-
 	if (!*optL && *optD == "") || *optFile == "" {
 		flag.Usage()
 		os.Exit(0)
@@ -266,7 +248,7 @@ func playNote(device *midi.Device, ch *channel) bool {
 	note := pat.sequence[ch.seqi]
 	note += byte(pat.Transpose)
 
-	if pat.onoff[ch.seqi] {
+	if pat.gate[ch.seqi] {
 		_, err := device.Write([]byte{cmd, note, byte(pat.Velocity)})
 		if err != nil {
 			log.Fatalf("can't send MIDI data: %v", err)
