@@ -4,16 +4,16 @@
 	"Link": "https://soundcloud.com/tomarus/procedurally-generated-sound",
 	"Channels": [
 		{
-			"Midi": 3,
+			"Midi": 0,
 			"Patterns": [
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 8628138727319565571, "Key": "c", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 5715461947573010064, "Key": "c", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -24, "Seed": 8628138727319565571, "Key": "g", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -24, "Seed": 5715461947573010064, "Key": "g", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 8628138727319565571, "Key": "c", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 5715461947573010064, "Key": "c", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -24, "Seed": 8628138727319565571, "Key": "g", "Velocity": 100, "Always": true},
-				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 3, "Transpose": -29, "Seed": 0, "Key": "g", "Velocity": 100, "Always": true}
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 8628138727319565571, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 5715461947573010064, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 8628138727319565571, "Key": "g", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 5715461947573010064, "Key": "g", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 8628138727319565571, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 5715461947573010064, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 8628138727319565571, "Key": "g", "Velocity": 100, "Always": true},
+				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -29, "Seed": 0, "Key": "g", "Velocity": 100, "Always": true}
 			]
 		},
 		{

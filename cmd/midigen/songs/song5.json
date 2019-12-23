@@ -1,0 +1,33 @@
+
+{
+	"Comment": "1808192834181014283",
+	"Channels": [
+		{
+			"Midi": 0,
+			"Patterns": [
+				{"Len": 13, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": 0, "Seed": 6168003112070160, "Key": "g", "Velocity": 100, "Always": false}
+			]
+		},
+		{
+			"Midi": 0,
+			"Patterns": [
+				{"Len": 11, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 6168003112070160, "Key": "c", "Velocity": 100, "Always": false}
+			]
+		},
+		{
+			"Midi": 1,
+			"Patterns": [
+				{"Len": 31, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 1, "Key": "c", "Velocity": 0, "Always": false},
+				{"Len": 16, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 2664713127639698049, "Key": "c", "Velocity": 100, "Always": false},
+				{"Len": 16, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 2664713127639698049, "Key": "g", "Velocity": 100, "Always": false}
+			]
+		},
+		{
+			"Midi": 3,
+			"Patterns": [
+				{"Len": 67, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": 0, "Seed": 1, "Key": "c", "Velocity": 0, "Always": false},
+				{"Len": 13, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": 12, "Seed": 5553304120778428568, "Key": "c", "Velocity": 100, "Always": false}
+			]
+		}
+	]
+}

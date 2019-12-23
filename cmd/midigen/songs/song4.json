@@ -1,0 +1,55 @@
+
+{
+	"Comment": "1808192834181014283",
+	"Channels": [
+		{
+			"Midi": 0,
+			"Patterns": [
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 2262029902706185618, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "c#", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "f", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "f#", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "c#", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "d", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "f#", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": 1808192834181014283, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "c#", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "f", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "f#", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "c", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "c#", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "d", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "major", "Speed": 3, "Transpose": -12, "Seed": -1, "Key": "f#", "Velocity": 100, "Always": true}
+			]
+		},
+		{
+			"Midi": 9,
+			"Comment": "Bassdrum",
+			"Patterns": [
+				{"Len": 8, "Loop": 1, "Note": 36, "Speed": 3, "Seed": 3536515966339993225, "Velocity": 100}
+			]
+		},
+		{
+			"Midi": 9,
+			"Comment": "Snaredrum",
+			"Patterns": [
+				{"Len": 8, "Loop": 1, "Note": 38, "Speed": 3, "Seed": 8823922150762223943, "Velocity": 100}
+			]
+		},
+		{
+			"Midi": 9,
+			"Comment": "Closed Hihat",
+			"Patterns": [
+				{"Len": 16, "Loop": 1, "Note": 42, "Speed": 3, "Seed": 0, "Velocity": 100}
+			]
+		},
+		{
+			"Midi": 9,
+			"Comment": "Open Hihat",
+			"Patterns": [
+				{"Len": 16, "Loop": 1, "Note": 46, "Speed": 3, "Seed": 0, "Velocity": 100}
+			]
+		}
+	]
+}

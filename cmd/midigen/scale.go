@@ -77,8 +77,10 @@ func getOffsetFromKey(key string) (int, error) {
 }
 
 func (scale *scale) allowNotes(offset int) []byte {
-	notes := make([]byte, len(scale.notes))
-	for i := 0; i < len(scale.notes); i++ {
+	// notes := make([]byte, len(scale.notes)/3)
+	// for i := 0; i < len(scale.notes)/3; i++ {
+	notes := make([]byte, 7)
+	for i := 0; i < 7; i++ {
 		notes[i] = scale.notes[i] + byte(offset)
 	}
 	return notes
@@ -88,11 +90,11 @@ func (scale *scale) generate(length int, notes []byte) []byte {
 	seq := make([]byte, length)
 	for i := 0; i < length; i++ {
 		seq[i] = notes[rand.Int31n(int32(len(notes)))]
-		if i != 0 {
-			if seq[i] == seq[i-1] {
-				i--
-			}
-		}
+		// if i != 0 {
+		// 	if seq[i] == seq[i-1] {
+		// 		i--
+		// 	}
+		// }
 	}
 	return seq
 }

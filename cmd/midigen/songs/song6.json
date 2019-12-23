@@ -1,0 +1,21 @@
+
+{
+	"Comment": "Test Gated Pattern",
+	"Link": "https://soundcloud.com/tomarus/procedurally-generated-sound",
+	"Channels": [
+		{
+			"Midi": 0,
+			"Patterns": [
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 0, "Key": "g", "Velocity": 100, "Always": true},
+				{"Len": 4, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 0, "Key": "d", "Velocity": 100, "Always": false}
+			]
+		},
+		{
+			"Midi": 0,
+			"Patterns": [
+				{"Len": 3, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 0, "Key": "d", "Velocity": 100, "Always": true},
+				{"Len": 3, "Loop": 1, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 0, "Key": "g", "Velocity": 100, "Always": true}
+			]
+		}
+	]
+}

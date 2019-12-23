@@ -11,10 +11,8 @@
 			]
 		},
 		{
-			"Midi": 2,
+			"Midi": 0,
 			"Patterns": [
-				{"Len": 8, "Loop": 8, "Scale": "minor", "Speed": 6, "Transpose": 0, "Seed": 1, "Key": "c", "Velocity": 0},
-
 				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -24, "Seed": 1540074529374698974, "Key": "g", "Velocity": 100},
 				{"Len": 8, "Loop": 2, "Scale": "minor", "Speed": 6, "Transpose": -12, "Seed": 1540074227804456880, "Key": "c", "Velocity": 100},
 				{"Len": 4, "Loop": 8, "Scale": "minor", "Speed": 3, "Transpose": -12, "Seed": 1540075302124003164, "Key": "g", "Velocity": 100},

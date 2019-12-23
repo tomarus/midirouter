@@ -71,14 +71,20 @@ func (c *channel) clear() {
 	c.nextspeed = c.Patterns[0].Speed
 }
 
+var lastseed int64
+
 func (p *pattern) generate() error {
 	seed := p.Seed
-	if seed == 0 {
+	if p.Seed == 0 {
 		seed = time.Now().UnixNano()
 		rand.Seed(seed)
 		seed = rand.Int63()
 		log.Printf("Seed: %v", seed)
 	}
+	if p.Seed == -1 {
+		seed = lastseed
+	}
+	lastseed = seed
 	rand.Seed(seed)
 
 	if p.Note > 0 {
@@ -128,7 +134,7 @@ func main() {
 	optD := flag.String("d", "", "Device to use")
 	optFile := flag.String("f", "", "Song filename")
 	flag.Parse()
-	if (!*optL && *optD == "") || *optFile == "" {
+	if !*optL && *optD == "" { //} || *optFile == "" {
 		flag.Usage()
 		os.Exit(0)
 	}
