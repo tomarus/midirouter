@@ -5,3 +5,5 @@ verilator/trace.vcd
 vivado*.jou
 vivado*.log
 vivado*.str
+/midigen
+*.bak
