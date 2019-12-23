@@ -29,9 +29,21 @@ always @(posedge clk) begin
 	else ledclken <= 0;
 end
 
-midi_port #(.CLKS_PER_BIT(CLKS_PER_BIT), .PORTS(PORTS)) 
-	ports[PORTS-1:0] 
-	(clk, rst, txdv, outport, txdata, inport, rxdata, activity_in, activity_out, txcurport, rx_empty, rx_rden, ledclken);
+midi_port #(.CLKS_PER_BIT(CLKS_PER_BIT), .PORTS(PORTS)) ports[PORTS-1:0] (
+	.clk            (clk),
+	.rst            (rst),
+	.i_txdv         (txdv),
+	.o_txserial     (outport),
+	.i_txdata       (txdata),
+	.i_rxserial     (inport),
+	.o_rxdata       (rxdata),
+	.o_activity_in  (activity_in),
+	.o_activity_out (activity_out),
+	.i_srcport      (txcurport),
+	.o_rx_empty     (rx_empty),
+	.i_rx_rden      (rx_rden),
+	.i_ledclken     (ledclken)
+);
 
 reg [63:0] cfg_in_filter = 64'hffffffffffffffff;
 reg [63:0] cfg_in_router = 64'hffffffffffffffff;

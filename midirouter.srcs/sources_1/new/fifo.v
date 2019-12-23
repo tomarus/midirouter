@@ -10,8 +10,8 @@
  ******************************************************************************/
 
 module fifo #(
-	parameter DEPTH_WIDTH = 0,
-	parameter DATA_WIDTH = 0
+	parameter DEPTH_WIDTH = 4,
+	parameter DATA_WIDTH = 8
 ) (
 	input                   clk,
 	input                   rst,

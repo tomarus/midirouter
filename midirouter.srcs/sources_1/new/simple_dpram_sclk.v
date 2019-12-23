@@ -23,7 +23,8 @@ module simple_dpram_sclk #(
 	output [DATA_WIDTH-1:0] dout
 );
 
-(* ram_style = "distributed" *) reg [DATA_WIDTH-1:0] mem[(1<<ADDR_WIDTH)-1:0];
+// (* ram_style = "distributed" *) reg [DATA_WIDTH-1:0] mem[(1<<ADDR_WIDTH)-1:0];
+reg [DATA_WIDTH-1:0] mem[(1<<ADDR_WIDTH)-1:0];
 reg [DATA_WIDTH-1:0] rdata;
 
 generate
@@ -49,10 +50,14 @@ generate
 endgenerate
 
 always @(posedge clk) begin
-	if (we)
+	if (we) begin
 		mem[waddr] <= din;
-	if (re)
-		rdata <= mem[raddr];
+		$display("RAM: wrote memory %0h at addr %0h", din, waddr);
 	end
+	if (re) begin
+		rdata <= mem[raddr];
+		$display("RAM: read memory %0h at addr %0h", mem[raddr], raddr);
+	end
+end
 
 endmodule

@@ -13,26 +13,26 @@ module midi_out #(
 );
 
 reg  [PORTS*8-1:0] src_lastcmd = 0;
-wire [PORTS*8-1:0] src_txbyte;
-// reg  [PORTS*8-1:0] src_txdata = 0;
+wire [7:0] src_txbyte;
 reg  [7:0] src_txdata = 0;
-wire [PORTS-1:0] src_empty;
-reg  [PORTS-1:0] src_send = 0;
-reg  [PORTS-1:0] src_fready = 0;
-reg  [PORTS-1:0] src_txdv = 0;
+wire src_empty;
+reg  src_fready = 0;
+reg  src_txdv = 0;
 
-fifo #(.DEPTH_WIDTH(4), .DATA_WIDTH(8)) fifosrcs[PORTS-1:0] (
+reg [3:0] active_port = 4'b0000; // srcport
+
+fifon #(.ADDR_WIDTH(8), .DATA_WIDTH(8), .PORT_WIDTH(4)) fifos_inst (
 	.clk        (clk),
 	.rst        (rst),
 	.wr_data_i  (src_txdata), // from input
 	.wr_en_i    (src_txdv),   // input ready
 	.rd_data_o  (src_txbyte),
 	.rd_en_i    (src_fready),
-	.full_o     (),
-	.empty_o    (src_empty)
+	.empty_o    (src_empty),
+	.wr_portn   (i_srcport),
+	.rd_portn   (active_port)
 );
 
-// 1 fifo with 8 bit address
 wire txactive;
 reg [7:0] txbyte = 0;
 reg send = 0;
@@ -46,59 +46,39 @@ uart_tx #(.CLKS_PER_BIT(CLKS_PER_BIT)) uart_tx_inst(
 	.o_Tx_Done   ()
 );
 
-reg [3:0] active_port = 4'b0000; // srcport
-reg [2:0] expect_bytes = 0;
+reg [1:0] expect_bytes = 0;
 reg [7:0] expect_byte = 0;
 reg [8:0] expect_timeout = 0; // should hold CLK_PER_TICKS * 1,25 or so
 
 // localparam TIMEOUT = $rtoi(CLKS_PER_BIT * 1.25);
 
-reg [3:0] i;
 localparam s_IN_IDLE = 2'b00;
 localparam s_IN_TX = 2'b01;
 reg [1:0] input_state = s_IN_IDLE;
 
-reg [3:0] sp = 0;
-
 // if we receive input data for sending, store
 // it in the appropiate fifo.
 always @(posedge clk) begin
-	// src_txdata[i_srcport*8+:8] <= i_txdata;
-	// src_txdv[i_srcport] <= i_txdv;
-
 	case (input_state)
 	s_IN_IDLE: begin
 		if (i_txdv) begin
-			sp <= i_srcport;
-			// src_txdata[i_srcport*8+:8] <= i_txdata;
 			src_txdata <= i_txdata;
-			/* verilator lint_off WIDTH */
-			src_txdv[i_srcport] <= 1;
+			/* erilator lint_off WIDTH */
+			src_txdv <= 1;
 			input_state <= s_IN_TX;
+			// $display("received data %0h active_port %0h", i_txdata, i_srcport);
 		end
 		else
 			input_state <= s_IN_IDLE;
 	end
 	s_IN_TX: begin
-		/* verilator lint_off WIDTH */
-		src_txdv[sp] <= 0;
-		// src_txdata[i_srcport*8+:8] <= 0; // just in case???
+		/* erilator lint_off WIDTH */
+		src_txdv <= 0;
 		input_state <= s_IN_IDLE;
 	end
 	default:
 		input_state <= s_IN_IDLE;
 	endcase
-
-	/* verilator lint_off WIDTH */
-	// src_txdata[i_srcport*8+:8] <= i_txdata;
-	// for (i=0; i!=PORTS-1; i = i + 1) begin
-	// 	if (i != i_srcport) begin
-	// 		/* verilator lint_off WIDTH */
-	// 		src_txdv[i] <= 0;
-	// 	end
-	// end
-	// /* verilator lint_off WIDTH */
-	// src_txdv[i_srcport] <= i_txdv;
 end
 
 //
@@ -114,7 +94,9 @@ localparam s_CLKEND   = 3'b111;
 
 reg [2:0] state = s_IDLE;
 
+// should be 7 bits because this is never a command
 reg [7:0] nextbyte;
+
 always @(posedge clk) begin
 	// read current data from currently selected fifo/port
 	// and set expectations based on the midi data.
@@ -122,64 +104,74 @@ always @(posedge clk) begin
 if (!txactive)
 	case (state)
 	s_IDLE: begin // idle
-		if (!src_empty[active_port])
+		// $display("%m: STATE: IDLE");
+		if (!src_empty)
 			state <= s_READ;
 		else
 			state <= s_NEXT;
 	end
 	s_NEXT: begin // nextport
+		// $display("%m: STATE: NEXT");
 		active_port <= active_port + 1;
 		if (active_port >= PORTS-1) active_port <= 0;
 		state <= s_IDLE;
 	end
 	s_READ: begin // read data from port
+		// $display("%m: STATE: READ");
 		if (nextbyte != 0) begin
 			txbyte <= nextbyte;
 			send <= 1;
 			nextbyte <= 0;
 			state <= s_TXEND;
 		end
-		else if (!src_empty[active_port]) begin
-			src_fready[active_port] <= 1;
+		else if (!src_empty) begin
+			src_fready <= 1;
 			state <= s_READEND;
 		end
 		else
 			state <= s_READ;
 	end
 	s_READEND: begin // got data from fifo
-		src_fready[active_port] <= 0;
+		// $display("%m: STATE: READEND");
+		src_fready <= 0;
 		state <= s_TRANSMIT;
 	end
 	s_TRANSMIT: begin // transmit byte
+		// $display("%m: STATE: TRANSMIT");
 		send <= 1;
 
 		// Check for continuous MIDI messages.
-		if (~src_txbyte[active_port*8+:8]>>7&1 && expect_bytes == 0 && expect_byte == 0) begin
+		// if (~src_txbyte>>7&1 && expect_bytes == 0 && expect_byte == 0) begin
+		if (~src_txbyte[7] && expect_bytes == 0 && expect_byte == 0) begin
 			txbyte <= src_lastcmd[active_port*8+:8];
-			nextbyte <= src_txbyte[active_port*8+:8];
+			nextbyte <= src_txbyte;
 		end
 		else begin
-			txbyte <= src_txbyte[active_port*8+:8];
+			txbyte <= src_txbyte;
 			nextbyte <= 0;
 		end
 
-		if (src_txbyte[active_port*8+:8] == 8'hf8)
+		if (src_txbyte == 8'hf8)
 			state <= s_CLKEND;
 		else begin
 			state <= s_TXEND;
-			if (src_txbyte[active_port*8+:8]>>7&1)
-				src_lastcmd[active_port*8+:8] <= src_txbyte[active_port*8+:8];
+			// if (src_txbyte>>7&1)
+			if (src_txbyte[7])
+				src_lastcmd[active_port*8+:8] <= src_txbyte;
 		end
 	end
 	s_CLKEND: begin
+		// $display("%m: STATE: CLKEND");
 		send <= 0;
 		state <= s_FINISH;
 	end
 	s_TXEND: begin // end transmit byte
+		// $display("%m: STATE: TXEND");
 		send <= 0;
 		state <= s_FINISH;
 
-		case (txbyte>>4&15)
+		// case (txbyte>>4&15)
+		case (txbyte[7:4])
 		4'h9, // note on
 		4'h8, // note off
 		4'ha, // key pressure
@@ -192,7 +184,7 @@ if (!txactive)
 		4'hf:
 			case (txbyte)
 			8'hf0: begin // sysex
-				expect_byte <= 16'hf7;
+				expect_byte <= 8'hf7;
 				expect_bytes <= 0;
 			end
 			8'hf1, // timecode frame
@@ -217,13 +209,16 @@ if (!txactive)
 			expect_byte <= 0;
 	end
 	s_FINISH: begin // finish
+		// $display("%m: STATE: FINISH");
 		if (expect_byte == 0 && expect_bytes == 0)
 			state <= s_IDLE;
 		else
 			state <= s_READ;
 	end
-	default:
+	default: begin
+		// $display("%m: STATE: DEFAULT");
 		state <= s_IDLE;
+	end
 	endcase
 
 	// process midi protocol
@@ -234,7 +229,8 @@ if (!txactive)
 	// 	expect_timeout <= expect_timeout - 1;
 
 	if (send) begin
-		$display("%m: byte: %0h active_port: %0h ebytes: %0h ebyte: %0h hbyte: %0h", txbyte, active_port, expect_bytes, expect_byte, txbyte[7:4]);
+		$display("%m: byte: %0h active_port: %0h ebytes: %0h ebyte: %0h hbyte: %0h", 
+		txbyte, active_port, expect_bytes, expect_byte, txbyte[7:4]);
 	end
 
 	// 	expect_timeout <= 50000; // TIMEOUT * 10; // == 384 * 1,25  == 480

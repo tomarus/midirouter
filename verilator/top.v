@@ -2,7 +2,7 @@
 `timescale 1ns / 1ps
 
 module top #(
-    parameter PORTS = 8,
+    parameter PORTS = 4,
     parameter CLOCK = 12_000_000
 ) (
     input wire clk,
@@ -44,6 +44,19 @@ input int port;
 begin
     txdv[port] = 0;
 end
+endtask
+
+export "DPI-C" task notallportmsg;
+
+task notallportmsg;
+int port_apmsg = 0;
+input int msg;
+input int current_port;
+	for (port_apmsg=0; port_apmsg<PORTS; port_apmsg=port_apmsg+1) begin
+		if (port_apmsg != current_port) begin
+			sendbyte(port_apmsg, msg, current_port);
+		end
+	end
 endtask
 
 endmodule

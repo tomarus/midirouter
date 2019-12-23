@@ -54,6 +54,9 @@ int main(int argc, char **argv, char **env) {
 			// 	// first test byte
 			//     sendbyte(0, 0xf8, 0);
 			//     break;
+			// case 4:
+				// notallportmsg(0xf8, 0);
+
 			case 10:
 				// send note off sequence sourceport 0 destport 0
 				sendbyte(0, 0x90, 0); // 0x90 0x55 0x33
