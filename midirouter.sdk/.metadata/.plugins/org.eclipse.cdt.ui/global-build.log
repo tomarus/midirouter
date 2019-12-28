@@ -1,0 +1,1247 @@
+12:57:13 **** Clean-only build of configuration Debug for project Router ****
+make clean 
+rm -rf  ./src/fifo.o ./src/platform.o ./src/router.o  ./src/fifo.d ./src/platform.d ./src/router.d  Router.elf.size  Router.elf
+ 
+12:57:13 **** Clean-only build of project Router_bsp ****
+make -k clean 
+make -C microblaze_0/libsrc/standalone_v6_7/src -s clean 
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s clean 
+make -C microblaze_0/libsrc/bram_v4_2/src -s clean 
+make -C microblaze_0/libsrc/cpu_v2_7/src -s clean 
+make -C microblaze_0/libsrc/led_shift_594_driver_v1_0/src -s clean 
+rm -f microblaze_0/lib/libxil.a
+12:57:14 **** Build of project Router_bsp ****
+make -k all 
+Running Make include in microblaze_0/libsrc/standalone_v6_7/src
+make -C microblaze_0/libsrc/standalone_v6_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Running Make include in microblaze_0/libsrc/uartlite_v3_2/src
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Running Make include in microblaze_0/libsrc/bram_v4_2/src
+make -C microblaze_0/libsrc/bram_v4_2/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Running Make include in microblaze_0/libsrc/cpu_v2_7/src
+make -C microblaze_0/libsrc/cpu_v2_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Running Make include in microblaze_0/libsrc/led_shift_594_driver_v1_0/src
+make -C microblaze_0/libsrc/led_shift_594_driver_v1_0/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Running Make libs in microblaze_0/libsrc/standalone_v6_7/src
+make -C microblaze_0/libsrc/standalone_v6_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Compiling standalone
+microblaze_sleep.c:74:9: note: #pragma message: For the sleep routines, assembly instructions are used
+ #pragma message ("For the sleep routines, assembly instructions are used")
+         ^~~~~~~
+mb-ar: creating ../../../lib/libxil.a
+Running Make libs in microblaze_0/libsrc/uartlite_v3_2/src
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Compiling uartlite
+Running Make libs in microblaze_0/libsrc/bram_v4_2/src
+make -C microblaze_0/libsrc/bram_v4_2/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Compiling bram
+Running Make libs in microblaze_0/libsrc/cpu_v2_7/src
+make -C microblaze_0/libsrc/cpu_v2_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Compiling cpu
+Running Make libs in microblaze_0/libsrc/led_shift_594_driver_v1_0/src
+make -C microblaze_0/libsrc/led_shift_594_driver_v1_0/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+Compiling led_shift_594_driver...
+led_shift_594_driver_selftest.c: In function 'LED_SHIFT_594_DRIVER_Reg_SelfTest':
+led_shift_594_driver_selftest.c:52:69: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    if ( LED_SHIFT_594_DRIVER_mReadReg (baseaddr, read_loop_index*4) != (read_loop_index+1)*READ_WRITE_MUL_FACTOR){
+                                                                     ^~
+led_shift_594_driver_selftest.c:36:6: warning: unused variable 'Index' [-Wunused-variable]
+  int Index;
+      ^~~~~
+Finished building libraries
+12:57:15 **** Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building file: ../src/platform.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:02:00 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:03:08 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:03:48 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:03:56 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:04:01 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:04:22 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:04:59 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:05:08 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:05:31 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:06:18 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:06:34 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:07:17 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:07:38 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:08:14 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:09:21 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/fifo.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fifo.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
+Finished building: ../src/fifo.c
+ 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:10:12 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9220	    272	   5940	  15432	   3c48	Router.elf
+Finished building: Router.elf.size
+ 
+13:10:17 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:19:37 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9196	    272	   4868	  14336	   3800	Router.elf
+Finished building: Router.elf.size
+ 
+13:19:41 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:20:28 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9196	    272	   4868	  14336	   3800	Router.elf
+Finished building: Router.elf.size
+ 
+13:20:33 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:20:45 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+In file included from ../../Router_bsp/microblaze_0/include/xil_printf.h:12:0,
+                 from ../src/router.c:3:
+../../Router_bsp/microblaze_0/include/xparameters.h:674:39: error: expected identifier before numeric constant
+ #define XPAR_AXI_UARTLITE_15_BASEADDR 0x406F0000
+                                       ^
+../src/router.c:31:3: note: in expansion of macro 'XPAR_AXI_UARTLITE_15_BASEADDR'
+   XPAR_AXI_UARTLITE_15_BASEADDR,
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+make: *** [src/router.o] Error 1
+13:21:14 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+In file included from ../../Router_bsp/microblaze_0/include/xil_printf.h:12:0,
+                 from ../src/router.c:3:
+../../Router_bsp/microblaze_0/include/xparameters.h:674:39: error: expected identifier before numeric constant
+ #define XPAR_AXI_UARTLITE_15_BASEADDR 0x406F0000
+                                       ^
+../src/router.c:31:3: note: in expansion of macro 'XPAR_AXI_UARTLITE_15_BASEADDR'
+   XPAR_AXI_UARTLITE_15_BASEADDR,
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [src/router.o] Error 1
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+13:21:28 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+In file included from ../../Router_bsp/microblaze_0/include/xil_printf.h:12:0,
+                 from ../src/router.c:3:
+../../Router_bsp/microblaze_0/include/xparameters.h:674:39: error: expected identifier before numeric constant
+ #define XPAR_AXI_UARTLITE_15_BASEADDR 0x406F0000
+                                       ^
+../src/router.c:31:3: note: in expansion of macro 'XPAR_AXI_UARTLITE_15_BASEADDR'
+   XPAR_AXI_UARTLITE_15_BASEADDR,
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [src/router.o] Error 1
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+13:21:38 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9248	    272	   6528	  16048	   3eb0	Router.elf
+Finished building: Router.elf.size
+ 
+13:21:43 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:24:17 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9288	    272	   4864	  14424	   3858	Router.elf
+Finished building: Router.elf.size
+ 
+13:24:35 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9296	    272	   4864	  14432	   3860	Router.elf
+Finished building: Router.elf.size
+ 
+13:24:39 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:25:11 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9296	    272	   6528	  16096	   3ee0	Router.elf
+Finished building: Router.elf.size
+ 
+13:25:15 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:26:36 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9296	    272	   6528	  16096	   3ee0	Router.elf
+Finished building: Router.elf.size
+ 
+13:26:46 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9272	    272	   6528	  16072	   3ec8	Router.elf
+Finished building: Router.elf.size
+ 
+13:26:49 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:28:15 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9272	    272	   6528	  16072	   3ec8	Router.elf
+Finished building: Router.elf.size
+ 
+13:28:19 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:29:55 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:63:16: warning: passing argument 1 of 'fifo_add_byte' from incompatible pointer type [-Wincompatible-pointer-types]
+  fifo_add_byte(&outports[dstport].fifo, byte);
+                ^
+In file included from ../src/router.c:8:0:
+../src/fifo.h:14:6: note: expected 'fifo * {aka struct <anonymous> *}' but argument is of type 'fifo (*)[16] {aka struct <anonymous> (*)[16]}'
+ void fifo_add_byte(fifo *f, u8 b);
+      ^~~~~~~~~~~~~
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9272	    272	   6528	  16072	   3ec8	Router.elf
+Finished building: Router.elf.size
+ 
+13:29:58 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:60:19: warning: passing argument 1 of 'fifo_is_full' from incompatible pointer type [-Wincompatible-pointer-types]
+  if (fifo_is_full(&outports[dstport].fifo)) {
+                   ^
+In file included from ../src/router.c:8:0:
+../src/fifo.h:17:4: note: expected 'fifo * {aka struct <anonymous> *}' but argument is of type 'fifo (*)[16] {aka struct <anonymous> (*)[16]}'
+ u8 fifo_is_full(fifo *f);
+    ^~~~~~~~~~~~
+../src/router.c:63:16: warning: passing argument 1 of 'fifo_add_byte' from incompatible pointer type [-Wincompatible-pointer-types]
+  fifo_add_byte(&outports[dstport].fifo, byte);
+                ^
+In file included from ../src/router.c:8:0:
+../src/fifo.h:14:6: note: expected 'fifo * {aka struct <anonymous> *}' but argument is of type 'fifo (*)[16] {aka struct <anonymous> (*)[16]}'
+ void fifo_add_byte(fifo *f, u8 b);
+      ^~~~~~~~~~~~~
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9272	    272	   6528	  16072	   3ec8	Router.elf
+Finished building: Router.elf.size
+ 
+13:30:06 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:30:37 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:61:19: warning: passing argument 1 of 'fifo_is_full' from incompatible pointer type [-Wincompatible-pointer-types]
+  if (fifo_is_full(&outports[dstport].fifo)) {
+                   ^
+In file included from ../src/router.c:8:0:
+../src/fifo.h:17:4: note: expected 'fifo * {aka struct <anonymous> *}' but argument is of type 'fifo (*)[16] {aka struct <anonymous> (*)[16]}'
+ u8 fifo_is_full(fifo *f);
+    ^~~~~~~~~~~~
+../src/router.c:64:16: warning: passing argument 1 of 'fifo_add_byte' from incompatible pointer type [-Wincompatible-pointer-types]
+  fifo_add_byte(&outports[dstport].fifo, byte);
+                ^
+In file included from ../src/router.c:8:0:
+../src/fifo.h:14:6: note: expected 'fifo * {aka struct <anonymous> *}' but argument is of type 'fifo (*)[16] {aka struct <anonymous> (*)[16]}'
+ void fifo_add_byte(fifo *f, u8 b);
+      ^~~~~~~~~~~~~
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9272	    272	   6528	  16072	   3ec8	Router.elf
+Finished building: Router.elf.size
+ 
+13:31:27 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9272	    272	   6528	  16072	   3ec8	Router.elf
+Finished building: Router.elf.size
+ 
+13:31:49 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:61:12: warning: initialization from incompatible pointer type [-Wincompatible-pointer-types]
+  fifo *f = &outports[dstport].fifo;
+            ^
+../src/router.c:61:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = &outports[dstport].fifo;
+        ^
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9332	    272	   6532	  16136	   3f08	Router.elf
+Finished building: Router.elf.size
+ 
+13:32:59 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:62:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = &p->fifo[p->active_input_port];
+        ^
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9380	    272	   6532	  16184	   3f38	Router.elf
+Finished building: Router.elf.size
+ 
+13:33:17 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:61:14: error: invalid initializer
+  outport p = &outports[fromport];
+              ^
+../src/router.c:62:13: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = p->fifo[p->active_input_port];
+             ^~
+../src/router.c:62:21: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = p->fifo[p->active_input_port];
+                     ^~
+../src/router.c:62:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = p->fifo[p->active_input_port];
+        ^
+make: *** [src/router.o] Error 1
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+13:33:23 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:62:13: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = p->fifo[p->active_input_port];
+             ^~
+../src/router.c:62:21: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = p->fifo[p->active_input_port];
+                     ^~
+../src/router.c:62:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = p->fifo[p->active_input_port];
+        ^
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+make: *** [src/router.o] Error 1
+13:33:26 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:62:14: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = &p->fifo[p->active_input_port];
+              ^~
+../src/router.c:62:22: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = &p->fifo[p->active_input_port];
+                      ^~
+../src/router.c:62:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = &p->fifo[p->active_input_port];
+        ^
+make: *** [src/router.o] Error 1
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+13:34:05 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:61:31: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = &outports[fromport]->fifo[p->active_input_port];
+                               ^~
+../src/router.c:61:38: error: 'p' undeclared (first use in this function)
+  fifo *f = &outports[fromport]->fifo[p->active_input_port];
+                                      ^
+../src/router.c:61:38: note: each undeclared identifier is reported only once for each function it appears in
+../src/router.c:61:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = &outports[fromport]->fifo[p->active_input_port];
+        ^
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+make: *** [src/router.o] Error 1
+13:34:25 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:61:31: error: invalid type argument of '->' (have 'outport {aka struct <anonymous>}')
+  fifo *f = &outports[fromport]->fifo[dstport];
+                               ^~
+../src/router.c:61:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = &outports[fromport]->fifo[dstport];
+        ^
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+make: *** [src/router.o] Error 1
+13:34:59 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:61:8: warning: unused variable 'f' [-Wunused-variable]
+  fifo *f = &outports[fromport].fifo[dstport];
+        ^
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9364	    272	   6532	  16168	   3f28	Router.elf
+Finished building: Router.elf.size
+ 
+13:35:11 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9308	    272	   6532	  16112	   3ef0	Router.elf
+Finished building: Router.elf.size
+ 
+13:35:22 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9252	    272	   6532	  16056	   3eb8	Router.elf
+Finished building: Router.elf.size
+ 
+13:35:29 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:35:58 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'QueueOutputByte':
+../src/router.c:61:22: error: 'dst' undeclared (first use in this function)
+  fifo *f = &outports[dst].fifo[fromport];
+                      ^~~
+../src/router.c:61:22: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/router.o] Error 1
+src/subdir.mk:27: recipe for target 'src/router.o' failed
+13:36:02 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9252	    272	   6532	  16056	   3eb8	Router.elf
+Finished building: Router.elf.size
+ 
+13:36:05 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:39:16 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9252	    272	   6532	  16056	   3eb8	Router.elf
+Finished building: Router.elf.size
+ 
+13:39:32 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9252	    272	   6532	  16056	   3eb8	Router.elf
+Finished building: Router.elf.size
+ 
+13:39:57 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'main':
+../src/router.c:238:19: warning: suggest parentheses around '-' inside '<<' [-Wparentheses]
+      int x = 1<<15-i;
+                 ~~^~
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9404	    272	   6532	  16208	   3f50	Router.elf
+Finished building: Router.elf.size
+ 
+13:40:02 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:40:26 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9252	    272	   6532	  16056	   3eb8	Router.elf
+Finished building: Router.elf.size
+ 
+13:40:47 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+../src/router.c: In function 'main':
+../src/router.c:233:19: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
+      int x = 1<<i + 8<<i;
+                 ~~^~~
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9288	    272	   6528	  16088	   3ed8	Router.elf
+Finished building: Router.elf.size
+ 
+13:40:59 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9292	    272	   6532	  16096	   3ee0	Router.elf
+Finished building: Router.elf.size
+ 
+13:41:08 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9292	    272	   6532	  16096	   3ee0	Router.elf
+Finished building: Router.elf.size
+ 
+13:41:13 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:41:31 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:41:54 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9292	    272	   6532	  16096	   3ee0	Router.elf
+Finished building: Router.elf.size
+ 
+13:41:58 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:42:11 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9292	    272	   6532	  16096	   3ee0	Router.elf
+Finished building: Router.elf.size
+ 
+13:42:14 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:42:36 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9304	    272	   6528	  16104	   3ee8	Router.elf
+Finished building: Router.elf.size
+ 
+13:42:40 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:43:18 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9248	    272	   6528	  16048	   3eb0	Router.elf
+Finished building: Router.elf.size
+ 
+13:43:23 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:43:34 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9248	    272	   6528	  16048	   3eb0	Router.elf
+Finished building: Router.elf.size
+ 
+13:43:38 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:43:59 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9256	    272	   6528	  16056	   3eb8	Router.elf
+Finished building: Router.elf.size
+ 
+13:44:03 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:44:22 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9252	    272	   6532	  16056	   3eb8	Router.elf
+Finished building: Router.elf.size
+ 
+13:44:29 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:50:40 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.
+13:54:30 **** Auto Build of configuration Debug for project Router ****
+make all 
+Building file: ../src/router.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/router.o" -I../../Router_bsp/microblaze_0/include -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/router.d" -MT"src/router.o" -o "src/router.o" "../src/router.c"
+Finished building: ../src/router.c
+ 
+Building target: Router.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../Router_bsp/microblaze_0/lib -mlittle-endian -mcpu=v10.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "Router.elf"  ./src/fifo.o ./src/platform.o ./src/router.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Router.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Router.elf  |tee "Router.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   9288	    272	   6528	  16088	   3ed8	Router.elf
+Finished building: Router.elf.size
+ 
+13:54:33 **** Incremental Build of configuration Debug for project Router ****
+make all 
+make: Nothing to be done for 'all'.

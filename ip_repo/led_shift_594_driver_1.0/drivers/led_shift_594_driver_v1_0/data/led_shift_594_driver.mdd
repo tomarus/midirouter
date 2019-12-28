@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER led_shift_594_driver
+	OPTION supported_peripherals = (led_shift_594_driver);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = led_shift_594_driver;
+END DRIVER
