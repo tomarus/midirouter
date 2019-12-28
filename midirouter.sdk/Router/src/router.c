@@ -161,7 +161,9 @@ u16 ProcessOutputPort(int port) {
 
 
 		if (TrySendByte(p, port) == 1) {
-			activity++;
+			// Clock + ACtive Sensing is not counted towards activity.
+			activity = !(p->midibyte == 0xf8 || p->midibyte == 0xfe);
+
 		} else {
 			p->state = STATE_WAITXMIT;
 		}
@@ -170,7 +172,8 @@ u16 ProcessOutputPort(int port) {
 
 	case STATE_WAITXMIT:
 		if (TrySendByte(p, port) == 1) {
-			activity++;
+			// Clock + ACtive Sensing is not counted towards activity.
+			activity = !(p->midibyte == 0xf8 || p->midibyte == 0xfe);
 			p->state = STATE_LOOP;
 		}
 		break;
@@ -193,18 +196,18 @@ u16 ReadInputPort(int port) {
 	}
 
 	u8 b = XUartLite_RecvByte(XUartLite_PortAddrs[port]);
+	// send to all output ports for now
+	for (int i=0;i<NUM_PORTS;i++) {
+		DISABLE_PORTS
+		if (port!=i) { // forward to all ports but ourself for now
+			QueueOutputByte(port, i, b);
+		}
+	}
 	switch (b) {
-	case 254:
-	case 255:
+	case 0xf8: // clock
+	case 0xfe: // active sensing
 		return 0;
 	default:
-		// send to all output ports for now
-		for (int i=0;i<NUM_PORTS;i++) {
-			DISABLE_PORTS
-			if (port!=i) { // forward to all ports but ourself for now
-				QueueOutputByte(port, i, b);
-			}
-		}
 		return 1;
 	}
 }
@@ -231,12 +234,8 @@ int main()
     	bzero(&outports[i], sizeof(outport));
     }
 
-    // Little boot sequence to indicate we are running.
-	for (int i = 0; i<16; i++) {
-    	int x = 1<<i;
-   		ACTIVITY(x, x);
-   		sleep(500000);
-    }
+    // Light up all LEDs once to indicate we are running.
+    ACTIVITY(65535, 65535);
     ACTIVITY(0, 0);
 
     // loop

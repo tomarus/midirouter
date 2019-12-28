@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="UARTLITE_9_BASEAD" key="selection"/>
+		<item value="OUTPUT_BUFFER_LENGTH" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="OUTPUT_BUFFER_LENGTH"/>
 			<item value="UARTLITE_9_BASEAD"/>
 			<item value="XPAR_AXI_UARTLITE_9_BASEADDR"/>
 			<item value="SLV_"/>

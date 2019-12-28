@@ -1,4 +1,4 @@
-12:57:14 **** Build of project Router_bsp ****
+16:52:02 **** Build of project Router_bsp ****
 make -k all 
 Running Make include in microblaze_0/libsrc/standalone_v6_7/src
 make -C microblaze_0/libsrc/standalone_v6_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v10.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
@@ -38,5 +38,5 @@ led_shift_594_driver_selftest.c:36:6: warning: unused variable 'Index' [-Wunused
       ^~~~~
 Finished building libraries
 
-12:57:15 Build Finished (took 1s.213ms)
+16:52:03 Build Finished (took 1s.322ms)
 

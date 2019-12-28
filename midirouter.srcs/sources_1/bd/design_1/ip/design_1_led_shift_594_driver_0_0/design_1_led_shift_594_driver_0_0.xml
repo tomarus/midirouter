@@ -558,7 +558,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:7f8291a8</spirit:value>
+            <spirit:value>8:fc125992</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -574,11 +574,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 21:41:17 UTC 2019</spirit:value>
+            <spirit:value>Sat Dec 28 15:28:58 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:7f8291a8</spirit:value>
+            <spirit:value>8:fc125992</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -598,7 +598,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:58436669</spirit:value>
+            <spirit:value>8:efbba709</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -614,11 +614,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 21:41:17 UTC 2019</spirit:value>
+            <spirit:value>Sat Dec 28 15:28:58 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:58436669</spirit:value>
+            <spirit:value>8:efbba709</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -632,11 +632,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 21:42:19 UTC 2019</spirit:value>
+            <spirit:value>Sat Dec 28 15:30:02 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:7f8291a8</spirit:value>
+            <spirit:value>8:fc125992</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1027,7 +1027,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>LED_CLOCK_WIDTH</spirit:name>
         <spirit:displayName>Led Clock Width</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.LED_CLOCK_WIDTH">21</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.LED_CLOCK_WIDTH">20</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -1218,7 +1218,7 @@
     <spirit:parameter>
       <spirit:name>LED_CLOCK_WIDTH</spirit:name>
       <spirit:displayName>Led Clock Width</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.LED_CLOCK_WIDTH">21</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.LED_CLOCK_WIDTH">20</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>

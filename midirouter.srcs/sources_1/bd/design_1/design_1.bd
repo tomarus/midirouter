@@ -545,7 +545,7 @@
           <spirit:configurableElementValue spirit:referenceId="ANIMATION_CLOCK_WIDTH">23</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="SHIFT_DELAY_WIDTH">11</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="LED_DELAY_WIDTH">2</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="LED_CLOCK_WIDTH">21</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="LED_CLOCK_WIDTH">20</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>

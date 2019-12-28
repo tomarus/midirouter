@@ -413,7 +413,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.ANIMATION_CLOCK_WIDTH {23} \
    CONFIG.ANIMATION_IDLE_WIDTH {31} \
-   CONFIG.LED_CLOCK_WIDTH {21} \
+   CONFIG.LED_CLOCK_WIDTH {20} \
    CONFIG.LED_DELAY_WIDTH {2} \
    CONFIG.SHIFT_DELAY_WIDTH {11} \
  ] $led_shift_594_driver_0

@@ -137,7 +137,7 @@ input wire s00_axi_aresetn;
     .ANIMATION_CLOCK_WIDTH(23),
     .SHIFT_DELAY_WIDTH(11),
     .LED_DELAY_WIDTH(2),
-    .LED_CLOCK_WIDTH(21)
+    .LED_CLOCK_WIDTH(20)
   ) inst (
     .SCK(SCK),
     .RCK(RCK),
