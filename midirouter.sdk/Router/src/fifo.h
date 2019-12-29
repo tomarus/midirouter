@@ -3,7 +3,7 @@
 
 #include <xil_types.h>
 
-#define OUTPUT_BUFFER_LENGTH 16
+#define OUTPUT_BUFFER_LENGTH 32
 
 typedef struct {
 	u8 buf[OUTPUT_BUFFER_LENGTH];

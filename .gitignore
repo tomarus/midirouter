@@ -1,6 +1,6 @@
 midirouter.cache/
 midirouter.runs/
-midirouter.sdk/.metadata/
+midirouter.sdk/.metadata
 verilator/obj_dir/
 verilator/trace.vcd
 vivado*.jou

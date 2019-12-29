@@ -36,6 +36,26 @@ const u32 XUartLite_PortAddrs[] = {
 #define DISABLE_PORTS if (i==7 || i==15) continue;
 
 //
+// Filters
+//
+
+enum filter_kind {
+	FILTER_FORWARD,				// data1 + data2 = bit mask ports for forward to (REQUIRED)
+	FILTER_MIDI_CHANGE_CHANNEL,	// data1 = src chan, data2 = dst chan
+	FILTER_MIDI_TRANSPOSE,	    // data1 = src chan, data2 = +/- note offset (0-base = 64)
+	FILTER_MIDI_CHANGE_CC		// data1 = src cc, data2 = dst cc
+};
+
+typedef struct {
+	u8 input_port;
+	u8 kind;
+	u8 data1;
+	u8 data2;
+} filter;
+
+filter filters[NUM_PORTS*16] = {};
+
+//
 // Output Merging
 //
 
@@ -87,12 +107,14 @@ void PostSendByte(outport *p) {
 		case 0xf7: // sysex end
 			p->expect_byte = 0;
 			break;
+		case 0xf8: // clock
 		case 0xf1: // time code frame
 		case 0xf3: // song select
 			p->expect_bytes = 1;
 			break;
 		case 0xf2: // song position
 			p->expect_bytes = 2;
+			break;
 			break;
 		default:
 			p->expect_bytes = 0;
@@ -140,10 +162,10 @@ u16 ProcessOutputPort(int port) {
 			p->midibyte = fifo_read_byte(fifo);
 
 			if (p->midibyte<128 && p->expect_byte == 0 && p->expect_bytes == 0) {
-				xil_printf("read cc command 0x%x\r\n", p->midibyte);
+				xil_printf("read cc byte 0x%x cmd 0x%x\r\n", p->midibyte, p->lastcmd[p->active_input_port]);
 				p->nextbyte = p->midibyte;
 				p->midibyte = p->lastcmd[p->active_input_port];
-			} else if (p->midibyte >= 128) {
+			} else if (p->midibyte >= 128 && p->midibyte != 0xf8) {
 				p->lastcmd[p->active_input_port] = p->midibyte;
 			} else {
 				//
@@ -159,11 +181,9 @@ u16 ProcessOutputPort(int port) {
 			break;
 		}
 
-
 		if (TrySendByte(p, port) == 1) {
 			// Clock + ACtive Sensing is not counted towards activity.
 			activity = !(p->midibyte == 0xf8 || p->midibyte == 0xfe);
-
 		} else {
 			p->state = STATE_WAITXMIT;
 		}
@@ -196,6 +216,9 @@ u16 ReadInputPort(int port) {
 	}
 
 	u8 b = XUartLite_RecvByte(XUartLite_PortAddrs[port]);
+	if (b == 0xfe) {
+		return 0; // active sensing
+	}
 	// send to all output ports for now
 	for (int i=0;i<NUM_PORTS;i++) {
 		DISABLE_PORTS
@@ -232,6 +255,11 @@ int main()
     // Reset all output ports
     for (int i=0; i<NUM_PORTS; i++) {
     	bzero(&outports[i], sizeof(outport));
+    }
+
+    // Reset all intput ports
+    for (int i=0; i<NUM_PORTS; i++) {
+    	bzero(&filters[i], sizeof(filter));
     }
 
     // Light up all LEDs once to indicate we are running.
