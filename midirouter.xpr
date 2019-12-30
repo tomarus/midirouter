@@ -67,41 +67,50 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_dlmb_v10_0/design_1_dlmb_v10_0.xci">
-          <Proxy FileSetName="design_1_dlmb_v10_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_ilmb_v10_0/design_1_ilmb_v10_0.xci">
           <Proxy FileSetName="design_1_ilmb_v10_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xbar_0/design_1_xbar_0.xci">
-          <Proxy FileSetName="design_1_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_led_shift_594_driver_0_0/design_1_led_shift_594_driver_0_0.xci">
-          <Proxy FileSetName="design_1_led_shift_594_driver_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_microblaze_0_0/design_1_microblaze_0_0.xci">
+          <Proxy FileSetName="design_1_microblaze_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_mdm_1_0/design_1_mdm_1_0.xci">
           <Proxy FileSetName="design_1_mdm_1_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_16_0/design_1_axi_uartlite_16_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_16_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_clk_wiz_1_0/design_1_clk_wiz_1_0.xci">
+          <Proxy FileSetName="design_1_clk_wiz_1_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_14_0/design_1_axi_uartlite_14_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_14_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_rst_clk_wiz_1_100M_0/design_1_rst_clk_wiz_1_100M_0.xci">
+          <Proxy FileSetName="design_1_rst_clk_wiz_1_100M_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_15_0/design_1_axi_uartlite_15_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_15_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_led_shift_594_driver_0_0/design_1_led_shift_594_driver_0_0.xci">
+          <Proxy FileSetName="design_1_led_shift_594_driver_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_12_0/design_1_axi_uartlite_12_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_12_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xbar_0/design_1_xbar_0.xci">
+          <Proxy FileSetName="design_1_xbar_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_13_0/design_1_axi_uartlite_13_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_13_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_1_0/design_1_axi_uartlite_1_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_1_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_10_0/design_1_axi_uartlite_10_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_10_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_2_0/design_1_axi_uartlite_2_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_2_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_11_0/design_1_axi_uartlite_11_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_11_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_3_0/design_1_axi_uartlite_3_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_3_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_4_0/design_1_axi_uartlite_4_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_4_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_5_0/design_1_axi_uartlite_5_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_5_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_6_0/design_1_axi_uartlite_6_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_6_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_dlmb_v10_0/design_1_dlmb_v10_0.xci">
+          <Proxy FileSetName="design_1_dlmb_v10_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_7_0/design_1_axi_uartlite_7_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_7_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_8_0/design_1_axi_uartlite_8_0.xci">
           <Proxy FileSetName="design_1_axi_uartlite_8_0"/>
@@ -109,35 +118,26 @@
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_9_0/design_1_axi_uartlite_9_0.xci">
           <Proxy FileSetName="design_1_axi_uartlite_9_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_1_0/design_1_axi_uartlite_1_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_1_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_10_0/design_1_axi_uartlite_10_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_10_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_rst_clk_wiz_1_100M_0/design_1_rst_clk_wiz_1_100M_0.xci">
-          <Proxy FileSetName="design_1_rst_clk_wiz_1_100M_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_11_0/design_1_axi_uartlite_11_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_11_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_clk_wiz_1_0/design_1_clk_wiz_1_0.xci">
-          <Proxy FileSetName="design_1_clk_wiz_1_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_12_0/design_1_axi_uartlite_12_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_12_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_microblaze_0_0/design_1_microblaze_0_0.xci">
-          <Proxy FileSetName="design_1_microblaze_0_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_13_0/design_1_axi_uartlite_13_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_13_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_3_0/design_1_axi_uartlite_3_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_3_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_14_0/design_1_axi_uartlite_14_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_14_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_2_0/design_1_axi_uartlite_2_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_2_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_15_0/design_1_axi_uartlite_15_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_15_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_4_0/design_1_axi_uartlite_4_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_4_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_6_0/design_1_axi_uartlite_6_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_6_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_5_0/design_1_axi_uartlite_5_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_5_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_7_0/design_1_axi_uartlite_7_0.xci">
-          <Proxy FileSetName="design_1_axi_uartlite_7_0"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_uartlite_16_0/design_1_axi_uartlite_16_0.xci">
+          <Proxy FileSetName="design_1_axi_uartlite_16_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/design_1/hdl/design_1_wrapper.v">

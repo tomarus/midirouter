@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "platform.h"
 #include "xil_printf.h"
 #include "xuartlite.h"
@@ -108,13 +107,13 @@ void PostSendByte(outport *p) {
 			p->expect_byte = 0;
 			break;
 		case 0xf8: // clock
+			break;
 		case 0xf1: // time code frame
 		case 0xf3: // song select
 			p->expect_bytes = 1;
 			break;
 		case 0xf2: // song position
 			p->expect_bytes = 2;
-			break;
 			break;
 		default:
 			p->expect_bytes = 0;
@@ -217,8 +216,9 @@ u16 ReadInputPort(int port) {
 
 	u8 b = XUartLite_RecvByte(XUartLite_PortAddrs[port]);
 	if (b == 0xfe) {
-		return 0; // active sensing
+		return 0; // active sensing, ignore
 	}
+
 	// send to all output ports for now
 	for (int i=0;i<NUM_PORTS;i++) {
 		DISABLE_PORTS
@@ -226,24 +226,12 @@ u16 ReadInputPort(int port) {
 			QueueOutputByte(port, i, b);
 		}
 	}
-	switch (b) {
-	case 0xf8: // clock
-	case 0xfe: // active sensing
-		return 0;
-	default:
-		return 1;
-	}
+	return b != 0xf8; // ignore clock for activity
 }
-
 
 //
 // Main loop
 //
-
-void sleep(int dur)
-{
-	for (volatile int d = 0; d < dur; d++) { }
-}
 
 int main()
 {
@@ -264,7 +252,6 @@ int main()
 
     // Light up all LEDs once to indicate we are running.
     ACTIVITY(65535, 65535);
-    ACTIVITY(0, 0);
 
     // loop
     while (1) {
