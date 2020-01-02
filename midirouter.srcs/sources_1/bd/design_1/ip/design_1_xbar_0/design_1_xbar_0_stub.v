@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Tue Dec 24 17:23:13 2019
+// Date        : Wed Jan  1 20:32:14 2020
 // Host        : debian running 64-bit Debian GNU/Linux 9.11 (stretch)
 // Command     : write_verilog -force -mode synth_stub
 //               /home/tommy/src/tomarus/midirouter/midirouter.srcs/sources_1/bd/design_1/ip/design_1_xbar_0/design_1_xbar_0_stub.v

@@ -26248,11 +26248,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 09:58:04 UTC 2019</spirit:value>
+            <spirit:value>Wed Jan 01 16:27:16 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:348b99f1</spirit:value>
+            <spirit:value>8:ce3c749a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -26266,11 +26266,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 16:21:26 UTC 2019</spirit:value>
+            <spirit:value>Wed Jan 01 19:30:34 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:348b99f1</spirit:value>
+            <spirit:value>8:ce3c749a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -26286,11 +26286,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 16:21:26 UTC 2019</spirit:value>
+            <spirit:value>Wed Jan 01 19:30:34 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:348b99f1</spirit:value>
+            <spirit:value>8:ce3c749a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -26321,11 +26321,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 09:58:04 UTC 2019</spirit:value>
+            <spirit:value>Wed Jan 01 16:27:16 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:e22aa7ea</spirit:value>
+            <spirit:value>8:5ed40e16</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -26341,11 +26341,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 16:21:26 UTC 2019</spirit:value>
+            <spirit:value>Wed Jan 01 19:30:34 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:e22aa7ea</spirit:value>
+            <spirit:value>8:5ed40e16</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -26359,11 +26359,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Dec 24 16:23:13 UTC 2019</spirit:value>
+            <spirit:value>Wed Jan 01 19:32:14 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:348b99f1</spirit:value>
+            <spirit:value>8:ce3c749a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -28476,11 +28476,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="std_logic_vector">
         <spirit:name>C_M_AXI_BASE_ADDR</spirit:name>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXI_BASE_ADDR" spirit:bitStringLength="1536">0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000004070000000000000406f000000000000406e000000000000406d000000000000406c000000000000406b000000000000406a000000000000406900000000000040680000000000004067000000000000406600000000000044a000000000000041400000000000004065000000000000406400000000000040630000000000004062000000000000406100000000000040600000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXI_BASE_ADDR" spirit:bitStringLength="1536">0xffffffffffffffffffffffffffffffffffffffffffffffff0000000044a100000000000041200000000000004070000000000000406f000000000000406e000000000000406d000000000000406c000000000000406b000000000000406a000000000000406900000000000040680000000000004067000000000000406600000000000044a000000000000041400000000000004065000000000000406400000000000040630000000000004062000000000000406100000000000040600000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="std_logic_vector">
         <spirit:name>C_M_AXI_ADDR_WIDTH</spirit:name>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXI_ADDR_WIDTH" spirit:bitStringLength="768">0x00000000000000000000000000000000000000000000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000000c000000100000001000000010000000100000001000000010</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXI_ADDR_WIDTH" spirit:bitStringLength="768">0x00000000000000000000000000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000000c000000100000001000000010000000100000001000000010</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_S_AXI_BASE_ID</spirit:name>
@@ -37571,7 +37571,7 @@
     <spirit:parameter>
       <spirit:name>M02_A03_BASE_ADDR</spirit:name>
       <spirit:displayName>My M02_A03_BASE_ADDR</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A03_BASE_ADDR" spirit:order="728" spirit:bitStringLength="64">0xffffffffffffffff</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A03_BASE_ADDR" spirit:order="728" spirit:bitStringLength="64">0x0000000041200000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -37583,7 +37583,7 @@
     <spirit:parameter>
       <spirit:name>M02_A04_BASE_ADDR</spirit:name>
       <spirit:displayName>My M02_A04_BASE_ADDR</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A04_BASE_ADDR" spirit:order="729" spirit:bitStringLength="64">0xffffffffffffffff</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A04_BASE_ADDR" spirit:order="729" spirit:bitStringLength="64">0x0000000044A10000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40643,7 +40643,7 @@
     <spirit:parameter>
       <spirit:name>M02_A03_ADDR_WIDTH</spirit:name>
       <spirit:displayName>My M02_A03_ADDR_WIDTH</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A03_ADDR_WIDTH" spirit:order="984" spirit:minimum="0" spirit:maximum="64" spirit:rangeType="long">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A03_ADDR_WIDTH" spirit:order="984" spirit:minimum="0" spirit:maximum="64" spirit:rangeType="long">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40655,7 +40655,7 @@
     <spirit:parameter>
       <spirit:name>M02_A04_ADDR_WIDTH</spirit:name>
       <spirit:displayName>My M02_A04_ADDR_WIDTH</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A04_ADDR_WIDTH" spirit:order="985" spirit:minimum="0" spirit:maximum="64" spirit:rangeType="long">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M02_A04_ADDR_WIDTH" spirit:order="985" spirit:minimum="0" spirit:maximum="64" spirit:rangeType="long">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -43835,6 +43835,10 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_A01_BASE_ADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_A02_ADDR_WIDTH" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_A02_BASE_ADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_A03_ADDR_WIDTH" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_A03_BASE_ADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_A04_ADDR_WIDTH" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_A04_BASE_ADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_S00_READ_CONNECTIVITY" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_S00_WRITE_CONNECTIVITY" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M02_S01_READ_CONNECTIVITY" xilinx:valuePermission="bd_and_user"/>

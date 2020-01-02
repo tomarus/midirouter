@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Dec 28 20:41:15 2019" VIVADOVERSION="2018.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jan  1 20:44:37 2020" VIVADOVERSION="2018.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:cmod_a7-15t:part0:1.1" DEVICE="7a15t" NAME="design_1" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -192,6 +192,21 @@
         <CONNECTION INSTANCE="axi_uartlite_16" PORT="tx"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="qspi_flash_io0_i" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io0_o" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io0_t" SIGIS="undef"/>
+    <PORT DIR="I" NAME="qspi_flash_io1_i" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io1_o" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io1_t" SIGIS="undef"/>
+    <PORT DIR="I" NAME="qspi_flash_io2_i" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io2_o" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io2_t" SIGIS="undef"/>
+    <PORT DIR="I" NAME="qspi_flash_io3_i" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io3_o" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_io3_t" SIGIS="undef"/>
+    <PORT DIR="I" NAME="qspi_flash_ss_i" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_ss_o" SIGIS="undef"/>
+    <PORT DIR="O" NAME="qspi_flash_ss_t" SIGIS="undef"/>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -201,9 +216,1343 @@
         <PORTMAP LOGICAL="TxD" PHYSICAL="usb_uart_txd"/>
       </PORTMAPS>
     </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="axi_quad_spi_0_SPI_0" NAME="qspi_flash" TYPE="INITIATOR">
+      <PORTMAPS>
+        <PORTMAP LOGICAL="IO0_I" PHYSICAL="qspi_flash_io0_i"/>
+        <PORTMAP LOGICAL="IO0_O" PHYSICAL="qspi_flash_io0_o"/>
+        <PORTMAP LOGICAL="IO0_T" PHYSICAL="qspi_flash_io0_t"/>
+        <PORTMAP LOGICAL="IO1_I" PHYSICAL="qspi_flash_io1_i"/>
+        <PORTMAP LOGICAL="IO1_O" PHYSICAL="qspi_flash_io1_o"/>
+        <PORTMAP LOGICAL="IO1_T" PHYSICAL="qspi_flash_io1_t"/>
+        <PORTMAP LOGICAL="IO2_I" PHYSICAL="qspi_flash_io2_i"/>
+        <PORTMAP LOGICAL="IO2_O" PHYSICAL="qspi_flash_io2_o"/>
+        <PORTMAP LOGICAL="IO2_T" PHYSICAL="qspi_flash_io2_t"/>
+        <PORTMAP LOGICAL="IO3_I" PHYSICAL="qspi_flash_io3_i"/>
+        <PORTMAP LOGICAL="IO3_O" PHYSICAL="qspi_flash_io3_o"/>
+        <PORTMAP LOGICAL="IO3_T" PHYSICAL="qspi_flash_io3_t"/>
+        <PORTMAP LOGICAL="SS_I" PHYSICAL="qspi_flash_ss_i"/>
+        <PORTMAP LOGICAL="SS_O" PHYSICAL="qspi_flash_ss_o"/>
+        <PORTMAP LOGICAL="SS_T" PHYSICAL="qspi_flash_ss_t"/>
+      </PORTMAPS>
+    </BUSINTERFACE>
   </EXTERNALINTERFACES>
 
   <MODULES>
+    <MODULE FULLNAME="/axi_intc_0" HWVERSION="4.1" INSTANCE="axi_intc_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="INTERRUPT_CNTLR" MODTYPE="axi_intc" VLNV="xilinx.com:ip:axi_intc:4.1">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_intc;v=v4_1;d=pg099-axi-intc.pdf"/>
+      </DOCUMENTS>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="read-write" INTERFACE="S_AXI" NAME="Reg" RANGE="4096" USAGE="register">
+          <REGISTERS>
+            <REGISTER NAME="ISR">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Status Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x0"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="INT">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Status Register.&#xA;For each bit up to number of periperhal interrupts:&#xA;  R - Reads active interrupt signal.&#xA;  W - No effect after MER HIE bit has been set, otherwise writes active interrupt signal.&#xA;For remaining bits defined by number of software interrupts:&#xA;  R - Reads software interrupt value.&#xA;  W - Writes software interrupt value.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IPR">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Pending Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x4"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="INT">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Pending Register.&#xA;For each bit:&#xA;  R - Reads logical AND of bits in ISR and IER.&#xA;  W - No effect.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IER">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Enable Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x8"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="INT">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Enable Register.&#xA;For each bit:&#xA;  R - Reads interrupt enable value.&#xA;  W - Writes interrupt enable value.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IAR">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Acknowledge Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xC"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
+              <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="INT">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Acknowledge Register.&#xA;For each bit:&#xA;  W - Acknowledge interrupt.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE="oneToClear"/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="SIE">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Set Interrupt Enables"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x10"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="INT">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Set Interrupt Enables&#xA;For each bit:&#xA;  R - Reads active interrupt.&#xA;  W - Writing 1 enables the interrupt, writing 0 has no effect.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE="oneToSet"/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="CIE">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Clear Interrupt Enables"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x14"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="INT">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Clear Interrupt Enables&#xA;For each bit:&#xA;  R - Reads active interrupt.&#xA;  W - Writing 1 disables the interrupt, writing 0 has no effect.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE="oneToClear"/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVR">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x18"/>
+              <PROPERTY NAME="SIZE" VALUE="5"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="IVN">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Number.&#xA;  R - Reads ordinal of highest priority, enabled, active interrupt.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="5"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="MER">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Master Enable Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1C"/>
+              <PROPERTY NAME="SIZE" VALUE="2"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="ME">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Master IRQ Enable.&#xA;  0 - All interrupts disabled.&#xA;  1 - All interrupts can be enabled.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+                <FIELD NAME="HIE">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Hardware Interrupt Enable.&#xA;  0 - HW interrupts disabled.&#xA;  1 - HW interrupts enabled.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IMR">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Mode Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x20"/>
+              <PROPERTY NAME="SIZE" VALUE="1"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="INT">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Mode Register.&#xA;For each bit:&#xA;  R - Reads interrupt mode.&#xA;  W - Sets interrupt mode, where 0 is normal mode and 1 is fast mode.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="ILR">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Level Register"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x24"/>
+              <PROPERTY NAME="SIZE" VALUE="5"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
+              <FIELDS>
+                <FIELD NAME="ILN">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Level Number.&#xA;  R - Reads ordinal of highest priority interrupt not allowed to generate IRQ.&#xA;  W - Writes ordinal of highest priority interrupt not allowed to generate IRQ.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="5"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[0]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 0"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x100"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 0 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[1]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 1"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x104"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 1 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[2]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 2"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x108"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 2 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[3]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 3"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x10C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 3 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[4]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 4"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x110"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 4 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[5]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 5"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x114"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 5 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[6]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 6"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x118"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 6 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[7]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 7"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x11C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 7 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[8]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 8"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x120"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 8 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[9]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 9"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x124"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 9 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[10]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 10"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x128"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 10 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[11]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 11"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x12C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 11 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[12]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 12"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x130"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 12 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[13]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 13"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x134"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 13 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[14]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 14"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x138"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 14 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[15]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 15"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x13C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 15 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[16]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 16"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x140"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 16 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[17]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 17"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x144"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 17 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[18]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 18"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x148"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 18 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[19]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 19"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x14C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 19 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[20]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 20"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x150"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 20 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[21]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 21"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x154"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 21 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[22]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 22"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x158"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 22 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[23]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 23"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x15C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 23 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[24]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 24"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x160"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 24 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[25]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 25"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x164"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 25 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[26]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 26"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x168"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 26 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[27]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 27"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x16C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 27 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[28]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 28"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x170"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 28 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[29]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 29"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x174"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 29 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[30]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 30"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x178"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 30 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="IVAR[31]">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 31"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x17C"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0x000000010"/>
+              <FIELDS>
+                <FIELD NAME="IVA">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt vector address of active interrupt 31 with highest priority.&#xA;"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+          </REGISTERS>
+        </ADDRESSBLOCK>
+      </ADDRESSBLOCKS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_INSTANCE" VALUE="design_1_axi_intc_0_0"/>
+        <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_NUM_INTR_INPUTS" VALUE="1"/>
+        <PARAMETER NAME="C_NUM_SW_INTR" VALUE="0"/>
+        <PARAMETER NAME="C_KIND_OF_INTR" VALUE="0xFFFFFFFF"/>
+        <PARAMETER NAME="C_KIND_OF_EDGE" VALUE="0xFFFFFFFF"/>
+        <PARAMETER NAME="C_KIND_OF_LVL" VALUE="0xFFFFFFFF"/>
+        <PARAMETER NAME="C_ASYNC_INTR" VALUE="0xFFFFFFFE"/>
+        <PARAMETER NAME="C_NUM_SYNC_FF" VALUE="2"/>
+        <PARAMETER NAME="C_IVAR_RESET_VALUE" VALUE="0x00000010"/>
+        <PARAMETER NAME="C_ENABLE_ASYNC" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_IPR" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SIE" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_CIE" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_IVR" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_ILR" VALUE="0"/>
+        <PARAMETER NAME="C_IRQ_IS_LEVEL" VALUE="1"/>
+        <PARAMETER NAME="C_IRQ_ACTIVE" VALUE="0x1"/>
+        <PARAMETER NAME="C_DISABLE_SYNCHRONIZERS" VALUE="0"/>
+        <PARAMETER NAME="C_MB_CLK_NOT_CONNECTED" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_FAST" VALUE="0"/>
+        <PARAMETER NAME="C_EN_CASCADE_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_CASCADE_MASTER" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_axi_intc_0_0"/>
+        <PARAMETER NAME="Sense_of_IRQ_Level_Type" VALUE="Active_High"/>
+        <PARAMETER NAME="Sense_of_IRQ_Edge_Type" VALUE="Rising"/>
+        <PARAMETER NAME="C_S_AXI_ACLK_FREQ_MHZ" VALUE="100.0"/>
+        <PARAMETER NAME="C_PROCESSOR_CLK_FREQ_MHZ" VALUE="100.0"/>
+        <PARAMETER NAME="C_IRQ_CONNECTION" VALUE="0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+        <PARAMETER NAME="EDK_SPECIAL" VALUE="INTR_CTRL"/>
+        <PARAMETER NAME="C_BASEADDR" VALUE="0x41200000"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x4120FFFF"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_aresetn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_awvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_awready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="s_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="s_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_wvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_wready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_bvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_bready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_arvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_arready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="s_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_rvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_rready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_AXI_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="intr" RIGHT="0" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="axi_quad_spi_0_ip2intc_irpt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="ip2intc_irpt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="irq" SIGIS="undef" SIGNAME="axi_intc_0_irq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="Interrupt"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="microblaze_0_axi_periph_M19_AXI" DATAWIDTH="32" NAME="s_axi" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+          <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="9"/>
+          <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="HAS_BURST" VALUE="0"/>
+          <PARAMETER NAME="HAS_LOCK" VALUE="0"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="0"/>
+          <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
+          <PARAMETER NAME="HAS_QOS" VALUE="0"/>
+          <PARAMETER NAME="HAS_REGION" VALUE="0"/>
+          <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
+          <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="/clk_wiz_1_clk_out1"/>
+          <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
+          <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="s_axi_araddr"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="s_axi_arready"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="s_axi_arvalid"/>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="s_axi_awaddr"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="s_axi_awready"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="s_axi_awvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="s_axi_bready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="s_axi_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="s_axi_bvalid"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="s_axi_rdata"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="s_axi_rready"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="s_axi_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="s_axi_rvalid"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="s_axi_wdata"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="s_axi_wready"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="s_axi_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="s_axi_wvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="axi_intc_0_interrupt" NAME="interrupt" TYPE="INITIATOR" VLNV="xilinx.com:interface:mbinterrupt:1.0">
+          <PARAMETER NAME="SENSITIVITY" VALUE="LEVEL_HIGH"/>
+          <PARAMETER NAME="LOW_LATENCY" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="INTERRUPT" PHYSICAL="irq"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE FULLNAME="/axi_quad_spi_0" HWVERSION="3.2" INSTANCE="axi_quad_spi_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="axi_quad_spi" VLNV="xilinx.com:ip:axi_quad_spi:3.2">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_quad_spi;v=v3_2;d=pg153-axi-quad-spi.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="Async_Clk" VALUE="0"/>
+        <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_SELECT_XPM" VALUE="1"/>
+        <PARAMETER NAME="C_SUB_FAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_INSTANCE" VALUE="axi_quad_spi_inst"/>
+        <PARAMETER NAME="C_SPI_MEM_ADDR_BITS" VALUE="24"/>
+        <PARAMETER NAME="C_TYPE_OF_AXI4_INTERFACE" VALUE="0"/>
+        <PARAMETER NAME="C_XIP_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_UC_FAMILY" VALUE="0"/>
+        <PARAMETER NAME="C_FIFO_DEPTH" VALUE="16"/>
+        <PARAMETER NAME="C_SCK_RATIO" VALUE="2"/>
+        <PARAMETER NAME="C_DUAL_QUAD_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_NUM_SS_BITS" VALUE="1"/>
+        <PARAMETER NAME="C_NUM_TRANSFER_BITS" VALUE="8"/>
+        <PARAMETER NAME="C_SPI_MODE" VALUE="2"/>
+        <PARAMETER NAME="C_USE_STARTUP" VALUE="1"/>
+        <PARAMETER NAME="C_USE_STARTUP_EXT" VALUE="0"/>
+        <PARAMETER NAME="C_SPI_MEMORY" VALUE="2"/>
+        <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="7"/>
+        <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_S_AXI4_ADDR_WIDTH" VALUE="24"/>
+        <PARAMETER NAME="C_S_AXI4_DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_S_AXI4_ID_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_SHARED_STARTUP" VALUE="0"/>
+        <PARAMETER NAME="C_LSB_STUP" VALUE="0"/>
+        <PARAMETER NAME="C_USE_STARTUP_INT" VALUE="1"/>
+        <PARAMETER NAME="UC_FAMILY" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_axi_quad_spi_0_0"/>
+        <PARAMETER NAME="Master_mode" VALUE="1"/>
+        <PARAMETER NAME="FIFO_INCLUDED" VALUE="1"/>
+        <PARAMETER NAME="Multiples16" VALUE="1"/>
+        <PARAMETER NAME="C_SCK_RATIO1" VALUE="1"/>
+        <PARAMETER NAME="USE_BOARD_FLOW" VALUE="true"/>
+        <PARAMETER NAME="QSPI_BOARD_INTERFACE" VALUE="qspi_flash"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+        <PARAMETER NAME="C_BASEADDR" VALUE="0x44A10000"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x44A1FFFF"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ext_spi_clk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_aresetn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="6" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_awvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_awready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="s_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="s_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_wvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_wready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_bvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_bready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="6" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_arvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_arready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="s_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_rvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_rready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_AXI_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="io0_i" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io0_o" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io0_t" SIGIS="undef"/>
+        <PORT DIR="I" NAME="io1_i" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io1_o" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io1_t" SIGIS="undef"/>
+        <PORT DIR="I" NAME="io2_i" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io2_o" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io2_t" SIGIS="undef"/>
+        <PORT DIR="I" NAME="io3_i" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io3_o" SIGIS="undef"/>
+        <PORT DIR="O" NAME="io3_t" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="0" NAME="ss_i" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="0" NAME="ss_o" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ss_t" SIGIS="undef"/>
+        <PORT DIR="O" NAME="cfgclk" SIGIS="undef"/>
+        <PORT DIR="O" NAME="cfgmclk" SIGIS="undef"/>
+        <PORT DIR="O" NAME="eos" SIGIS="undef"/>
+        <PORT DIR="O" NAME="preq" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ip2intc_irpt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="axi_quad_spi_0_ip2intc_irpt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="intr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="axi_quad_spi_0_SPI_0" NAME="SPI_0" TYPE="INITIATOR" VLNV="xilinx.com:interface:spi:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="IO0_I" PHYSICAL="io0_i"/>
+            <PORTMAP LOGICAL="IO0_O" PHYSICAL="io0_o"/>
+            <PORTMAP LOGICAL="IO0_T" PHYSICAL="io0_t"/>
+            <PORTMAP LOGICAL="IO1_I" PHYSICAL="io1_i"/>
+            <PORTMAP LOGICAL="IO1_O" PHYSICAL="io1_o"/>
+            <PORTMAP LOGICAL="IO1_T" PHYSICAL="io1_t"/>
+            <PORTMAP LOGICAL="IO2_I" PHYSICAL="io2_i"/>
+            <PORTMAP LOGICAL="IO2_O" PHYSICAL="io2_o"/>
+            <PORTMAP LOGICAL="IO2_T" PHYSICAL="io2_t"/>
+            <PORTMAP LOGICAL="IO3_I" PHYSICAL="io3_i"/>
+            <PORTMAP LOGICAL="IO3_O" PHYSICAL="io3_o"/>
+            <PORTMAP LOGICAL="IO3_T" PHYSICAL="io3_t"/>
+            <PORTMAP LOGICAL="SS_I" PHYSICAL="ss_i"/>
+            <PORTMAP LOGICAL="SS_O" PHYSICAL="ss_o"/>
+            <PORTMAP LOGICAL="SS_T" PHYSICAL="ss_t"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="STARTUP_IO" TYPE="INITIATOR" VLNV="xilinx.com:display_startup_io:startup_io:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="cfgclk" PHYSICAL="cfgclk"/>
+            <PORTMAP LOGICAL="cfgmclk" PHYSICAL="cfgmclk"/>
+            <PORTMAP LOGICAL="eos" PHYSICAL="eos"/>
+            <PORTMAP LOGICAL="preq" PHYSICAL="preq"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="microblaze_0_axi_periph_M20_AXI" DATAWIDTH="32" NAME="AXI_LITE" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+          <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
+          <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="7"/>
+          <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="HAS_BURST" VALUE="0"/>
+          <PARAMETER NAME="HAS_LOCK" VALUE="0"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="0"/>
+          <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
+          <PARAMETER NAME="HAS_QOS" VALUE="0"/>
+          <PARAMETER NAME="HAS_REGION" VALUE="0"/>
+          <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
+          <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="/clk_wiz_1_clk_out1"/>
+          <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
+          <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="s_axi_araddr"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="s_axi_arready"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="s_axi_arvalid"/>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="s_axi_awaddr"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="s_axi_awready"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="s_axi_awvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="s_axi_bready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="s_axi_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="s_axi_bvalid"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="s_axi_rdata"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="s_axi_rready"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="s_axi_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="s_axi_rvalid"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="s_axi_wdata"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="s_axi_wready"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="s_axi_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="s_axi_wvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
     <MODULE FULLNAME="/axi_uartlite_0" HWVERSION="2.0" INSTANCE="axi_uartlite_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_uartlite" VLNV="xilinx.com:ip:axi_uartlite:2.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_uartlite;v=v2_0;d=pg142-axi-uartlite.pdf"/>
@@ -7046,6 +8395,11 @@
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M16_ACLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M17_ACLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M18_ACLK"/>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_ACLK"/>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_ACLK"/>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="ext_spi_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef" SIGNAME="clk_wiz_1_locked">
@@ -8341,7 +9695,7 @@
         <PARAMETER NAME="C_FSL_EXCEPTION" VALUE="0"/>
         <PARAMETER NAME="C_USE_STACK_PROTECTION" VALUE="0"/>
         <PARAMETER NAME="C_IMPRECISE_EXCEPTIONS" VALUE="0"/>
-        <PARAMETER NAME="C_USE_INTERRUPT" VALUE="0"/>
+        <PARAMETER NAME="C_USE_INTERRUPT" VALUE="1"/>
         <PARAMETER NAME="C_USE_EXT_BRK" VALUE="0"/>
         <PARAMETER NAME="C_USE_EXT_NM_BRK" VALUE="0"/>
         <PARAMETER NAME="C_USE_NON_SECURE" VALUE="0"/>
@@ -8520,7 +9874,11 @@
             <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="mb_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="Interrupt" SIGIS="INTERRUPT"/>
+        <PORT DIR="I" NAME="Interrupt" SIGIS="INTERRUPT" SIGNAME="axi_intc_0_irq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="irq"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="0" NAME="Interrupt_Address" RIGHT="31" SIGIS="undef"/>
         <PORT DIR="O" LEFT="0" NAME="Interrupt_Ack" RIGHT="1" SIGIS="undef"/>
         <PORT DIR="O" LEFT="0" NAME="Instr_Addr" RIGHT="31" SIGIS="undef" SIGNAME="microblaze_0_Instr_Addr">
@@ -8760,7 +10118,7 @@
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="INTERRUPT" TYPE="TARGET" VLNV="xilinx.com:interface:mbinterrupt:1.0">
+        <BUSINTERFACE BUSNAME="axi_intc_0_interrupt" NAME="INTERRUPT" TYPE="TARGET" VLNV="xilinx.com:interface:mbinterrupt:1.0">
           <PARAMETER NAME="SENSITIVITY" VALUE="LEVEL_HIGH"/>
           <PARAMETER NAME="LOW_LATENCY" VALUE="0"/>
           <PORTMAPS>
@@ -8870,8 +10228,8 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
       <MEMORYMAP>
-        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x00007FFF" INSTANCE="microblaze_0_local_memory_dlmb_bram_if_cntlr" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="DLMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
-        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x00007FFF" INSTANCE="microblaze_0_local_memory_ilmb_bram_if_cntlr" IS_DATA="FALSE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="ILMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
+        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x0000FFFF" INSTANCE="microblaze_0_local_memory_dlmb_bram_if_cntlr" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="DLMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
+        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x0000FFFF" INSTANCE="microblaze_0_local_memory_ilmb_bram_if_cntlr" IS_DATA="FALSE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="ILMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x40600000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4060FFFF" INSTANCE="axi_uartlite_0" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x40610000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4061FFFF" INSTANCE="axi_uartlite_1" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x40620000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4062FFFF" INSTANCE="axi_uartlite_2" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
@@ -8889,8 +10247,10 @@
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x406E0000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x406EFFFF" INSTANCE="axi_uartlite_14" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x406F0000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x406FFFFF" INSTANCE="axi_uartlite_15" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x40700000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4070FFFF" INSTANCE="axi_uartlite_16" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41200000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4120FFFF" INSTANCE="axi_intc_0" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41400000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x41400FFF" INSTANCE="mdm_1" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="S00_AXI_reg" BASENAME="C_S00_AXI_BASEADDR" BASEVALUE="0x44A00000" HIGHNAME="C_S00_AXI_HIGHADDR" HIGHVALUE="0x44A0FFFF" INSTANCE="led_shift_594_driver_0" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S00_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x44A10000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x44A1FFFF" INSTANCE="axi_quad_spi_0" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="M_AXI_DP" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="AXI_LITE"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="microblaze_0_local_memory_dlmb_bram_if_cntlr"/>
@@ -8912,8 +10272,10 @@
         <PERIPHERAL INSTANCE="axi_uartlite_14"/>
         <PERIPHERAL INSTANCE="axi_uartlite_15"/>
         <PERIPHERAL INSTANCE="axi_uartlite_16"/>
+        <PERIPHERAL INSTANCE="axi_intc_0"/>
         <PERIPHERAL INSTANCE="mdm_1"/>
         <PERIPHERAL INSTANCE="led_shift_594_driver_0"/>
+        <PERIPHERAL INSTANCE="axi_quad_spi_0"/>
       </PERIPHERALS>
     </MODULE>
     <MODULE FULLNAME="/microblaze_0_axi_periph" HWVERSION="2.1" INSTANCE="microblaze_0_axi_periph" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="axi_interconnect" VLNV="xilinx.com:ip:axi_interconnect:2.1">
@@ -8922,7 +10284,7 @@
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="NUM_SI" VALUE="1"/>
-        <PARAMETER NAME="NUM_MI" VALUE="19"/>
+        <PARAMETER NAME="NUM_MI" VALUE="21"/>
         <PARAMETER NAME="STRATEGY" VALUE="0"/>
         <PARAMETER NAME="ENABLE_ADVANCED_OPTIONS" VALUE="0"/>
         <PARAMETER NAME="ENABLE_PROTOCOL_CHECKERS" VALUE="0"/>
@@ -11169,6 +12531,232 @@
             <CONNECTION INSTANCE="axi_uartlite_16" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="M19_ACLK" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M19_ARESETN" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M19_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M19_AXI_awlen" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awsize" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awburst" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awlock" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awcache" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awregion" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awqos" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_awvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M19_AXI_awready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M19_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M19_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M19_AXI_wlast" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_wvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M19_AXI_wready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M19_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M19_AXI_bvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M19_AXI_bready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M19_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M19_AXI_arlen" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arsize" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arburst" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arlock" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arcache" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arregion" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arqos" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M19_AXI_arvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M19_AXI_arready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M19_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M19_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M19_AXI_rlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M19_AXI_rvalid" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M19_AXI_rready" SIGIS="undef" SIGNAME="axi_intc_0_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M20_ACLK" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M20_ARESETN" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M20_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M20_AXI_awlen" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awsize" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awburst" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awlock" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awcache" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awregion" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awqos" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_awvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M20_AXI_awready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M20_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M20_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M20_AXI_wlast" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_wvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M20_AXI_wready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M20_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M20_AXI_bvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M20_AXI_bready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M20_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M20_AXI_arlen" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arsize" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arburst" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arlock" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arcache" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arregion" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arqos" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M20_AXI_arvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M20_AXI_arready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M20_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M20_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M20_AXI_rlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M20_AXI_rvalid" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M20_AXI_rready" SIGIS="undef" SIGNAME="axi_quad_spi_0_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="microblaze_0_M_AXI_DP" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -11595,6 +13183,84 @@
             <PORTMAP LOGICAL="WVALID" PHYSICAL="M18_AXI_wvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="microblaze_0_axi_periph_M19_AXI" DATAWIDTH="32" NAME="M19_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="M19_AXI_awaddr"/>
+            <PORTMAP LOGICAL="AWLEN" PHYSICAL="M19_AXI_awlen"/>
+            <PORTMAP LOGICAL="AWSIZE" PHYSICAL="M19_AXI_awsize"/>
+            <PORTMAP LOGICAL="AWBURST" PHYSICAL="M19_AXI_awburst"/>
+            <PORTMAP LOGICAL="AWLOCK" PHYSICAL="M19_AXI_awlock"/>
+            <PORTMAP LOGICAL="AWCACHE" PHYSICAL="M19_AXI_awcache"/>
+            <PORTMAP LOGICAL="AWPROT" PHYSICAL="M19_AXI_awprot"/>
+            <PORTMAP LOGICAL="AWREGION" PHYSICAL="M19_AXI_awregion"/>
+            <PORTMAP LOGICAL="AWQOS" PHYSICAL="M19_AXI_awqos"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="M19_AXI_awvalid"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="M19_AXI_awready"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="M19_AXI_wdata"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="M19_AXI_wstrb"/>
+            <PORTMAP LOGICAL="WLAST" PHYSICAL="M19_AXI_wlast"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="M19_AXI_wvalid"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="M19_AXI_wready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="M19_AXI_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="M19_AXI_bvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="M19_AXI_bready"/>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="M19_AXI_araddr"/>
+            <PORTMAP LOGICAL="ARLEN" PHYSICAL="M19_AXI_arlen"/>
+            <PORTMAP LOGICAL="ARSIZE" PHYSICAL="M19_AXI_arsize"/>
+            <PORTMAP LOGICAL="ARBURST" PHYSICAL="M19_AXI_arburst"/>
+            <PORTMAP LOGICAL="ARLOCK" PHYSICAL="M19_AXI_arlock"/>
+            <PORTMAP LOGICAL="ARCACHE" PHYSICAL="M19_AXI_arcache"/>
+            <PORTMAP LOGICAL="ARPROT" PHYSICAL="M19_AXI_arprot"/>
+            <PORTMAP LOGICAL="ARREGION" PHYSICAL="M19_AXI_arregion"/>
+            <PORTMAP LOGICAL="ARQOS" PHYSICAL="M19_AXI_arqos"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="M19_AXI_arvalid"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="M19_AXI_arready"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="M19_AXI_rdata"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="M19_AXI_rresp"/>
+            <PORTMAP LOGICAL="RLAST" PHYSICAL="M19_AXI_rlast"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="M19_AXI_rvalid"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="M19_AXI_rready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="microblaze_0_axi_periph_M20_AXI" DATAWIDTH="32" NAME="M20_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="M20_AXI_awaddr"/>
+            <PORTMAP LOGICAL="AWLEN" PHYSICAL="M20_AXI_awlen"/>
+            <PORTMAP LOGICAL="AWSIZE" PHYSICAL="M20_AXI_awsize"/>
+            <PORTMAP LOGICAL="AWBURST" PHYSICAL="M20_AXI_awburst"/>
+            <PORTMAP LOGICAL="AWLOCK" PHYSICAL="M20_AXI_awlock"/>
+            <PORTMAP LOGICAL="AWCACHE" PHYSICAL="M20_AXI_awcache"/>
+            <PORTMAP LOGICAL="AWPROT" PHYSICAL="M20_AXI_awprot"/>
+            <PORTMAP LOGICAL="AWREGION" PHYSICAL="M20_AXI_awregion"/>
+            <PORTMAP LOGICAL="AWQOS" PHYSICAL="M20_AXI_awqos"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="M20_AXI_awvalid"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="M20_AXI_awready"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="M20_AXI_wdata"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="M20_AXI_wstrb"/>
+            <PORTMAP LOGICAL="WLAST" PHYSICAL="M20_AXI_wlast"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="M20_AXI_wvalid"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="M20_AXI_wready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="M20_AXI_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="M20_AXI_bvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="M20_AXI_bready"/>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="M20_AXI_araddr"/>
+            <PORTMAP LOGICAL="ARLEN" PHYSICAL="M20_AXI_arlen"/>
+            <PORTMAP LOGICAL="ARSIZE" PHYSICAL="M20_AXI_arsize"/>
+            <PORTMAP LOGICAL="ARBURST" PHYSICAL="M20_AXI_arburst"/>
+            <PORTMAP LOGICAL="ARLOCK" PHYSICAL="M20_AXI_arlock"/>
+            <PORTMAP LOGICAL="ARCACHE" PHYSICAL="M20_AXI_arcache"/>
+            <PORTMAP LOGICAL="ARPROT" PHYSICAL="M20_AXI_arprot"/>
+            <PORTMAP LOGICAL="ARREGION" PHYSICAL="M20_AXI_arregion"/>
+            <PORTMAP LOGICAL="ARQOS" PHYSICAL="M20_AXI_arqos"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="M20_AXI_arvalid"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="M20_AXI_arready"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="M20_AXI_rdata"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="M20_AXI_rresp"/>
+            <PORTMAP LOGICAL="RLAST" PHYSICAL="M20_AXI_rlast"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="M20_AXI_rvalid"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="M20_AXI_rready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
     <MODULE FULLNAME="/microblaze_0_local_memory/dlmb_bram_if_cntlr" HWVERSION="4.0" INSTANCE="microblaze_0_local_memory_dlmb_bram_if_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
@@ -11632,7 +13298,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="EDK_SPECIAL" VALUE="BRAM_CTRL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x00000000"/>
-        <PARAMETER NAME="C_HIGHADDR" VALUE="0x00007FFF"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x0000FFFF"/>
       </PARAMETERS>
       <PORTS>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="LMB_Clk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
@@ -11756,7 +13422,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="microblaze_0_local_memory_dlmb_bram_if_cntlr_BRAM_PORT" NAME="BRAM_PORT" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="65536"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -11981,7 +13647,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="EDK_SPECIAL" VALUE="BRAM_CTRL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x00000000"/>
-        <PARAMETER NAME="C_HIGHADDR" VALUE="0x00007FFF"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x0000FFFF"/>
       </PARAMETERS>
       <PORTS>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="LMB_Clk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
@@ -12105,7 +13771,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="microblaze_0_local_memory_ilmb_bram_if_cntlr_BRAM_PORT" NAME="BRAM_PORT" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="65536"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -12322,8 +13988,8 @@
         <PARAMETER NAME="C_WRITE_MODE_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_A" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_A" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="8192"/>
-        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="8192"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="16384"/>
+        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="16384"/>
         <PARAMETER NAME="C_ADDRA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_RSTB" VALUE="1"/>
         <PARAMETER NAME="C_RST_PRIORITY_B" VALUE="CE"/>
@@ -12336,8 +14002,8 @@
         <PARAMETER NAME="C_WRITE_MODE_B" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_B" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_B" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="8192"/>
-        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="8192"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="16384"/>
+        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="16384"/>
         <PARAMETER NAME="C_ADDRB_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_B" VALUE="0"/>
@@ -12361,7 +14027,7 @@
         <PARAMETER NAME="C_EN_SHUTDOWN_PIN" VALUE="0"/>
         <PARAMETER NAME="C_EN_SAFETY_CKT" VALUE="1"/>
         <PARAMETER NAME="C_DISABLE_WARN_BHV_RANGE" VALUE="0"/>
-        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="8"/>
+        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="16"/>
         <PARAMETER NAME="C_COUNT_18K_BRAM" VALUE="0"/>
         <PARAMETER NAME="C_EST_POWER_SUMMARY" VALUE="Estimated Power for IP     :     20.388 mW"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_lmb_bram_0"/>
@@ -12390,7 +14056,7 @@
         <PARAMETER NAME="Primitive" VALUE="8kx2"/>
         <PARAMETER NAME="Assume_Synchronous_Clk" VALUE="false"/>
         <PARAMETER NAME="Write_Width_A" VALUE="32"/>
-        <PARAMETER NAME="Write_Depth_A" VALUE="8192"/>
+        <PARAMETER NAME="Write_Depth_A" VALUE="16384"/>
         <PARAMETER NAME="Read_Width_A" VALUE="32"/>
         <PARAMETER NAME="Operating_Mode_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="Enable_A" VALUE="Use_ENA_Pin"/>
@@ -12512,7 +14178,7 @@
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="microblaze_0_local_memory_dlmb_bram_if_cntlr_BRAM_PORT" NAME="BRAM_PORTA" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="65536"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
@@ -12528,7 +14194,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="microblaze_0_local_memory_ilmb_bram_if_cntlr_BRAM_PORT" NAME="BRAM_PORTB" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="65536"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
@@ -12646,6 +14312,10 @@
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M16_ARESETN"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M17_ARESETN"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M18_ARESETN"/>
+            <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_aresetn"/>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M19_ARESETN"/>
+            <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_aresetn"/>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M20_ARESETN"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

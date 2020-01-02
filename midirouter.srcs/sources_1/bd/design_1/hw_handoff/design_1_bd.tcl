@@ -239,6 +239,7 @@ proc create_root_design { parentCell } {
 
 
   # Create interface ports
+  set qspi_flash [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 qspi_flash ]
   set usb_uart [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 usb_uart ]
 
   # Create ports
@@ -286,6 +287,16 @@ proc create_root_design { parentCell } {
   set tx_13 [ create_bd_port -dir O tx_13 ]
   set tx_14 [ create_bd_port -dir O tx_14 ]
   set tx_15 [ create_bd_port -dir O tx_15 ]
+
+  # Create instance: axi_intc_0, and set properties
+  set axi_intc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 axi_intc_0 ]
+
+  # Create instance: axi_quad_spi_0, and set properties
+  set axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 axi_quad_spi_0 ]
+  set_property -dict [ list \
+   CONFIG.QSPI_BOARD_INTERFACE {qspi_flash} \
+   CONFIG.USE_BOARD_FLOW {true} \
+ ] $axi_quad_spi_0
 
   # Create instance: axi_uartlite_0, and set properties
   set axi_uartlite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_0 ]
@@ -436,7 +447,7 @@ proc create_root_design { parentCell } {
   # Create instance: microblaze_0_axi_periph, and set properties
   set microblaze_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 microblaze_0_axi_periph ]
   set_property -dict [ list \
-   CONFIG.NUM_MI {19} \
+   CONFIG.NUM_MI {21} \
  ] $microblaze_0_axi_periph
 
   # Create instance: microblaze_0_local_memory
@@ -450,6 +461,8 @@ proc create_root_design { parentCell } {
  ] $rst_clk_wiz_1_100M
 
   # Create interface connections
+  connect_bd_intf_net -intf_net axi_intc_0_interrupt [get_bd_intf_pins axi_intc_0/interrupt] [get_bd_intf_pins microblaze_0/INTERRUPT]
+  connect_bd_intf_net -intf_net axi_quad_spi_0_SPI_0 [get_bd_intf_ports qspi_flash] [get_bd_intf_pins axi_quad_spi_0/SPI_0]
   connect_bd_intf_net -intf_net axi_uartlite_0_UART [get_bd_intf_ports usb_uart] [get_bd_intf_pins axi_uartlite_0/UART]
   connect_bd_intf_net -intf_net microblaze_0_axi_dp [get_bd_intf_pins microblaze_0/M_AXI_DP] [get_bd_intf_pins microblaze_0_axi_periph/S00_AXI]
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M01_AXI [get_bd_intf_pins led_shift_594_driver_0/S00_AXI] [get_bd_intf_pins microblaze_0_axi_periph/M01_AXI]
@@ -470,12 +483,15 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M16_AXI [get_bd_intf_pins axi_uartlite_14/S_AXI] [get_bd_intf_pins microblaze_0_axi_periph/M16_AXI]
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M17_AXI [get_bd_intf_pins axi_uartlite_15/S_AXI] [get_bd_intf_pins microblaze_0_axi_periph/M17_AXI]
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M18_AXI [get_bd_intf_pins axi_uartlite_16/S_AXI] [get_bd_intf_pins microblaze_0_axi_periph/M18_AXI]
+  connect_bd_intf_net -intf_net microblaze_0_axi_periph_M19_AXI [get_bd_intf_pins axi_intc_0/s_axi] [get_bd_intf_pins microblaze_0_axi_periph/M19_AXI]
+  connect_bd_intf_net -intf_net microblaze_0_axi_periph_M20_AXI [get_bd_intf_pins axi_quad_spi_0/AXI_LITE] [get_bd_intf_pins microblaze_0_axi_periph/M20_AXI]
   connect_bd_intf_net -intf_net microblaze_0_debug [get_bd_intf_pins mdm_1/MBDEBUG_0] [get_bd_intf_pins microblaze_0/DEBUG]
   connect_bd_intf_net -intf_net microblaze_0_dlmb_1 [get_bd_intf_pins microblaze_0/DLMB] [get_bd_intf_pins microblaze_0_local_memory/DLMB]
   connect_bd_intf_net -intf_net microblaze_0_ilmb_1 [get_bd_intf_pins microblaze_0/ILMB] [get_bd_intf_pins microblaze_0_local_memory/ILMB]
   connect_bd_intf_net -intf_net microblaze_0_mdm_axi [get_bd_intf_pins mdm_1/S_AXI] [get_bd_intf_pins microblaze_0_axi_periph/M00_AXI]
 
   # Create port connections
+  connect_bd_net -net axi_quad_spi_0_ip2intc_irpt [get_bd_pins axi_intc_0/intr] [get_bd_pins axi_quad_spi_0/ip2intc_irpt]
   connect_bd_net -net axi_uartlite_10_tx [get_bd_ports tx_9] [get_bd_pins axi_uartlite_10/tx]
   connect_bd_net -net axi_uartlite_11_tx [get_bd_ports tx_10] [get_bd_pins axi_uartlite_11/tx]
   connect_bd_net -net axi_uartlite_12_tx [get_bd_ports tx_11] [get_bd_pins axi_uartlite_12/tx]
@@ -497,12 +513,12 @@ proc create_root_design { parentCell } {
   connect_bd_net -net led_shift_594_driver_0_SCK [get_bd_ports SCK_0] [get_bd_pins led_shift_594_driver_0/SCK]
   connect_bd_net -net led_shift_594_driver_0_SER [get_bd_ports SER_0] [get_bd_pins led_shift_594_driver_0/SER]
   connect_bd_net -net mdm_1_debug_sys_rst [get_bd_pins mdm_1/Debug_SYS_Rst] [get_bd_pins rst_clk_wiz_1_100M/mb_debug_sys_rst]
-  connect_bd_net -net microblaze_0_Clk [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins axi_uartlite_1/s_axi_aclk] [get_bd_pins axi_uartlite_10/s_axi_aclk] [get_bd_pins axi_uartlite_11/s_axi_aclk] [get_bd_pins axi_uartlite_12/s_axi_aclk] [get_bd_pins axi_uartlite_13/s_axi_aclk] [get_bd_pins axi_uartlite_14/s_axi_aclk] [get_bd_pins axi_uartlite_15/s_axi_aclk] [get_bd_pins axi_uartlite_16/s_axi_aclk] [get_bd_pins axi_uartlite_2/s_axi_aclk] [get_bd_pins axi_uartlite_3/s_axi_aclk] [get_bd_pins axi_uartlite_4/s_axi_aclk] [get_bd_pins axi_uartlite_5/s_axi_aclk] [get_bd_pins axi_uartlite_6/s_axi_aclk] [get_bd_pins axi_uartlite_7/s_axi_aclk] [get_bd_pins axi_uartlite_8/s_axi_aclk] [get_bd_pins axi_uartlite_9/s_axi_aclk] [get_bd_pins clk_wiz_1/clk_out1] [get_bd_pins led_shift_594_driver_0/s00_axi_aclk] [get_bd_pins mdm_1/S_AXI_ACLK] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/M02_ACLK] [get_bd_pins microblaze_0_axi_periph/M03_ACLK] [get_bd_pins microblaze_0_axi_periph/M04_ACLK] [get_bd_pins microblaze_0_axi_periph/M05_ACLK] [get_bd_pins microblaze_0_axi_periph/M06_ACLK] [get_bd_pins microblaze_0_axi_periph/M07_ACLK] [get_bd_pins microblaze_0_axi_periph/M08_ACLK] [get_bd_pins microblaze_0_axi_periph/M09_ACLK] [get_bd_pins microblaze_0_axi_periph/M10_ACLK] [get_bd_pins microblaze_0_axi_periph/M11_ACLK] [get_bd_pins microblaze_0_axi_periph/M12_ACLK] [get_bd_pins microblaze_0_axi_periph/M13_ACLK] [get_bd_pins microblaze_0_axi_periph/M14_ACLK] [get_bd_pins microblaze_0_axi_periph/M15_ACLK] [get_bd_pins microblaze_0_axi_periph/M16_ACLK] [get_bd_pins microblaze_0_axi_periph/M17_ACLK] [get_bd_pins microblaze_0_axi_periph/M18_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins rst_clk_wiz_1_100M/slowest_sync_clk]
+  connect_bd_net -net microblaze_0_Clk [get_bd_pins axi_intc_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/ext_spi_clk] [get_bd_pins axi_quad_spi_0/s_axi_aclk] [get_bd_pins axi_uartlite_0/s_axi_aclk] [get_bd_pins axi_uartlite_1/s_axi_aclk] [get_bd_pins axi_uartlite_10/s_axi_aclk] [get_bd_pins axi_uartlite_11/s_axi_aclk] [get_bd_pins axi_uartlite_12/s_axi_aclk] [get_bd_pins axi_uartlite_13/s_axi_aclk] [get_bd_pins axi_uartlite_14/s_axi_aclk] [get_bd_pins axi_uartlite_15/s_axi_aclk] [get_bd_pins axi_uartlite_16/s_axi_aclk] [get_bd_pins axi_uartlite_2/s_axi_aclk] [get_bd_pins axi_uartlite_3/s_axi_aclk] [get_bd_pins axi_uartlite_4/s_axi_aclk] [get_bd_pins axi_uartlite_5/s_axi_aclk] [get_bd_pins axi_uartlite_6/s_axi_aclk] [get_bd_pins axi_uartlite_7/s_axi_aclk] [get_bd_pins axi_uartlite_8/s_axi_aclk] [get_bd_pins axi_uartlite_9/s_axi_aclk] [get_bd_pins clk_wiz_1/clk_out1] [get_bd_pins led_shift_594_driver_0/s00_axi_aclk] [get_bd_pins mdm_1/S_AXI_ACLK] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/M02_ACLK] [get_bd_pins microblaze_0_axi_periph/M03_ACLK] [get_bd_pins microblaze_0_axi_periph/M04_ACLK] [get_bd_pins microblaze_0_axi_periph/M05_ACLK] [get_bd_pins microblaze_0_axi_periph/M06_ACLK] [get_bd_pins microblaze_0_axi_periph/M07_ACLK] [get_bd_pins microblaze_0_axi_periph/M08_ACLK] [get_bd_pins microblaze_0_axi_periph/M09_ACLK] [get_bd_pins microblaze_0_axi_periph/M10_ACLK] [get_bd_pins microblaze_0_axi_periph/M11_ACLK] [get_bd_pins microblaze_0_axi_periph/M12_ACLK] [get_bd_pins microblaze_0_axi_periph/M13_ACLK] [get_bd_pins microblaze_0_axi_periph/M14_ACLK] [get_bd_pins microblaze_0_axi_periph/M15_ACLK] [get_bd_pins microblaze_0_axi_periph/M16_ACLK] [get_bd_pins microblaze_0_axi_periph/M17_ACLK] [get_bd_pins microblaze_0_axi_periph/M18_ACLK] [get_bd_pins microblaze_0_axi_periph/M19_ACLK] [get_bd_pins microblaze_0_axi_periph/M20_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins rst_clk_wiz_1_100M/slowest_sync_clk]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_1/reset] [get_bd_pins rst_clk_wiz_1_100M/ext_reset_in]
   connect_bd_net -net rst_clk_wiz_1_100M_bus_struct_reset [get_bd_pins microblaze_0_local_memory/SYS_Rst] [get_bd_pins rst_clk_wiz_1_100M/bus_struct_reset]
   connect_bd_net -net rst_clk_wiz_1_100M_interconnect_aresetn [get_bd_pins microblaze_0_axi_periph/ARESETN] [get_bd_pins rst_clk_wiz_1_100M/interconnect_aresetn]
   connect_bd_net -net rst_clk_wiz_1_100M_mb_reset [get_bd_pins microblaze_0/Reset] [get_bd_pins rst_clk_wiz_1_100M/mb_reset]
-  connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins axi_uartlite_1/s_axi_aresetn] [get_bd_pins axi_uartlite_10/s_axi_aresetn] [get_bd_pins axi_uartlite_11/s_axi_aresetn] [get_bd_pins axi_uartlite_12/s_axi_aresetn] [get_bd_pins axi_uartlite_13/s_axi_aresetn] [get_bd_pins axi_uartlite_14/s_axi_aresetn] [get_bd_pins axi_uartlite_15/s_axi_aresetn] [get_bd_pins axi_uartlite_16/s_axi_aresetn] [get_bd_pins axi_uartlite_2/s_axi_aresetn] [get_bd_pins axi_uartlite_3/s_axi_aresetn] [get_bd_pins axi_uartlite_4/s_axi_aresetn] [get_bd_pins axi_uartlite_5/s_axi_aresetn] [get_bd_pins axi_uartlite_6/s_axi_aresetn] [get_bd_pins axi_uartlite_7/s_axi_aresetn] [get_bd_pins axi_uartlite_8/s_axi_aresetn] [get_bd_pins axi_uartlite_9/s_axi_aresetn] [get_bd_pins led_shift_594_driver_0/s00_axi_aresetn] [get_bd_pins mdm_1/S_AXI_ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph/M03_ARESETN] [get_bd_pins microblaze_0_axi_periph/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph/M10_ARESETN] [get_bd_pins microblaze_0_axi_periph/M11_ARESETN] [get_bd_pins microblaze_0_axi_periph/M12_ARESETN] [get_bd_pins microblaze_0_axi_periph/M13_ARESETN] [get_bd_pins microblaze_0_axi_periph/M14_ARESETN] [get_bd_pins microblaze_0_axi_periph/M15_ARESETN] [get_bd_pins microblaze_0_axi_periph/M16_ARESETN] [get_bd_pins microblaze_0_axi_periph/M17_ARESETN] [get_bd_pins microblaze_0_axi_periph/M18_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins rst_clk_wiz_1_100M/peripheral_aresetn]
+  connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn] [get_bd_pins axi_uartlite_0/s_axi_aresetn] [get_bd_pins axi_uartlite_1/s_axi_aresetn] [get_bd_pins axi_uartlite_10/s_axi_aresetn] [get_bd_pins axi_uartlite_11/s_axi_aresetn] [get_bd_pins axi_uartlite_12/s_axi_aresetn] [get_bd_pins axi_uartlite_13/s_axi_aresetn] [get_bd_pins axi_uartlite_14/s_axi_aresetn] [get_bd_pins axi_uartlite_15/s_axi_aresetn] [get_bd_pins axi_uartlite_16/s_axi_aresetn] [get_bd_pins axi_uartlite_2/s_axi_aresetn] [get_bd_pins axi_uartlite_3/s_axi_aresetn] [get_bd_pins axi_uartlite_4/s_axi_aresetn] [get_bd_pins axi_uartlite_5/s_axi_aresetn] [get_bd_pins axi_uartlite_6/s_axi_aresetn] [get_bd_pins axi_uartlite_7/s_axi_aresetn] [get_bd_pins axi_uartlite_8/s_axi_aresetn] [get_bd_pins axi_uartlite_9/s_axi_aresetn] [get_bd_pins led_shift_594_driver_0/s00_axi_aresetn] [get_bd_pins mdm_1/S_AXI_ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph/M03_ARESETN] [get_bd_pins microblaze_0_axi_periph/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph/M10_ARESETN] [get_bd_pins microblaze_0_axi_periph/M11_ARESETN] [get_bd_pins microblaze_0_axi_periph/M12_ARESETN] [get_bd_pins microblaze_0_axi_periph/M13_ARESETN] [get_bd_pins microblaze_0_axi_periph/M14_ARESETN] [get_bd_pins microblaze_0_axi_periph/M15_ARESETN] [get_bd_pins microblaze_0_axi_periph/M16_ARESETN] [get_bd_pins microblaze_0_axi_periph/M17_ARESETN] [get_bd_pins microblaze_0_axi_periph/M18_ARESETN] [get_bd_pins microblaze_0_axi_periph/M19_ARESETN] [get_bd_pins microblaze_0_axi_periph/M20_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins rst_clk_wiz_1_100M/peripheral_aresetn]
   connect_bd_net -net rx_0_1 [get_bd_ports rx_0] [get_bd_pins axi_uartlite_1/rx]
   connect_bd_net -net rx_10_1 [get_bd_ports rx_10] [get_bd_pins axi_uartlite_11/rx]
   connect_bd_net -net rx_11_1 [get_bd_ports rx_11] [get_bd_pins axi_uartlite_12/rx]
@@ -522,6 +538,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_1/clk_in1]
 
   # Create address segments
+  create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_intc_0/S_AXI/Reg] SEG_axi_intc_0_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] SEG_axi_quad_spi_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40600000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] SEG_axi_uartlite_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x406A0000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_10/S_AXI/Reg] SEG_axi_uartlite_10_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x406B0000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_11/S_AXI/Reg] SEG_axi_uartlite_11_Reg
@@ -539,8 +557,8 @@ proc create_root_design { parentCell } {
   create_bd_addr_seg -range 0x00010000 -offset 0x40670000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_7/S_AXI/Reg] SEG_axi_uartlite_7_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40680000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_8/S_AXI/Reg] SEG_axi_uartlite_8_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x40690000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_9/S_AXI/Reg] SEG_axi_uartlite_9_Reg
-  create_bd_addr_seg -range 0x00008000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] SEG_dlmb_bram_if_cntlr_Mem
-  create_bd_addr_seg -range 0x00008000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
+  create_bd_addr_seg -range 0x00010000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] SEG_dlmb_bram_if_cntlr_Mem
+  create_bd_addr_seg -range 0x00010000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
   create_bd_addr_seg -range 0x00010000 -offset 0x44A00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs led_shift_594_driver_0/S00_AXI/S00_AXI_reg] SEG_led_shift_594_driver_0_S00_AXI_reg
   create_bd_addr_seg -range 0x00001000 -offset 0x41400000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs mdm_1/S_AXI/Reg] SEG_mdm_1_Reg
 

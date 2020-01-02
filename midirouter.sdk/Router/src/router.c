@@ -5,6 +5,7 @@
 #include "xil_io.h"
 #include "led_shift_594_driver.h"
 #include "fifo.h"
+#include "config.h"
 
 #define NUM_PORTS 16
 
@@ -33,6 +34,9 @@ const u32 XUartLite_PortAddrs[] = {
 
 // These ports are really broken.
 #define DISABLE_PORTS if (i==7 || i==15) continue;
+
+// global configuration struct
+config Config;
 
 //
 // Filters
@@ -219,10 +223,23 @@ u16 ReadInputPort(int port) {
 		return 0; // active sensing, ignore
 	}
 
-	// send to all output ports for now
+	if (b & 0b01110000) { // == command
+		// process channel translations
+		for (int i=0; i<3; i++) {
+			if (Config.memory[(port*16)+4+i] != 0x00) {
+				b &= 0xf0;
+				b |= Config.memory[(port*16)+4+i] & 0xf;
+			} else {
+				break;
+			}
+		}
+	}
+
+	// a bitmask for our ports to forward to
+	u16 fwd = (Config.memory[(port*16)+0]<<8) + Config.memory[(port*16)+1];
 	for (int i=0;i<NUM_PORTS;i++) {
 		DISABLE_PORTS
-		if (port!=i) { // forward to all ports but ourself for now
+		if (fwd & (1<<i)) {
 			QueueOutputByte(port, i, b);
 		}
 	}
@@ -252,6 +269,13 @@ int main()
 
     // Light up all LEDs once to indicate we are running.
     ACTIVITY(65535, 65535);
+
+    config_init(&Config);
+    // disable for now, use defaults
+    // config_read(&Config);
+    config_debug(&Config);
+
+    xil_printf("Ready.\r\n");
 
     // loop
     while (1) {

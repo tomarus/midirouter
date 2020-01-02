@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-//Date        : Sat Dec 28 20:41:14 2019
+//Date        : Wed Jan  1 20:44:36 2020
 //Host        : debian running 64-bit Debian GNU/Linux 9.11 (stretch)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -13,6 +13,11 @@ module design_1_wrapper
    (RCK_0,
     SCK_0,
     SER_0,
+    qspi_flash_io0_io,
+    qspi_flash_io1_io,
+    qspi_flash_io2_io,
+    qspi_flash_io3_io,
+    qspi_flash_ss_io,
     reset,
     rx_0,
     rx_1,
@@ -52,6 +57,11 @@ module design_1_wrapper
   output RCK_0;
   output SCK_0;
   output SER_0;
+  inout qspi_flash_io0_io;
+  inout qspi_flash_io1_io;
+  inout qspi_flash_io2_io;
+  inout qspi_flash_io3_io;
+  inout qspi_flash_ss_io;
   input reset;
   input rx_0;
   input rx_1;
@@ -92,6 +102,26 @@ module design_1_wrapper
   wire RCK_0;
   wire SCK_0;
   wire SER_0;
+  wire qspi_flash_io0_i;
+  wire qspi_flash_io0_io;
+  wire qspi_flash_io0_o;
+  wire qspi_flash_io0_t;
+  wire qspi_flash_io1_i;
+  wire qspi_flash_io1_io;
+  wire qspi_flash_io1_o;
+  wire qspi_flash_io1_t;
+  wire qspi_flash_io2_i;
+  wire qspi_flash_io2_io;
+  wire qspi_flash_io2_o;
+  wire qspi_flash_io2_t;
+  wire qspi_flash_io3_i;
+  wire qspi_flash_io3_io;
+  wire qspi_flash_io3_o;
+  wire qspi_flash_io3_t;
+  wire qspi_flash_ss_i;
+  wire qspi_flash_ss_io;
+  wire qspi_flash_ss_o;
+  wire qspi_flash_ss_t;
   wire reset;
   wire rx_0;
   wire rx_1;
@@ -133,6 +163,21 @@ module design_1_wrapper
        (.RCK_0(RCK_0),
         .SCK_0(SCK_0),
         .SER_0(SER_0),
+        .qspi_flash_io0_i(qspi_flash_io0_i),
+        .qspi_flash_io0_o(qspi_flash_io0_o),
+        .qspi_flash_io0_t(qspi_flash_io0_t),
+        .qspi_flash_io1_i(qspi_flash_io1_i),
+        .qspi_flash_io1_o(qspi_flash_io1_o),
+        .qspi_flash_io1_t(qspi_flash_io1_t),
+        .qspi_flash_io2_i(qspi_flash_io2_i),
+        .qspi_flash_io2_o(qspi_flash_io2_o),
+        .qspi_flash_io2_t(qspi_flash_io2_t),
+        .qspi_flash_io3_i(qspi_flash_io3_i),
+        .qspi_flash_io3_o(qspi_flash_io3_o),
+        .qspi_flash_io3_t(qspi_flash_io3_t),
+        .qspi_flash_ss_i(qspi_flash_ss_i),
+        .qspi_flash_ss_o(qspi_flash_ss_o),
+        .qspi_flash_ss_t(qspi_flash_ss_t),
         .reset(reset),
         .rx_0(rx_0),
         .rx_1(rx_1),
@@ -169,4 +214,29 @@ module design_1_wrapper
         .tx_9(tx_9),
         .usb_uart_rxd(usb_uart_rxd),
         .usb_uart_txd(usb_uart_txd));
+  IOBUF qspi_flash_io0_iobuf
+       (.I(qspi_flash_io0_o),
+        .IO(qspi_flash_io0_io),
+        .O(qspi_flash_io0_i),
+        .T(qspi_flash_io0_t));
+  IOBUF qspi_flash_io1_iobuf
+       (.I(qspi_flash_io1_o),
+        .IO(qspi_flash_io1_io),
+        .O(qspi_flash_io1_i),
+        .T(qspi_flash_io1_t));
+  IOBUF qspi_flash_io2_iobuf
+       (.I(qspi_flash_io2_o),
+        .IO(qspi_flash_io2_io),
+        .O(qspi_flash_io2_i),
+        .T(qspi_flash_io2_t));
+  IOBUF qspi_flash_io3_iobuf
+       (.I(qspi_flash_io3_o),
+        .IO(qspi_flash_io3_io),
+        .O(qspi_flash_io3_i),
+        .T(qspi_flash_io3_t));
+  IOBUF qspi_flash_ss_iobuf
+       (.I(qspi_flash_ss_o),
+        .IO(qspi_flash_ss_io),
+        .O(qspi_flash_ss_i),
+        .T(qspi_flash_ss_t));
 endmodule
