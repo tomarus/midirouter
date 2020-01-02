@@ -39,26 +39,6 @@ const u32 XUartLite_PortAddrs[] = {
 config Config;
 
 //
-// Filters
-//
-
-enum filter_kind {
-	FILTER_FORWARD,				// data1 + data2 = bit mask ports for forward to (REQUIRED)
-	FILTER_MIDI_CHANGE_CHANNEL,	// data1 = src chan, data2 = dst chan
-	FILTER_MIDI_TRANSPOSE,	    // data1 = src chan, data2 = +/- note offset (0-base = 64)
-	FILTER_MIDI_CHANGE_CC		// data1 = src cc, data2 = dst cc
-};
-
-typedef struct {
-	u8 input_port;
-	u8 kind;
-	u8 data1;
-	u8 data2;
-} filter;
-
-filter filters[NUM_PORTS*16] = {};
-
-//
 // Output Merging
 //
 
@@ -264,9 +244,12 @@ void InitProcessSysex(int srcport) {
 	}
 }
 
-// ProcessSysex is called evey loop
+// ProcessSysex is called every loop
+// XXX: There can only be 1 port doing sysex processing right now.
+// If this ever gives problems, rewrite this to input-port based
+// processing using separate buffers etc.
 void ProcessSysex() {
-	// return systex commands only on the source port
+	// return sysex commands only on the source port
 	fifo *f = &outports[SysexPort].fifo[SysexPort];
 
 	switch (SPState) {
@@ -276,9 +259,9 @@ void ProcessSysex() {
 		if (!fifo_is_full(f)) {
 			u8 b = Config.memory[SPConfigPos/2];
 			if (SPConfigPos&1) {
-				b &= 0x7f; // lsb
+				b &= 0x7f; // LSB
 			} else {
-				b >>= 7; // msb (either 1 or 0)
+				b >>= 7; // MSB (either 1 or 0)
 			}
 			fifo_add_byte(f, b);
 
@@ -369,11 +352,6 @@ int main()
     // Reset all output ports
     for (int i=0; i<NUM_PORTS; i++) {
     	bzero(&outports[i], sizeof(outport));
-    }
-
-    // Reset all intput ports
-    for (int i=0; i<NUM_PORTS; i++) {
-    	bzero(&filters[i], sizeof(filter));
     }
 
     // Light up all LEDs once to indicate we are running.
