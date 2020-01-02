@@ -43,7 +43,7 @@ func main() {
 	optD := flag.String("d", "", "Device to use")
 	flag.Parse()
 	command := flag.Args()
-	if (!*optL && *optD == "") || len(command) == 0 {
+	if !*optL && *optD == "" {
 		flag.Usage()
 		os.Exit(0)
 	}
@@ -87,8 +87,10 @@ func main() {
 	switch command[0] {
 	case "info":
 		sxInfo(device, pktCh)
+	case "dump":
+		sxDump(device, pktCh)
 	default:
-		fmt.Printf("Supported commands: info\n")
+		fmt.Printf("Supported commands: info, dump\n")
 	}
 }
 
@@ -102,16 +104,46 @@ func sxInfo(device *midi.Device, pktCh <-chan midiPacket) {
 	var reqConfigDump = []byte{0xf0, 0x7d, 0x2a, 0x4d, 0x00, 0xf7}
 	response := sysex(device, pktCh, reqConfigDump)
 	log.Printf("RAW Response: % #x", response)
-	if len(response) != 9 || !valid(response) {
-		log.Printf("Invalid response.")
+	if len(response) != 7 || !valid(response) {
+		log.Printf("Invalid response (%d).", len(response))
 		return
 	}
 	log.Printf("Device-ID: %#x", response[3])
 	log.Printf("Version: %d", response[4])
 	// log.Printf("In-Ports: %d Out-Ports: %d", response[5]+1, response[6]+1)
-	log.Printf("In-Ports: %d", response[5]+1)
-	log.Printf("Out-Ports: %d", response[6]+1)
-	log.Printf("Running BPM: %d", int(response[7])<<8|int(response[8]))
+	log.Printf("In-Ports: %d", response[5])
+	log.Printf("Out-Ports: %d", response[6])
+}
+
+func sxDump(device *midi.Device, pktCh <-chan midiPacket) {
+	//  response = 0xf0, 0x7d, 0x2a, 0x4d, 0x41, // 0x41 command response
+	//		0x200 x byte, msb/lsb 7 bit,
+	//      0xf7
+	var reqConfigDump = []byte{0xf0, 0x7d, 0x2a, 0x4d, 0x01, 0xf7}
+	response := sysex(device, pktCh, reqConfigDump)
+	if len(response) != 516 {
+		log.Printf("invalid response len: %d", len(response))
+		log.Printf("RAW Response: % #x", response)
+		return
+	}
+
+	var config [256]byte
+	for i := 0; i < 512; i += 2 {
+		// combine msb + lsb into 8bit byte
+		x := response[4+i] << 7
+		x += response[4+i+1]
+		config[i/2] = x
+	}
+
+	// dump config, should be the same as printed on fpga startup
+	for i := 0; i < 256; i += 16 {
+		log.Printf(" 0x%02x: %02x %02x %02x %02x  %02x %02x %02x %02x  %02x %02x %02x %02x  %02x %02x %02x %02x", i,
+			config[i+0], config[i+1], config[i+2], config[i+3],
+			config[i+4], config[i+5], config[i+6], config[i+7],
+			config[i+8], config[i+9], config[i+10], config[i+11],
+			config[i+12], config[i+13], config[i+14], config[i+15])
+
+	}
 }
 
 func valid(in []byte) bool {

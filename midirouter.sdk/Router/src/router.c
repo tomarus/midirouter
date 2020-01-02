@@ -213,6 +213,95 @@ u16 ProcessOutputPort(int port) {
 // Input Processing
 //
 
+u8 SysexIndex = 0;
+u8 SysexPort = 0;
+u8 SysexBuffer[64];
+
+int SPConfigPos = 0;
+u8 SPState = 0; // SP = Sysex Processing
+enum spstate {
+	SP_NONE,
+	SP_CONFIGDUMP,
+	SP_CONFIGDUMPEND,
+};
+
+// InitProcessSysex is called after we receive a sysex-end marker.
+void InitProcessSysex(int srcport) {
+	SysexPort = srcport;
+
+	// return systex commands only on the source port
+	fifo *f = &outports[SysexPort].fifo[SysexPort];
+
+	switch(SysexBuffer[3]) {
+	case 0x00: // version command
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x40); // resp 0x40
+		fifo_add_byte(f, 0x01); // version 1
+		fifo_add_byte(f, NUM_PORTS); // nr in ports
+		fifo_add_byte(f, NUM_PORTS); // nr out ports
+		fifo_add_byte(f, 0xf7);
+		if (fifo_is_full(f)) {
+			xil_printf("FIFO sysex overrun from port %d\r\n", SysexPort);
+		}
+		SPState = SP_NONE;
+		break;
+	case 0x01: // config dump command
+		SPState = SP_CONFIGDUMP;
+		SPConfigPos = 0;
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x41); // resp 0x41
+		break;
+	default:
+		SPState = SP_NONE;
+		xil_printf("sysex: received unknown command 0x%02x\r\n", SysexBuffer[3]);
+		break;
+	}
+}
+
+// ProcessSysex is called evey loop
+void ProcessSysex() {
+	// return systex commands only on the source port
+	fifo *f = &outports[SysexPort].fifo[SysexPort];
+
+	switch (SPState) {
+	case SP_NONE:
+		break;
+	case SP_CONFIGDUMP:
+		if (!fifo_is_full(f)) {
+			u8 b = Config.memory[SPConfigPos/2];
+			if (SPConfigPos&1) {
+				b &= 0x7f; // lsb
+			} else {
+				b >>= 7; // msb (either 1 or 0)
+			}
+			fifo_add_byte(f, b);
+
+			SPConfigPos++;
+			if (SPConfigPos == 0x200) {
+				SPState = SP_CONFIGDUMPEND;
+			}
+		}
+		break;
+	case SP_CONFIGDUMPEND:
+		if (!fifo_is_full(f)) {
+			fifo_add_byte(f, 0xf7);
+			SPState = SP_NONE;
+		}
+	}
+}
+
+u8 SysexState = 0;
+enum SysexState {
+	SYSEX_NONE,
+	SYSEX_RECEIVING,
+};
+
 u16 ReadInputPort(int port) {
 	if (XUartLite_IsReceiveEmpty(XUartLite_PortAddrs[port])) {
 		return 0;
@@ -233,6 +322,26 @@ u16 ReadInputPort(int port) {
 				break;
 			}
 		}
+	}
+
+	switch (b) {
+	case 0xf0: // start sysex
+		SysexIndex = 0;
+		SysexPort = port;
+		SysexState = SYSEX_RECEIVING;
+		break;
+	case 0xf7: // end sysex
+		if (SysexBuffer[0] == 0x7d && SysexBuffer[1] == 0x2a && SysexBuffer[2] == 0x4d) {
+			InitProcessSysex(port);
+		}
+		SysexState = SYSEX_NONE;
+		break;
+	default:
+		if (SysexState == SYSEX_RECEIVING && SysexPort == port) {
+			SysexBuffer[SysexIndex] = b;
+			SysexIndex++;
+		}
+		break;
 	}
 
 	// a bitmask for our ports to forward to
@@ -290,6 +399,7 @@ int main()
     		}
     	}
    		ACTIVITY(inact, outact);
+   		ProcessSysex();
     }
 
     // unreachable
