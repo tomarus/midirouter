@@ -14,30 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L Isolator:PC847 U1
-U 1 1 5BD37F55
-P 3500 1150
-F 0 "U1" H 3500 1475 50  0000 C CNN
-F 1 "PC847" H 3500 1384 50  0000 C CNN
-F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 3300 950 50  0001 L CIN
-F 3 "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf" H 3500 1150 50  0001 L CNN
-	1    3500 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4001 D1
-U 1 1 5BD39131
-P 3100 1150
-F 0 "D1" V 3050 1000 50  0000 L CNN
-F 1 "1N4001" V 3150 800 50  0000 L CNN
-F 2 "Diode_SMD:D_0805_2012Metric" H 3100 975 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 3100 1150 50  0001 C CNN
-	1    3100 1150
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3100 1000 3200 1000
 Wire Wire Line
 	3200 1000 3200 1050
 $Comp
@@ -73,7 +49,6 @@ F 3 "" H 4250 1050 50  0001 C CNN
 	1    4250 1050
 	0    1    1    0   
 $EndComp
-Connection ~ 3100 1000
 Text GLabel 4500 900  2    50   Input ~ 0
 MIDI_IN_1
 Text GLabel 9100 2550 1    50   Input ~ 0
@@ -558,14 +533,9 @@ Wire Wire Line
 Wire Wire Line
 	3200 1250 3200 1300
 Wire Wire Line
-	3200 1300 3100 1300
-Connection ~ 3100 1300
-Wire Wire Line
 	1750 1050 1400 1050
 Wire Wire Line
 	1450 1300 1450 1000
-Wire Wire Line
-	2900 1000 3100 1000
 Wire Wire Line
 	3850 1050 3800 1050
 Wire Wire Line
@@ -577,30 +547,6 @@ Wire Wire Line
 	3900 1050 3850 1050
 Wire Wire Line
 	4250 1050 4200 1050
-$Comp
-L Isolator:PC847 U1
-U 2 1 5D1F4399
-P 3500 2100
-F 0 "U1" H 3500 2425 50  0000 C CNN
-F 1 "PC847" H 3500 2334 50  0000 C CNN
-F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 3300 1900 50  0001 L CIN
-F 3 "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf" H 3500 2100 50  0001 L CNN
-	2    3500 2100
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4001 D2
-U 1 1 5D1F43A0
-P 3100 2100
-F 0 "D2" V 3050 1950 50  0000 L CNN
-F 1 "1N4001" V 3150 1750 50  0000 L CNN
-F 2 "Diode_SMD:D_0805_2012Metric" H 3100 1925 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 3100 2100 50  0001 C CNN
-	1    3100 2100
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3100 1950 3200 1950
 Wire Wire Line
 	3200 1950 3200 2000
 $Comp
@@ -636,7 +582,6 @@ F 3 "" H 4250 2000 50  0001 C CNN
 	1    4250 2000
 	0    1    1    0   
 $EndComp
-Connection ~ 3100 1950
 Text GLabel 4500 1850 2    50   Input ~ 0
 MIDI_IN_2
 $Comp
@@ -685,14 +630,9 @@ Wire Wire Line
 Wire Wire Line
 	3200 2200 3200 2250
 Wire Wire Line
-	3200 2250 3100 2250
-Connection ~ 3100 2250
-Wire Wire Line
 	1750 2000 1400 2000
 Wire Wire Line
 	1450 2250 1450 1950
-Wire Wire Line
-	2900 1950 3100 1950
 Wire Wire Line
 	3850 2000 3800 2000
 Wire Wire Line
@@ -704,30 +644,6 @@ Wire Wire Line
 	3900 2000 3850 2000
 Wire Wire Line
 	4250 2000 4200 2000
-$Comp
-L Isolator:PC847 U1
-U 3 1 5D1F675C
-P 3500 3050
-F 0 "U1" H 3500 3375 50  0000 C CNN
-F 1 "PC847" H 3500 3284 50  0000 C CNN
-F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 3300 2850 50  0001 L CIN
-F 3 "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf" H 3500 3050 50  0001 L CNN
-	3    3500 3050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4001 D3
-U 1 1 5D1F6763
-P 3100 3050
-F 0 "D3" V 3050 2900 50  0000 L CNN
-F 1 "1N4001" V 3150 2700 50  0000 L CNN
-F 2 "Diode_SMD:D_0805_2012Metric" H 3100 2875 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 3100 3050 50  0001 C CNN
-	1    3100 3050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3100 2900 3200 2900
 Wire Wire Line
 	3200 2900 3200 2950
 $Comp
@@ -763,7 +679,6 @@ F 3 "" H 4250 2950 50  0001 C CNN
 	1    4250 2950
 	0    1    1    0   
 $EndComp
-Connection ~ 3100 2900
 Text GLabel 4500 2800 2    50   Input ~ 0
 MIDI_IN_3
 $Comp
@@ -812,14 +727,9 @@ Wire Wire Line
 Wire Wire Line
 	3200 3150 3200 3200
 Wire Wire Line
-	3200 3200 3100 3200
-Connection ~ 3100 3200
-Wire Wire Line
 	1750 2950 1400 2950
 Wire Wire Line
 	1450 3200 1450 2900
-Wire Wire Line
-	2900 2900 3100 2900
 Wire Wire Line
 	3850 2950 3800 2950
 Wire Wire Line
@@ -831,30 +741,6 @@ Wire Wire Line
 	3900 2950 3850 2950
 Wire Wire Line
 	4250 2950 4200 2950
-$Comp
-L Isolator:PC847 U1
-U 4 1 5D1F9897
-P 3500 4000
-F 0 "U1" H 3500 4325 50  0000 C CNN
-F 1 "PC847" H 3500 4234 50  0000 C CNN
-F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 3300 3800 50  0001 L CIN
-F 3 "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf" H 3500 4000 50  0001 L CNN
-	4    3500 4000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Diode:1N4001 D4
-U 1 1 5D1F989E
-P 3100 4000
-F 0 "D4" V 3050 3850 50  0000 L CNN
-F 1 "1N4001" V 3150 3650 50  0000 L CNN
-F 2 "Diode_SMD:D_0805_2012Metric" H 3100 3825 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 3100 4000 50  0001 C CNN
-	1    3100 4000
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3100 3850 3200 3850
 Wire Wire Line
 	3200 3850 3200 3900
 $Comp
@@ -890,7 +776,6 @@ F 3 "" H 4250 3900 50  0001 C CNN
 	1    4250 3900
 	0    1    1    0   
 $EndComp
-Connection ~ 3100 3850
 Text GLabel 4500 3750 2    50   Input ~ 0
 MIDI_IN_4
 $Comp
@@ -952,14 +837,9 @@ $EndComp
 Wire Wire Line
 	3200 4100 3200 4150
 Wire Wire Line
-	3200 4150 3100 4150
-Connection ~ 3100 4150
-Wire Wire Line
 	1750 3900 1400 3900
 Wire Wire Line
 	1450 4150 1450 3850
-Wire Wire Line
-	2900 3850 3100 3850
 Wire Wire Line
 	3850 3900 3800 3900
 Wire Wire Line
@@ -1192,7 +1072,7 @@ U 1 1 5E0AEB01
 P 2350 4150
 F 0 "L1" V 2555 4150 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 4150 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 4150 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 4150 50  0001 C CNN
 F 3 "~" H 2350 4150 50  0001 C CNN
 	1    2350 4150
 	0    -1   -1   0   
@@ -1203,7 +1083,7 @@ U 1 1 5E0BED1D
 P 2350 3850
 F 0 "L8" V 2555 3850 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 3850 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 3850 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 3850 50  0001 C CNN
 F 3 "~" H 2350 3850 50  0001 C CNN
 	1    2350 3850
 	0    -1   -1   0   
@@ -1214,7 +1094,7 @@ U 1 1 5E0BED99
 P 2350 3200
 F 0 "L7" V 2555 3200 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 3200 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 3200 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 3200 50  0001 C CNN
 F 3 "~" H 2350 3200 50  0001 C CNN
 	1    2350 3200
 	0    -1   -1   0   
@@ -1225,7 +1105,7 @@ U 1 1 5E0BEE27
 P 2350 2900
 F 0 "L6" V 2555 2900 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 2900 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 2900 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 2900 50  0001 C CNN
 F 3 "~" H 2350 2900 50  0001 C CNN
 	1    2350 2900
 	0    -1   -1   0   
@@ -1236,7 +1116,7 @@ U 1 1 5E0BF321
 P 2350 2250
 F 0 "L5" V 2555 2250 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 2250 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 2250 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 2250 50  0001 C CNN
 F 3 "~" H 2350 2250 50  0001 C CNN
 	1    2350 2250
 	0    -1   -1   0   
@@ -1247,7 +1127,7 @@ U 1 1 5E0BF3B3
 P 2350 1950
 F 0 "L4" V 2555 1950 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 1950 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 1950 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 1950 50  0001 C CNN
 F 3 "~" H 2350 1950 50  0001 C CNN
 	1    2350 1950
 	0    -1   -1   0   
@@ -1258,7 +1138,7 @@ U 1 1 5E0BF435
 P 2350 1300
 F 0 "L3" V 2555 1300 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 1300 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 1300 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 1300 50  0001 C CNN
 F 3 "~" H 2350 1300 50  0001 C CNN
 	1    2350 1300
 	0    -1   -1   0   
@@ -1269,7 +1149,7 @@ U 1 1 5E0BF4C9
 P 2350 1000
 F 0 "L2" V 2555 1000 50  0000 C CNN
 F 1 "1k@100mhz" V 2464 1000 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2350 1000 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2350 1000 50  0001 C CNN
 F 3 "~" H 2350 1000 50  0001 C CNN
 	1    2350 1000
 	0    -1   -1   0   
@@ -1281,15 +1161,11 @@ Wire Wire Line
 Wire Wire Line
 	2050 1300 2250 1300
 Wire Wire Line
-	2450 1300 3100 1300
-Wire Wire Line
 	2600 1950 2450 1950
 Wire Wire Line
 	1450 1950 2250 1950
 Wire Wire Line
 	2050 2250 2250 2250
-Wire Wire Line
-	2450 2250 3100 2250
 Wire Wire Line
 	2600 2900 2450 2900
 Wire Wire Line
@@ -1297,22 +1173,18 @@ Wire Wire Line
 Wire Wire Line
 	2050 3200 2250 3200
 Wire Wire Line
-	2450 3200 3100 3200
-Wire Wire Line
 	2600 3850 2450 3850
 Wire Wire Line
 	1450 3850 2250 3850
 Wire Wire Line
 	2050 4150 2250 4150
-Wire Wire Line
-	2450 4150 3100 4150
 $Comp
 L Device:L_Core_Ferrite_Small L9
 U 1 1 5E12EFDE
 P 5950 1150
 F 0 "L9" V 6155 1150 50  0000 C CNN
 F 1 "1k@100mhz" V 6064 1150 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5950 1150 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5950 1150 50  0001 C CNN
 F 3 "~" H 5950 1150 50  0001 C CNN
 	1    5950 1150
 	0    -1   -1   0   
@@ -1323,7 +1195,7 @@ U 1 1 5E12F0FE
 P 5950 1950
 F 0 "L11" V 6155 1950 50  0000 C CNN
 F 1 "1k@100mhz" V 6064 1950 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5950 1950 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5950 1950 50  0001 C CNN
 F 3 "~" H 5950 1950 50  0001 C CNN
 	1    5950 1950
 	0    -1   -1   0   
@@ -1334,7 +1206,7 @@ U 1 1 5E12F1B2
 P 5950 2800
 F 0 "L13" V 6155 2800 50  0000 C CNN
 F 1 "1k@100mhz" V 6064 2800 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5950 2800 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5950 2800 50  0001 C CNN
 F 3 "~" H 5950 2800 50  0001 C CNN
 	1    5950 2800
 	0    -1   -1   0   
@@ -1345,7 +1217,7 @@ U 1 1 5E12F25C
 P 5950 3550
 F 0 "L15" V 6155 3550 50  0000 C CNN
 F 1 "1k@100mhz" V 6064 3550 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5950 3550 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5950 3550 50  0001 C CNN
 F 3 "~" H 5950 3550 50  0001 C CNN
 	1    5950 3550
 	0    -1   -1   0   
@@ -1356,7 +1228,7 @@ U 1 1 5E1350A7
 P 7100 1150
 F 0 "L10" V 7305 1150 50  0000 C CNN
 F 1 "1k@100mhz" V 7214 1150 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 7100 1150 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7100 1150 50  0001 C CNN
 F 3 "~" H 7100 1150 50  0001 C CNN
 	1    7100 1150
 	0    -1   -1   0   
@@ -1367,7 +1239,7 @@ U 1 1 5E135155
 P 7100 1950
 F 0 "L12" V 7305 1950 50  0000 C CNN
 F 1 "1k@100mhz" V 7214 1950 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 7100 1950 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7100 1950 50  0001 C CNN
 F 3 "~" H 7100 1950 50  0001 C CNN
 	1    7100 1950
 	0    -1   -1   0   
@@ -1378,7 +1250,7 @@ U 1 1 5E13520D
 P 7100 2800
 F 0 "L14" V 7305 2800 50  0000 C CNN
 F 1 "1k@100mhz" V 7214 2800 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 7100 2800 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7100 2800 50  0001 C CNN
 F 3 "~" H 7100 2800 50  0001 C CNN
 	1    7100 2800
 	0    -1   -1   0   
@@ -1389,7 +1261,7 @@ U 1 1 5E1352C1
 P 7100 3550
 F 0 "L16" V 7305 3550 50  0000 C CNN
 F 1 "1k@100mhz" V 7214 3550 50  0000 C CNN
-F 2 "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 7100 3550 50  0001 C CNN
+F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7100 3550 50  0001 C CNN
 F 3 "~" H 7100 3550 50  0001 C CNN
 	1    7100 3550
 	0    -1   -1   0   
@@ -1434,4 +1306,64 @@ Wire Wire Line
 	7200 3550 7250 3550
 Wire Wire Line
 	6450 3350 7250 3350
+$Comp
+L Isolator:TCMT4600 U1
+U 1 1 5E13A6D1
+P 3500 1150
+F 0 "U1" H 3500 1475 50  0000 C CNN
+F 1 "TCMT4600" H 3500 1384 50  0000 C CNN
+F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 2650 950 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/83512/tcmt1600.pdf" H 3525 1150 50  0001 L CNN
+	1    3500 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:TCMT4600 U1
+U 2 1 5E13AEDC
+P 3500 2100
+F 0 "U1" H 3500 2425 50  0000 C CNN
+F 1 "TCMT4600" H 3500 2334 50  0000 C CNN
+F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 2650 1900 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/83512/tcmt1600.pdf" H 3525 2100 50  0001 L CNN
+	2    3500 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:TCMT4600 U1
+U 3 1 5E13B445
+P 3500 3050
+F 0 "U1" H 3500 3375 50  0000 C CNN
+F 1 "TCMT4600" H 3500 3284 50  0000 C CNN
+F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 2650 2850 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/83512/tcmt1600.pdf" H 3525 3050 50  0001 L CNN
+	3    3500 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:TCMT4600 U1
+U 4 1 5E13B56B
+P 3500 4000
+F 0 "U1" H 3500 4325 50  0000 C CNN
+F 1 "TCMT4600" H 3500 4234 50  0000 C CNN
+F 2 "Package_SO:SOP-16_4.4x10.4mm_P1.27mm" H 2650 3800 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/83512/tcmt1600.pdf" H 3525 4000 50  0001 L CNN
+	4    3500 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 1000 3200 1000
+Wire Wire Line
+	2450 1300 3200 1300
+Wire Wire Line
+	2900 2900 3200 2900
+Wire Wire Line
+	2450 3200 3200 3200
+Wire Wire Line
+	2900 3850 3200 3850
+Wire Wire Line
+	2450 4150 3200 4150
+Wire Wire Line
+	2900 1950 3200 1950
+Wire Wire Line
+	2450 2250 3200 2250
 $EndSCHEMATC

@@ -60,7 +60,7 @@ module Hole(x, y, h) {
 }
 
 module Led(x, y, h) {
-    translate([x, y,-1])  cylinder(d=3.2, h=h, $fn=18); 
+    translate([x, y,-1]) cylinder(d=3.2, h=h, $fn=18); 
 }
 
 module Row(y, h) {
@@ -94,6 +94,12 @@ difference() {
     Row((panelOuterHeight/2)-11, panelThickness+2);
     Row((panelOuterHeight/2)+11, panelThickness+2);
     Row((panelOuterHeight/2)+33, panelThickness+2);
+    
+    translate([(w/2)-11, (panelOuterHeight/2)+22, -1]) cylinder(d=3.2, h=panelThickness+2, $fn=18);
+    translate([(w/2)+11, (panelOuterHeight/2)+22, -1]) cylinder(d=3.2, h=panelThickness+2, $fn=18);
+
+    translate([(w/2)-11, (panelOuterHeight/2)-22, -1]) cylinder(d=3.2, h=panelThickness+2, $fn=18);
+    translate([(w/2)+11, (panelOuterHeight/2)-22, -1]) cylinder(d=3.2, h=panelThickness+2, $fn=18);
 }
 
 
