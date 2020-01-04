@@ -281,17 +281,6 @@ F 3 "" H 5650 5050 50  0001 C CNN
 	1    5650 5050
 	0    -1   -1   0   
 $EndComp
-$Comp
-L power:+5V #PWR017
-U 1 1 5C57A074
-P 4850 5050
-F 0 "#PWR017" H 4850 4900 50  0001 C CNN
-F 1 "+5V" V 4865 5178 50  0000 L CNN
-F 2 "" H 4850 5050 50  0001 C CNN
-F 3 "" H 4850 5050 50  0001 C CNN
-	1    4850 5050
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	6450 2350 6450 4350
 Wire Wire Line
@@ -361,8 +350,6 @@ F 3 "" H 5200 5100 50  0001 C CNN
 	1    5250 3850
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4850 5050 4950 5050
 Wire Wire Line
 	5650 5050 5550 5050
 Wire Wire Line
@@ -867,4 +854,6 @@ F 3 "" H 7250 3400 50  0001 C CNN
 	1    7250 3400
 	0    1    1    0   
 $EndComp
+Text GLabel 4950 5050 0    50   Input ~ 0
+CA7_VCC
 $EndSCHEMATC
