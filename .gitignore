@@ -5,3 +5,11 @@ verilator/trace.vcd
 vivado*.jou
 vivado*.log
 vivado*.str
+kicad/*.bak
+kicad-fpboard/*.bak
+kicad/*.kicad_pcb-bak
+kicad-fpboard/*.kicad_pcb-bak
+openscad/*.dxf
+midiconfig
+midigen
+midimon
