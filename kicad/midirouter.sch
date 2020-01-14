@@ -308,18 +308,8 @@ Wire Wire Line
 Wire Wire Line
 	6450 2350 7250 2350
 NoConn ~ 8150 3950
-NoConn ~ 8150 4450
-NoConn ~ 8150 4550
 NoConn ~ 8150 4650
 NoConn ~ 8150 4750
-NoConn ~ 5550 4950
-NoConn ~ 5550 4850
-NoConn ~ 5550 4750
-NoConn ~ 5550 4650
-NoConn ~ 4950 4550
-NoConn ~ 4950 4650
-NoConn ~ 4950 4750
-NoConn ~ 4950 4850
 NoConn ~ 4950 4950
 NoConn ~ 4950 4250
 NoConn ~ 4950 4150
@@ -922,4 +912,14 @@ F 3 "" H 8750 3450 50  0001 C CNN
 	1    8750 3450
 	0    1    1    0   
 $EndComp
+NoConn ~ 8150 4550
+NoConn ~ 8150 4450
+NoConn ~ 5550 4650
+NoConn ~ 5550 4750
+NoConn ~ 5550 4850
+NoConn ~ 5550 4950
+NoConn ~ 4950 4850
+NoConn ~ 4950 4750
+NoConn ~ 4950 4650
+NoConn ~ 4950 4550
 $EndSCHEMATC

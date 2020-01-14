@@ -21,9 +21,9 @@ module eurorackPanel()
         translate([offset, 3.0, 0])
             eurorackMountHole();
         if (panelHp > 4) {
-            translate([offset + ((panelHp-3)*hp), panelOuterHeight-3.0, 0])
+            translate([offset + ((panelHp-2)*hp), panelOuterHeight-3.0, 0])
                 eurorackMountHole();
-            translate([offset + ((panelHp-3)*hp), 3.0, 0])
+            translate([offset + ((panelHp-2)*hp), 3.0, 0])
                 eurorackMountHole();
         }
     }
@@ -101,5 +101,3 @@ difference() {
     translate([(w/2)-11, (panelOuterHeight/2)-22, -1]) cylinder(d=3.2, h=panelThickness+2, $fn=18);
     translate([(w/2)+11, (panelOuterHeight/2)-22, -1]) cylinder(d=3.2, h=panelThickness+2, $fn=18);
 }
-
-
