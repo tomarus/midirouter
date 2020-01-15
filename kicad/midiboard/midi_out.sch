@@ -1,0 +1,997 @@
+EESchema Schematic File Version 4
+LIBS:midirouter-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:R R29
+U 1 1 5CEC21EE
+P 2400 3250
+F 0 "R29" V 2350 3400 50  0000 C CNN
+F 1 "10" V 2400 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3250 50  0001 C CNN
+F 3 "~" H 2400 3250 50  0001 C CNN
+	1    2400 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2250 3250 2050 3250
+$Comp
+L Device:R R30
+U 1 1 5CEC230A
+P 2400 3350
+F 0 "R30" V 2350 3500 50  0000 C CNN
+F 1 "10" V 2400 3350 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3350 50  0001 C CNN
+F 3 "~" H 2400 3350 50  0001 C CNN
+	1    2400 3350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R31
+U 1 1 5CEC2328
+P 2400 3450
+F 0 "R31" V 2350 3600 50  0000 C CNN
+F 1 "10" V 2400 3450 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3450 50  0001 C CNN
+F 3 "~" H 2400 3450 50  0001 C CNN
+	1    2400 3450
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R32
+U 1 1 5CEC2340
+P 2400 3550
+F 0 "R32" V 2350 3700 50  0000 C CNN
+F 1 "10" V 2400 3550 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3550 50  0001 C CNN
+F 3 "~" H 2400 3550 50  0001 C CNN
+	1    2400 3550
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R33
+U 1 1 5CEC235A
+P 2400 3650
+F 0 "R33" V 2350 3800 50  0000 C CNN
+F 1 "10" V 2400 3650 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3650 50  0001 C CNN
+F 3 "~" H 2400 3650 50  0001 C CNN
+	1    2400 3650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R34
+U 1 1 5CEC2376
+P 2400 3750
+F 0 "R34" V 2350 3900 50  0000 C CNN
+F 1 "10" V 2400 3750 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3750 50  0001 C CNN
+F 3 "~" H 2400 3750 50  0001 C CNN
+	1    2400 3750
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R35
+U 1 1 5CEC2394
+P 2400 3850
+F 0 "R35" V 2350 4000 50  0000 C CNN
+F 1 "10" V 2400 3850 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3850 50  0001 C CNN
+F 3 "~" H 2400 3850 50  0001 C CNN
+	1    2400 3850
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R36
+U 1 1 5CEC23B4
+P 2400 3950
+F 0 "R36" V 2350 4100 50  0000 C CNN
+F 1 "10" V 2400 3950 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 3950 50  0001 C CNN
+F 3 "~" H 2400 3950 50  0001 C CNN
+	1    2400 3950
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R37
+U 1 1 5CEC23D6
+P 2400 4050
+F 0 "R37" V 2350 4200 50  0000 C CNN
+F 1 "10" V 2400 4050 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4050 50  0001 C CNN
+F 3 "~" H 2400 4050 50  0001 C CNN
+	1    2400 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R38
+U 1 1 5CEC23FE
+P 2400 4150
+F 0 "R38" V 2350 4300 50  0000 C CNN
+F 1 "10" V 2400 4150 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4150 50  0001 C CNN
+F 3 "~" H 2400 4150 50  0001 C CNN
+	1    2400 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R39
+U 1 1 5CEC2424
+P 2400 4250
+F 0 "R39" V 2350 4400 50  0000 C CNN
+F 1 "10" V 2400 4250 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4250 50  0001 C CNN
+F 3 "~" H 2400 4250 50  0001 C CNN
+	1    2400 4250
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R40
+U 1 1 5CEC244C
+P 2400 4350
+F 0 "R40" V 2350 4500 50  0000 C CNN
+F 1 "10" V 2400 4350 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4350 50  0001 C CNN
+F 3 "~" H 2400 4350 50  0001 C CNN
+	1    2400 4350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R41
+U 1 1 5CEC2476
+P 2400 4450
+F 0 "R41" V 2350 4600 50  0000 C CNN
+F 1 "10" V 2400 4450 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4450 50  0001 C CNN
+F 3 "~" H 2400 4450 50  0001 C CNN
+	1    2400 4450
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R42
+U 1 1 5CEC24A2
+P 2400 4550
+F 0 "R42" V 2350 4700 50  0000 C CNN
+F 1 "10" V 2400 4550 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4550 50  0001 C CNN
+F 3 "~" H 2400 4550 50  0001 C CNN
+	1    2400 4550
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R43
+U 1 1 5CEC24D0
+P 2400 4650
+F 0 "R43" V 2350 4800 50  0000 C CNN
+F 1 "10" V 2400 4650 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4650 50  0001 C CNN
+F 3 "~" H 2400 4650 50  0001 C CNN
+	1    2400 4650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R44
+U 1 1 5CEC2500
+P 2400 4750
+F 0 "R44" V 2350 4900 50  0000 C CNN
+F 1 "10" V 2400 4750 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2330 4750 50  0001 C CNN
+F 3 "~" H 2400 4750 50  0001 C CNN
+	1    2400 4750
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J11
+U 1 1 5CEC288D
+P 5700 1750
+F 0 "J11" H 5700 1476 50  0000 C CNN
+F 1 "DIN-5_180degree" H 5700 1385 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 5700 1750 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 5700 1750 50  0001 C CNN
+	1    5700 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J15
+U 1 1 5CEC2B7B
+P 6800 1750
+F 0 "J15" H 6800 1476 50  0000 C CNN
+F 1 "DIN-5_180degree" H 6800 1385 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 6800 1750 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 6800 1750 50  0001 C CNN
+	1    6800 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J19
+U 1 1 5CEC2BDB
+P 7900 1750
+F 0 "J19" H 7900 1476 50  0000 C CNN
+F 1 "DIN-5_180degree" H 7900 1385 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 7900 1750 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 7900 1750 50  0001 C CNN
+	1    7900 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J23
+U 1 1 5CEC2C25
+P 9000 1750
+F 0 "J23" H 9000 1476 50  0000 C CNN
+F 1 "DIN-5_180degree" H 9000 1385 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 9000 1750 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9000 1750 50  0001 C CNN
+	1    9000 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J12
+U 1 1 5CEC2F0B
+P 5700 2900
+F 0 "J12" H 5700 2626 50  0000 C CNN
+F 1 "DIN-5_180degree" H 5700 2535 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 5700 2900 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 5700 2900 50  0001 C CNN
+	1    5700 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J16
+U 1 1 5CEC2F12
+P 6800 2900
+F 0 "J16" H 6800 2626 50  0000 C CNN
+F 1 "DIN-5_180degree" H 6800 2535 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 6800 2900 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 6800 2900 50  0001 C CNN
+	1    6800 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J20
+U 1 1 5CEC2F19
+P 7900 2900
+F 0 "J20" H 7900 2626 50  0000 C CNN
+F 1 "DIN-5_180degree" H 7900 2535 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 7900 2900 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 7900 2900 50  0001 C CNN
+	1    7900 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J24
+U 1 1 5CEC2F20
+P 9000 2900
+F 0 "J24" H 9000 2626 50  0000 C CNN
+F 1 "DIN-5_180degree" H 9000 2535 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 9000 2900 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9000 2900 50  0001 C CNN
+	1    9000 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J13
+U 1 1 5CEC2FD9
+P 5700 4000
+F 0 "J13" H 5700 3726 50  0000 C CNN
+F 1 "DIN-5_180degree" H 5700 3635 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 5700 4000 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 5700 4000 50  0001 C CNN
+	1    5700 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J17
+U 1 1 5CEC2FE0
+P 6800 4000
+F 0 "J17" H 6800 3726 50  0000 C CNN
+F 1 "DIN-5_180degree" H 6800 3635 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 6800 4000 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 6800 4000 50  0001 C CNN
+	1    6800 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J21
+U 1 1 5CEC2FE7
+P 7900 4000
+F 0 "J21" H 7900 3726 50  0000 C CNN
+F 1 "DIN-5_180degree" H 7900 3635 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 7900 4000 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 7900 4000 50  0001 C CNN
+	1    7900 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J25
+U 1 1 5CEC2FEE
+P 9000 4000
+F 0 "J25" H 9000 3726 50  0000 C CNN
+F 1 "DIN-5_180degree" H 9000 3635 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 9000 4000 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9000 4000 50  0001 C CNN
+	1    9000 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J14
+U 1 1 5CEC308F
+P 5700 5100
+F 0 "J14" H 5700 4826 50  0000 C CNN
+F 1 "DIN-5_180degree" H 5700 4735 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 5700 5100 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 5700 5100 50  0001 C CNN
+	1    5700 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J18
+U 1 1 5CEC3096
+P 6800 5100
+F 0 "J18" H 6800 4826 50  0000 C CNN
+F 1 "DIN-5_180degree" H 6800 4735 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 6800 5100 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 6800 5100 50  0001 C CNN
+	1    6800 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J22
+U 1 1 5CEC309D
+P 7900 5100
+F 0 "J22" H 7900 4826 50  0000 C CNN
+F 1 "DIN-5_180degree" H 7900 4735 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 7900 5100 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 7900 5100 50  0001 C CNN
+	1    7900 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:DIN-5_180degree J26
+U 1 1 5CEC30A4
+P 9000 5100
+F 0 "J26" H 9000 4826 50  0000 C CNN
+F 1 "DIN-5_180degree" H 9000 4735 50  0000 C CNN
+F 2 "Tomarus:CUI_SD-50BV" H 9000 5100 50  0001 C CNN
+F 3 "http://www.mouser.com/ds/2/18/40_c091_abd_e-75918.pdf" H 9000 5100 50  0001 C CNN
+	1    9000 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R45
+U 1 1 5CEC36BB
+P 5200 1650
+F 0 "R45" V 5100 1750 50  0000 C CNN
+F 1 "33" V 5200 1650 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 5130 1650 50  0001 C CNN
+F 3 "~" H 5200 1650 50  0001 C CNN
+	1    5200 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R49
+U 1 1 5CEC4EA0
+P 6300 1650
+F 0 "R49" V 6200 1750 50  0000 C CNN
+F 1 "33" V 6300 1650 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 6230 1650 50  0001 C CNN
+F 3 "~" H 6300 1650 50  0001 C CNN
+	1    6300 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R53
+U 1 1 5CEC4F08
+P 7400 1650
+F 0 "R53" V 7300 1750 50  0000 C CNN
+F 1 "33" V 7400 1650 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 7330 1650 50  0001 C CNN
+F 3 "~" H 7400 1650 50  0001 C CNN
+	1    7400 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R57
+U 1 1 5CEC4F72
+P 8500 1650
+F 0 "R57" V 8400 1750 50  0000 C CNN
+F 1 "33" V 8500 1650 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8430 1650 50  0001 C CNN
+F 3 "~" H 8500 1650 50  0001 C CNN
+	1    8500 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R58
+U 1 1 5CEC4FDE
+P 8500 2800
+F 0 "R58" V 8400 2900 50  0000 C CNN
+F 1 "33" V 8500 2800 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8430 2800 50  0001 C CNN
+F 3 "~" H 8500 2800 50  0001 C CNN
+	1    8500 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R54
+U 1 1 5CEC504C
+P 7400 2800
+F 0 "R54" V 7300 2900 50  0000 C CNN
+F 1 "33" V 7400 2800 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 7330 2800 50  0001 C CNN
+F 3 "~" H 7400 2800 50  0001 C CNN
+	1    7400 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R50
+U 1 1 5CEC50BC
+P 6300 2800
+F 0 "R50" V 6200 2900 50  0000 C CNN
+F 1 "33" V 6300 2800 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 6230 2800 50  0001 C CNN
+F 3 "~" H 6300 2800 50  0001 C CNN
+	1    6300 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R46
+U 1 1 5CEC512E
+P 5200 2800
+F 0 "R46" V 5100 2900 50  0000 C CNN
+F 1 "33" V 5200 2800 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 5130 2800 50  0001 C CNN
+F 3 "~" H 5200 2800 50  0001 C CNN
+	1    5200 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R47
+U 1 1 5CEC51A6
+P 5200 3900
+F 0 "R47" V 5100 4000 50  0000 C CNN
+F 1 "33" V 5200 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 5130 3900 50  0001 C CNN
+F 3 "~" H 5200 3900 50  0001 C CNN
+	1    5200 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R51
+U 1 1 5CEC5220
+P 6300 3900
+F 0 "R51" V 6200 4000 50  0000 C CNN
+F 1 "33" V 6300 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 6230 3900 50  0001 C CNN
+F 3 "~" H 6300 3900 50  0001 C CNN
+	1    6300 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R55
+U 1 1 5CEC5298
+P 7400 3900
+F 0 "R55" V 7300 4000 50  0000 C CNN
+F 1 "33" V 7400 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 7330 3900 50  0001 C CNN
+F 3 "~" H 7400 3900 50  0001 C CNN
+	1    7400 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R59
+U 1 1 5CEC5316
+P 8500 3900
+F 0 "R59" V 8400 4000 50  0000 C CNN
+F 1 "33" V 8500 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8430 3900 50  0001 C CNN
+F 3 "~" H 8500 3900 50  0001 C CNN
+	1    8500 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R60
+U 1 1 5CEC5B4E
+P 8500 5000
+F 0 "R60" V 8400 5100 50  0000 C CNN
+F 1 "33" V 8500 5000 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8430 5000 50  0001 C CNN
+F 3 "~" H 8500 5000 50  0001 C CNN
+	1    8500 5000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R56
+U 1 1 5CEC5BCC
+P 7400 5000
+F 0 "R56" V 7300 5100 50  0000 C CNN
+F 1 "33" V 7400 5000 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 7330 5000 50  0001 C CNN
+F 3 "~" H 7400 5000 50  0001 C CNN
+	1    7400 5000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R52
+U 1 1 5CEC5C4C
+P 6300 5000
+F 0 "R52" V 6200 5100 50  0000 C CNN
+F 1 "33" V 6300 5000 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 6230 5000 50  0001 C CNN
+F 3 "~" H 6300 5000 50  0001 C CNN
+	1    6300 5000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R48
+U 1 1 5CEC5CCE
+P 5200 5000
+F 0 "R48" V 5100 5100 50  0000 C CNN
+F 1 "33" V 5200 5000 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 5130 5000 50  0001 C CNN
+F 3 "~" H 5200 5000 50  0001 C CNN
+	1    5200 5000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6150 1650 6150 1300
+Wire Wire Line
+	6150 1300 7250 1300
+Wire Wire Line
+	7250 1300 7250 1650
+Wire Wire Line
+	8350 1300 8350 1650
+Wire Wire Line
+	7250 1300 8350 1300
+Connection ~ 7250 1300
+Connection ~ 8350 1650
+Connection ~ 7250 1650
+Connection ~ 6150 1650
+Wire Wire Line
+	5050 1650 5050 1300
+Wire Wire Line
+	5050 1300 6150 1300
+Connection ~ 5050 1650
+Connection ~ 6150 1300
+Wire Wire Line
+	5050 1100 5050 1300
+Connection ~ 5050 1300
+Wire Wire Line
+	5050 2800 5050 3900
+Wire Wire Line
+	5050 3900 5050 5000
+Connection ~ 5050 3900
+Wire Wire Line
+	6150 5000 6150 3900
+Wire Wire Line
+	6150 2800 6150 3900
+Connection ~ 6150 3900
+Wire Wire Line
+	7250 3900 7250 2800
+Wire Wire Line
+	7250 3900 7250 5000
+Connection ~ 7250 3900
+Wire Wire Line
+	8350 5000 8350 3900
+Wire Wire Line
+	8350 3900 8350 2800
+Connection ~ 8350 3900
+Wire Wire Line
+	7600 2800 7550 2800
+Wire Wire Line
+	7550 3900 7600 3900
+Wire Wire Line
+	7600 5000 7550 5000
+Wire Wire Line
+	8700 5000 8650 5000
+Wire Wire Line
+	6500 5000 6450 5000
+Wire Wire Line
+	5400 5000 5350 5000
+Wire Wire Line
+	5350 3900 5400 3900
+Wire Wire Line
+	5350 2800 5400 2800
+Wire Wire Line
+	6450 2800 6500 2800
+Wire Wire Line
+	8650 2800 8700 2800
+Wire Wire Line
+	8700 3900 8650 3900
+Wire Wire Line
+	6500 3900 6450 3900
+Wire Wire Line
+	8700 1650 8650 1650
+Wire Wire Line
+	7600 1650 7550 1650
+Wire Wire Line
+	6500 1650 6450 1650
+Wire Wire Line
+	5400 1650 5350 1650
+Wire Wire Line
+	6000 1650 6100 1650
+Wire Wire Line
+	6100 1650 6100 2250
+Wire Wire Line
+	6100 2250 3300 2250
+Wire Wire Line
+	7100 1650 7200 1650
+Wire Wire Line
+	7200 1650 7200 2300
+Wire Wire Line
+	7200 2300 3350 2300
+Wire Wire Line
+	3400 2350 8300 2350
+Wire Wire Line
+	8300 2350 8300 1650
+Wire Wire Line
+	8300 1650 8200 1650
+Wire Wire Line
+	9300 1650 9400 1650
+Wire Wire Line
+	9400 1650 9400 2400
+Wire Wire Line
+	9400 2400 3450 2400
+Wire Wire Line
+	6000 2800 6100 2800
+Wire Wire Line
+	6100 2800 6100 3350
+Wire Wire Line
+	7200 3400 7200 2800
+Wire Wire Line
+	7200 2800 7100 2800
+Wire Wire Line
+	8200 2800 8300 2800
+Wire Wire Line
+	8300 2800 8300 3450
+Wire Wire Line
+	9400 3500 9400 2800
+Wire Wire Line
+	9400 2800 9300 2800
+Wire Wire Line
+	6000 3900 6100 3900
+Wire Wire Line
+	6100 3900 6100 4450
+Wire Wire Line
+	7200 4500 7200 3900
+Wire Wire Line
+	7200 3900 7100 3900
+Wire Wire Line
+	8200 3900 8300 3900
+Wire Wire Line
+	8300 3900 8300 4550
+Wire Wire Line
+	9400 4600 9400 3900
+Wire Wire Line
+	9400 3900 9300 3900
+Wire Wire Line
+	6000 5000 6100 5000
+Wire Wire Line
+	6100 5000 6100 5550
+Wire Wire Line
+	7200 5600 7200 5000
+Wire Wire Line
+	7200 5000 7100 5000
+Wire Wire Line
+	8200 5000 8300 5000
+Wire Wire Line
+	8300 5000 8300 5650
+Wire Wire Line
+	9400 5700 9400 5000
+Wire Wire Line
+	9400 5000 9300 5000
+Wire Wire Line
+	5700 1450 5700 1400
+Wire Wire Line
+	5700 1400 6800 1400
+Wire Wire Line
+	6800 1400 6800 1450
+Wire Wire Line
+	6800 1400 7900 1400
+Wire Wire Line
+	7900 1400 7900 1450
+Connection ~ 6800 1400
+Wire Wire Line
+	7900 1400 9000 1400
+Wire Wire Line
+	9000 1400 9000 1450
+Connection ~ 7900 1400
+Wire Wire Line
+	9000 1400 9450 1400
+Connection ~ 9000 1400
+Wire Wire Line
+	5700 2600 5700 2550
+Wire Wire Line
+	5700 2550 6800 2550
+Wire Wire Line
+	6800 2550 6800 2600
+Wire Wire Line
+	7900 2550 7900 2600
+Wire Wire Line
+	7900 2550 9000 2550
+Wire Wire Line
+	9000 2550 9000 2600
+Connection ~ 7900 2550
+Wire Wire Line
+	9000 2550 9450 2550
+Connection ~ 9000 2550
+Wire Wire Line
+	5700 3700 5700 3650
+Wire Wire Line
+	5700 3650 6800 3650
+Wire Wire Line
+	6800 3650 6800 3700
+Wire Wire Line
+	7900 3650 7900 3700
+Wire Wire Line
+	6800 3650 7900 3650
+Connection ~ 6800 3650
+Wire Wire Line
+	7900 3650 9000 3650
+Wire Wire Line
+	9000 3650 9000 3700
+Connection ~ 7900 3650
+Wire Wire Line
+	9000 3650 9450 3650
+Wire Wire Line
+	9450 3650 9450 2550
+Connection ~ 9000 3650
+Wire Wire Line
+	5700 4800 5700 4750
+Wire Wire Line
+	5700 4750 6800 4750
+Wire Wire Line
+	6800 4750 6800 4800
+Wire Wire Line
+	6800 4750 7900 4750
+Wire Wire Line
+	7900 4750 7900 4800
+Connection ~ 6800 4750
+Wire Wire Line
+	7900 4750 9000 4750
+Wire Wire Line
+	9000 4750 9000 4800
+Connection ~ 7900 4750
+Wire Wire Line
+	9000 4750 9450 4750
+Wire Wire Line
+	9450 4750 9450 3650
+Connection ~ 9000 4750
+Connection ~ 9450 3650
+Wire Wire Line
+	5050 1650 5050 2800
+Connection ~ 5050 2800
+Wire Wire Line
+	6150 1650 6150 2800
+Connection ~ 6150 2800
+Wire Wire Line
+	7250 1650 7250 2800
+Connection ~ 7250 2800
+Wire Wire Line
+	6800 2550 7900 2550
+Connection ~ 6800 2550
+Wire Wire Line
+	8350 1650 8350 2800
+Connection ~ 8350 2800
+Wire Wire Line
+	9450 1400 9450 2550
+Connection ~ 9450 2550
+Connection ~ 9450 4750
+Wire Wire Line
+	9450 6000 9450 4750
+NoConn ~ 5400 1750
+NoConn ~ 6000 1750
+NoConn ~ 6500 1750
+NoConn ~ 7100 1750
+NoConn ~ 7600 1750
+NoConn ~ 8200 1750
+NoConn ~ 8700 1750
+NoConn ~ 9300 1750
+NoConn ~ 9300 2900
+NoConn ~ 8700 2900
+NoConn ~ 8200 2900
+NoConn ~ 7600 2900
+NoConn ~ 7100 2900
+NoConn ~ 6500 2900
+NoConn ~ 6000 2900
+NoConn ~ 5400 2900
+NoConn ~ 6000 4000
+NoConn ~ 5400 4000
+NoConn ~ 6500 4000
+NoConn ~ 7100 4000
+NoConn ~ 7600 4000
+NoConn ~ 8200 4000
+NoConn ~ 8700 4000
+NoConn ~ 9300 4000
+NoConn ~ 9300 5100
+NoConn ~ 8700 5100
+NoConn ~ 8200 5100
+NoConn ~ 7600 5100
+NoConn ~ 7100 5100
+NoConn ~ 6500 5100
+NoConn ~ 6000 5100
+NoConn ~ 5400 5100
+Wire Wire Line
+	2050 3350 2250 3350
+Wire Wire Line
+	2250 3450 2050 3450
+Wire Wire Line
+	2050 3550 2250 3550
+Wire Wire Line
+	2250 3650 2050 3650
+Wire Wire Line
+	2050 3750 2250 3750
+Wire Wire Line
+	2250 3850 2050 3850
+Wire Wire Line
+	2050 3950 2250 3950
+Wire Wire Line
+	2250 4050 2050 4050
+Wire Wire Line
+	2050 4150 2250 4150
+Wire Wire Line
+	2250 4250 2050 4250
+Wire Wire Line
+	2050 4350 2250 4350
+Wire Wire Line
+	2250 4450 2050 4450
+Wire Wire Line
+	2050 4550 2250 4550
+Wire Wire Line
+	2250 4650 2050 4650
+Wire Wire Line
+	2050 4750 2250 4750
+Wire Wire Line
+	2550 3250 3300 3250
+Wire Wire Line
+	2550 3350 3350 3350
+Wire Wire Line
+	2550 3450 3400 3450
+Wire Wire Line
+	2550 3550 3450 3550
+Wire Wire Line
+	3500 3350 6100 3350
+Wire Wire Line
+	2550 3650 3500 3650
+Wire Wire Line
+	2550 3750 3550 3750
+Wire Wire Line
+	3550 3400 7200 3400
+Wire Wire Line
+	2550 3850 3600 3850
+Wire Wire Line
+	2550 3950 3650 3950
+Wire Wire Line
+	3650 3500 9400 3500
+Wire Wire Line
+	3600 3450 8300 3450
+Wire Wire Line
+	3650 4450 6100 4450
+Wire Wire Line
+	2550 4050 3650 4050
+Wire Wire Line
+	2550 4150 3600 4150
+Wire Wire Line
+	3600 4500 7200 4500
+Wire Wire Line
+	3550 4550 3550 4250
+Wire Wire Line
+	3550 4550 8300 4550
+Wire Wire Line
+	2550 4250 3550 4250
+Wire Wire Line
+	2550 4350 3500 4350
+Wire Wire Line
+	3500 4600 9400 4600
+Wire Wire Line
+	3450 5550 3450 4450
+Wire Wire Line
+	2550 4450 3450 4450
+Wire Wire Line
+	3450 5550 6100 5550
+Wire Wire Line
+	2550 4550 3400 4550
+Wire Wire Line
+	3400 5600 7200 5600
+Wire Wire Line
+	3350 5650 3350 4650
+Wire Wire Line
+	3350 5650 8300 5650
+Wire Wire Line
+	2550 4650 3350 4650
+Wire Wire Line
+	2550 4750 3300 4750
+Wire Wire Line
+	3300 5700 9400 5700
+Wire Wire Line
+	3300 4750 3300 5700
+Wire Wire Line
+	3400 4550 3400 5600
+Wire Wire Line
+	3500 4350 3500 4600
+Wire Wire Line
+	3600 4150 3600 4500
+Wire Wire Line
+	3650 4050 3650 4450
+Wire Wire Line
+	3650 3500 3650 3950
+Wire Wire Line
+	3600 3450 3600 3850
+Wire Wire Line
+	3550 3400 3550 3750
+Wire Wire Line
+	3500 3350 3500 3650
+Wire Wire Line
+	3450 2400 3450 3550
+Wire Wire Line
+	3400 2350 3400 3450
+Wire Wire Line
+	3350 2300 3350 3350
+Wire Wire Line
+	3300 2250 3300 3250
+Text GLabel 2050 3250 0    50   Input ~ 0
+Mout_1
+Text GLabel 2050 3350 0    50   Input ~ 0
+Mout_2
+Text GLabel 2050 3450 0    50   Input ~ 0
+Mout_3
+Text GLabel 2050 3550 0    50   Input ~ 0
+Mout_4
+Text GLabel 2050 3650 0    50   Input ~ 0
+Mout_5
+Text GLabel 2050 3750 0    50   Input ~ 0
+Mout_6
+Text GLabel 2050 3850 0    50   Input ~ 0
+Mout_7
+Text GLabel 2050 3950 0    50   Input ~ 0
+Mout_8
+Text GLabel 2050 4050 0    50   Input ~ 0
+Mout_9
+Text GLabel 2050 4150 0    50   Input ~ 0
+Mout_10
+Text GLabel 2050 4250 0    50   Input ~ 0
+Mout_11
+Text GLabel 2050 4350 0    50   Input ~ 0
+Mout_12
+Text GLabel 2050 4450 0    50   Input ~ 0
+Mout_13
+Text GLabel 2050 4550 0    50   Input ~ 0
+Mout_14
+Text GLabel 2050 4650 0    50   Input ~ 0
+Mout_15
+Text GLabel 2050 4750 0    50   Input ~ 0
+Mout_16
+$Comp
+L power:+3.3V #PWR0108
+U 1 1 5CF77670
+P 5050 1100
+F 0 "#PWR0108" H 5050 950 50  0001 C CNN
+F 1 "+3.3V" H 5065 1273 50  0000 C CNN
+F 2 "" H 5050 1100 50  0001 C CNN
+F 3 "" H 5050 1100 50  0001 C CNN
+	1    5050 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0109
+U 1 1 5CF78CC3
+P 9450 6000
+F 0 "#PWR0109" H 9450 5750 50  0001 C CNN
+F 1 "GND" H 9455 5827 50  0000 C CNN
+F 2 "" H 9450 6000 50  0001 C CNN
+F 3 "" H 9450 6000 50  0001 C CNN
+	1    9450 6000
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
