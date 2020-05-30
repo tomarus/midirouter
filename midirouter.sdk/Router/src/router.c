@@ -39,6 +39,10 @@ const u32 XUartLite_PortAddrs[] = {
 // global configuration struct
 config Config;
 
+// For ID'ing ports
+u32 blinkCounter;
+u8 blinkPort;
+
 //
 // Output Merging
 //
@@ -298,9 +302,6 @@ void InitProcessSysex(int srcport) {
 		SPState = SP_NONE;
 		break;
 	case 0x06: // change port name, 1st byte = port, rest is name
-//		for (int i=0; i<8; i++) {
-//			Config.memory[(SysexBuffer[4]*16)+i] = 0;
-//		}
 		for (int i=0; i<8; i++) {
 			int idx = (SysexBuffer[4]*16)+i;
 			int val = (SysexBuffer[5+i]);
@@ -311,6 +312,18 @@ void InitProcessSysex(int srcport) {
 		fifo_add_byte(f, 0x2a);
 		fifo_add_byte(f, 0x4d);
 		fifo_add_byte(f, 0x46); // resp 0x46
+		fifo_add_byte(f, 0xf7);
+		SPState = SP_NONE;
+		break;
+	case 0x07: // id port
+		blinkPort = SysexBuffer[4];
+		blinkCounter = 1000000;
+
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x47); // resp 0x47
 		fifo_add_byte(f, 0xf7);
 		SPState = SP_NONE;
 		break;
@@ -458,6 +471,11 @@ int main()
     		if (ProcessOutputPort(i)) {
     			outact |= 1<<i;
     		}
+    	}
+    	if (blinkCounter > 0) {
+    		blinkCounter--;
+    		inact |= 1<<blinkPort;
+    		outact |= 1<<blinkPort;
     	}
    		ACTIVITY(inact, outact);
    		ProcessSysex();
