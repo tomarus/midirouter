@@ -1,13 +1,13 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Tue Dec 24 17:25:45 2019
-// Host        : debian running 64-bit Debian GNU/Linux 9.11 (stretch)
+// Date        : Sun May 10 19:36:05 2020
+// Host        : debian running 64-bit Debian GNU/Linux 10 (buster)
 // Command     : write_verilog -force -mode synth_stub -rename_top design_1_axi_uartlite_9_0 -prefix
-//               design_1_axi_uartlite_9_0_ design_1_axi_uartlite_4_0_stub.v
-// Design      : design_1_axi_uartlite_4_0
+//               design_1_axi_uartlite_9_0_ design_1_axi_uartlite_1_0_stub.v
+// Design      : design_1_axi_uartlite_1_0
 // Purpose     : Stub declaration of top-level module interface
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.

@@ -84,6 +84,7 @@ int config_wait_busy(void) {
 int config_set_write_enable(void) {
 	TransferInProgress = TRUE;
 	int res = XIsf_WriteEnable(&Isf, XISF_WRITE_ENABLE);
+//	int res = XIsf_WriteEnable(&Isf, XISF_SP_ENABLE);
 	if(res != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
@@ -246,4 +247,27 @@ int config_debug(config *c) {
 				c->memory[i+12], c->memory[i+13], c->memory[i+14], c->memory[i+15]);
 	}
 	return XST_SUCCESS;
+}
+
+void config_set_all(config *c, u8 port) {
+	u16 x = ~(1<<port);
+	c->memory[(port*16)+0] = (x>>8)&0xff;
+	c->memory[(port*16)+1] = x&0xff;
+}
+
+void config_set_none(config *c, u8 port) {
+	c->memory[(port*16)+0] = 0;
+	c->memory[(port*16)+1] = 0;
+}
+
+void config_set_add_port(config *c, u8 port, u8 dstport) {
+	u16 x = 1<<dstport;
+	c->memory[(port*16)+0] |= (x>>8)&0xff;
+	c->memory[(port*16)+1] |= x&0xff;;
+}
+
+void config_set_rm_port(config *c, u8 port, u8 dstport) {
+	u16 x = 1<<dstport;
+	c->memory[(port*16)+0] &= ~((x>>8)&0xff);
+	c->memory[(port*16)+1] &= ~(x&0xff);
 }

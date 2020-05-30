@@ -41,32 +41,32 @@ preplace port rx_15 -pg 1 -y 2810 -defaultsOSRD
 preplace port tx_9 -pg 1 -y 440 -defaultsOSRD
 preplace port rx_0 -pg 1 -y 160 -defaultsOSRD
 preplace port reset -pg 1 -y 1240 -defaultsOSRD
-preplace inst axi_uartlite_13 -pg 1 -lvl 6 -y 970 -defaultsOSRD
 preplace inst axi_uartlite_4 -pg 1 -lvl 6 -y 1680 -defaultsOSRD
-preplace inst axi_uartlite_14 -pg 1 -lvl 6 -y 2360 -defaultsOSRD
+preplace inst axi_uartlite_13 -pg 1 -lvl 6 -y 970 -defaultsOSRD
 preplace inst axi_uartlite_5 -pg 1 -lvl 6 -y 1860 -defaultsOSRD
-preplace inst axi_intc_0 -pg 1 -lvl 3 -y 1070 -defaultsOSRD
-preplace inst axi_uartlite_15 -pg 1 -lvl 6 -y 2540 -defaultsOSRD
+preplace inst axi_uartlite_14 -pg 1 -lvl 6 -y 2360 -defaultsOSRD
 preplace inst axi_uartlite_6 -pg 1 -lvl 6 -y 2040 -defaultsOSRD
-preplace inst axi_uartlite_16 -pg 1 -lvl 6 -y 2900 -defaultsOSRD
+preplace inst axi_uartlite_15 -pg 1 -lvl 6 -y 2540 -defaultsOSRD
+preplace inst axi_intc_0 -pg 1 -lvl 3 -y 1070 -defaultsOSRD
 preplace inst axi_uartlite_7 -pg 1 -lvl 6 -y 3080 -defaultsOSRD
-preplace inst axi_uartlite_8 -pg 1 -lvl 6 -y 2720 -defaultsOSRD
+preplace inst axi_uartlite_16 -pg 1 -lvl 6 -y 2900 -defaultsOSRD
 preplace inst microblaze_0_axi_periph -pg 1 -lvl 5 -y 1900 -defaultsOSRD
+preplace inst axi_uartlite_8 -pg 1 -lvl 6 -y 2720 -defaultsOSRD
 preplace inst axi_uartlite_9 -pg 1 -lvl 6 -y 3260 -defaultsOSRD
 preplace inst mdm_1 -pg 1 -lvl 3 -y 1250 -defaultsOSRD
-preplace inst axi_uartlite_0 -pg 1 -lvl 6 -y 2190 -defaultsOSRD
 preplace inst microblaze_0 -pg 1 -lvl 4 -y 1250 -defaultsOSRD
-preplace inst axi_uartlite_10 -pg 1 -lvl 6 -y 430 -defaultsOSRD
-preplace inst axi_uartlite_1 -pg 1 -lvl 6 -y 250 -defaultsOSRD
+preplace inst axi_uartlite_0 -pg 1 -lvl 6 -y 2190 -defaultsOSRD
 preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -y 1260 -defaultsOSRD
-preplace inst axi_uartlite_11 -pg 1 -lvl 6 -y 610 -defaultsOSRD
-preplace inst axi_uartlite_2 -pg 1 -lvl 6 -y 1320 -defaultsOSRD
+preplace inst axi_uartlite_1 -pg 1 -lvl 6 -y 250 -defaultsOSRD
+preplace inst axi_uartlite_10 -pg 1 -lvl 6 -y 430 -defaultsOSRD
 preplace inst clk_wiz_1 -pg 1 -lvl 1 -y 1310 -defaultsOSRD
+preplace inst axi_uartlite_2 -pg 1 -lvl 6 -y 1320 -defaultsOSRD
+preplace inst axi_uartlite_11 -pg 1 -lvl 6 -y 610 -defaultsOSRD
 preplace inst microblaze_0_local_memory -pg 1 -lvl 5 -y 1260 -defaultsOSRD
-preplace inst axi_quad_spi_0 -pg 1 -lvl 6 -y 1130 -defaultsOSRD
 preplace inst led_shift_594_driver_0 -pg 1 -lvl 6 -y 80 -defaultsOSRD
-preplace inst axi_uartlite_12 -pg 1 -lvl 6 -y 790 -defaultsOSRD
 preplace inst axi_uartlite_3 -pg 1 -lvl 6 -y 1500 -defaultsOSRD
+preplace inst axi_uartlite_12 -pg 1 -lvl 6 -y 790 -defaultsOSRD
+preplace inst axi_quad_spi_0 -pg 1 -lvl 6 -y 1130 -defaultsOSRD
 preplace netloc microblaze_0_axi_periph_M16_AXI 1 5 1 1920
 preplace netloc microblaze_0_axi_periph_M02_AXI 1 5 1 1970
 preplace netloc axi_quad_spi_0_ip2intc_irpt 1 2 5 640 940 NJ 940 NJ 940 2080J 1220 2360

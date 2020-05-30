@@ -133,11 +133,12 @@ begin
 			state <= STATE_SEND;
 		end
 		STATE_SEND: begin
-			if (bitno-1 == colpos) ser <= 1;
-			else if (bitno == 10) ser <=  inact[colpos & 7];
-			else if (bitno == 11) ser <= outact[colpos & 7];
-			else if (bitno == 12) ser <= outact[colpos + 8];
-			else if (bitno == 13) ser <=  inact[colpos + 8];
+//			if (bitno-1 == colpos) ser <= 1;
+			if (bitno == colpos) ser <= 1;
+			else if (bitno == 9) ser <=  inact[colpos & 7];
+			else if (bitno == 10) ser <= outact[colpos & 7];
+			else if (bitno == 11) ser <= outact[colpos + 8];
+			else if (bitno == 12) ser <=  inact[colpos + 8];
 			else ser <= 0;
 			sck <= 1;
 			state <= STATE_LOOP;

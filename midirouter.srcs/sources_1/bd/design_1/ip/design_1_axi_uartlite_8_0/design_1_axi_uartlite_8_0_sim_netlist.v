@@ -1,14 +1,14 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Tue Dec 24 17:25:45 2019
-// Host        : debian running 64-bit Debian GNU/Linux 9.11 (stretch)
+// Date        : Sun May 10 19:36:05 2020
+// Host        : debian running 64-bit Debian GNU/Linux 10 (buster)
 // Command     : write_verilog -force -mode funcsim -rename_top design_1_axi_uartlite_8_0 -prefix
-//               design_1_axi_uartlite_8_0_ design_1_axi_uartlite_4_0_sim_netlist.v
-// Design      : design_1_axi_uartlite_4_0
+//               design_1_axi_uartlite_8_0_ design_1_axi_uartlite_1_0_sim_netlist.v
+// Design      : design_1_axi_uartlite_1_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
@@ -1520,7 +1520,7 @@ module design_1_axi_uartlite_8_0_cntr_incr_decr_addn_f_2
         .S(SS));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "design_1_axi_uartlite_4_0,axi_uartlite,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_uartlite,Vivado 2018.2" *) 
+(* CHECK_LICENSE_TYPE = "design_1_axi_uartlite_1_0,axi_uartlite,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_uartlite,Vivado 2018.2" *) 
 (* NotValidForBitStream *)
 module design_1_axi_uartlite_8_0
    (s_axi_aclk,

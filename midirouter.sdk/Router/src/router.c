@@ -7,7 +7,7 @@
 #include "fifo.h"
 #include "config.h"
 
-#define NUM_PORTS 16
+#define NUM_PORTS 4
 
 #define ACTIVITY(IN, OUT) \
     	LED_SHIFT_594_DRIVER_mWriteReg(XPAR_LED_SHIFT_594_DRIVER_0_S00_AXI_BASEADDR, LED_SHIFT_594_DRIVER_S00_AXI_SLV_REG0_OFFSET, IN&0xffff); \
@@ -33,7 +33,8 @@ const u32 XUartLite_PortAddrs[] = {
 };
 
 // These ports are really broken.
-#define DISABLE_PORTS if (i==7 || i==15) continue;
+//#define DISABLE_PORTS if (i==7 || i==15) continue;
+#define DISABLE_PORTS
 
 // global configuration struct
 config Config;
@@ -193,9 +194,11 @@ u16 ProcessOutputPort(int port) {
 // Input Processing
 //
 
+#define SYSEX_BUFFER_LENGTH 64
+
 u8 SysexIndex = 0;
 u8 SysexPort = 0;
-u8 SysexBuffer[64];
+u8 SysexBuffer[SYSEX_BUFFER_LENGTH];
 
 int SPConfigPos = 0;
 u8 SPState = 0; // SP = Sysex Processing
@@ -204,6 +207,7 @@ enum spstate {
 	SP_CONFIGDUMP,
 	SP_CONFIGDUMPEND,
 };
+
 
 // InitProcessSysex is called after we receive a sysex-end marker.
 void InitProcessSysex(int srcport) {
@@ -219,7 +223,7 @@ void InitProcessSysex(int srcport) {
 		fifo_add_byte(f, 0x2a);
 		fifo_add_byte(f, 0x4d);
 		fifo_add_byte(f, 0x40); // resp 0x40
-		fifo_add_byte(f, 0x01); // version 1
+		fifo_add_byte(f, 0x02); // version 2
 		fifo_add_byte(f, NUM_PORTS); // nr in ports
 		fifo_add_byte(f, NUM_PORTS); // nr out ports
 		fifo_add_byte(f, 0xf7);
@@ -236,6 +240,79 @@ void InitProcessSysex(int srcport) {
 		fifo_add_byte(f, 0x2a);
 		fifo_add_byte(f, 0x4d);
 		fifo_add_byte(f, 0x41); // resp 0x41
+		break;
+	case 0x02: // set port format
+			   // format is: "srcport mode dstport"
+		switch (SysexBuffer[5]) {
+		case 1: // all
+			config_set_all(&Config, SysexBuffer[4]);
+			break;
+		case 2: // none
+			config_set_none(&Config, SysexBuffer[4]);
+			break;
+		case 3: // to
+			config_set_add_port(&Config, SysexBuffer[4], SysexBuffer[6]);
+			break;
+		case 4: // rm
+			config_set_rm_port(&Config, SysexBuffer[4], SysexBuffer[6]);
+			break;
+		default:
+			return;
+		}
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x42); // resp 0x42
+		fifo_add_byte(f, 0xf7);
+		SPState = SP_NONE;
+		break;
+	case 0x03: // write memory
+		config_write(&Config);
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x43); // resp 0x43
+		fifo_add_byte(f, 0xf7);
+		SPState = SP_NONE;
+		break;
+	case 0x04: // reload flash
+		config_read(&Config);
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x44); // resp 0x44
+		fifo_add_byte(f, 0xf7);
+		SPState = SP_NONE;
+		break;
+	case 0x05: // init / factory reset
+		config_set_default(&Config);
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x45); // resp 0x45
+		fifo_add_byte(f, 0xf7);
+		SPState = SP_NONE;
+		break;
+	case 0x06: // change port name, 1st byte = port, rest is name
+//		for (int i=0; i<8; i++) {
+//			Config.memory[(SysexBuffer[4]*16)+i] = 0;
+//		}
+		for (int i=0; i<8; i++) {
+			int idx = (SysexBuffer[4]*16)+i;
+			int val = (SysexBuffer[5+i]);
+			Config.memory[idx+8] = val;
+		}
+		fifo_add_byte(f, 0xf0);
+		fifo_add_byte(f, 0x7d);
+		fifo_add_byte(f, 0x2a);
+		fifo_add_byte(f, 0x4d);
+		fifo_add_byte(f, 0x46); // resp 0x46
+		fifo_add_byte(f, 0xf7);
+		SPState = SP_NONE;
 		break;
 	default:
 		SPState = SP_NONE;
@@ -297,10 +374,10 @@ u16 ReadInputPort(int port) {
 
 	if (b & 0b01110000) { // == command
 		// process channel translations
-		for (int i=0; i<3; i++) {
+		for (int i=0; i<3; i++) { // max 3 translations
 			if (Config.memory[(port*16)+4+i] != 0x00) {
 				b &= 0xf0;
-				b |= Config.memory[(port*16)+4+i] & 0xf;
+				b |= Config.memory[(port*16)+4+i] & 0x0f;
 			} else {
 				break;
 			}
@@ -312,6 +389,9 @@ u16 ReadInputPort(int port) {
 		SysexIndex = 0;
 		SysexPort = port;
 		SysexState = SYSEX_RECEIVING;
+		for (int i=0; i<SYSEX_BUFFER_LENGTH; i++) {
+			SysexBuffer[i] = 0;
+		}
 		break;
 	case 0xf7: // end sysex
 		if (SysexBuffer[0] == 0x7d && SysexBuffer[1] == 0x2a && SysexBuffer[2] == 0x4d) {
@@ -323,6 +403,10 @@ u16 ReadInputPort(int port) {
 		if (SysexState == SYSEX_RECEIVING && SysexPort == port) {
 			SysexBuffer[SysexIndex] = b;
 			SysexIndex++;
+			if (SysexIndex >= SYSEX_BUFFER_LENGTH) {
+				// data gets lost here
+				SysexIndex = 0;
+			}
 		}
 		break;
 	}
@@ -344,9 +428,9 @@ u16 ReadInputPort(int port) {
 
 int main()
 {
-    init_platform();
+	init_platform();
 
-    print("MIDI Merger Initialized\n\r");
+    print("MIDI Router Initialized\n\r");
     print("http://github.com/tomarus/midirouter\r\n");
 
     // Reset all output ports
@@ -358,8 +442,7 @@ int main()
     ACTIVITY(65535, 65535);
 
     config_init(&Config);
-    // disable for now, use defaults
-    // config_read(&Config);
+    config_read(&Config);
     config_debug(&Config);
 
     xil_printf("Ready.\r\n");

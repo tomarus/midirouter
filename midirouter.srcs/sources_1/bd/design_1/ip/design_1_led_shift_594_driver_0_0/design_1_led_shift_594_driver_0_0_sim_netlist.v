@@ -1,14 +1,14 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Sat Dec 28 20:42:18 2019
-// Host        : debian running 64-bit Debian GNU/Linux 9.11 (stretch)
+// Date        : Sun May 24 12:50:39 2020
+// Host        : debian running 64-bit Debian GNU/Linux 10 (buster)
 // Command     : write_verilog -force -mode funcsim
 //               /home/tommy/src/tomarus/midirouter/midirouter.srcs/sources_1/bd/design_1/ip/design_1_led_shift_594_driver_0_0/design_1_led_shift_594_driver_0_0_sim_netlist.v
 // Design      : design_1_led_shift_594_driver_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
@@ -121,9 +121,7 @@ module design_1_led_shift_594_driver_0_0_delayed
     s00_axi_aclk,
     ledclk__18,
     \slv_reg0_reg[0] ,
-    \colpos_reg[1] ,
     \colpos_reg[0] ,
-    \colpos_reg[0]_0 ,
     \ssin_reg[1] ,
     Q,
     idle);
@@ -131,17 +129,13 @@ module design_1_led_shift_594_driver_0_0_delayed
   input s00_axi_aclk;
   input ledclk__18;
   input [0:0]\slv_reg0_reg[0] ;
-  input \colpos_reg[1] ;
   input \colpos_reg[0] ;
-  input \colpos_reg[0]_0 ;
   input [0:0]\ssin_reg[1] ;
   input [0:0]Q;
   input idle;
 
   wire [0:0]Q;
   wire \colpos_reg[0] ;
-  wire \colpos_reg[0]_0 ;
-  wire \colpos_reg[1] ;
   wire \counter[0]_i_1__15_n_0 ;
   wire \counter[1]_i_1__15_n_0 ;
   wire \counter[2]_i_1__15_n_0 ;
@@ -153,7 +147,6 @@ module design_1_led_shift_594_driver_0_0_delayed
   wire ledclk__18;
   wire s00_axi_aclk;
   wire ser_reg;
-  wire ser_reg_i_27_n_0;
   wire [0:0]\slv_reg0_reg[0] ;
   wire [0:0]\ssin_reg[1] ;
 
@@ -206,23 +199,18 @@ module design_1_led_shift_594_driver_0_0_delayed
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_57
+    ser_i_25
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  MUXF8 ser_reg_i_12
-       (.I0(ser_reg_i_27_n_0),
-        .I1(\colpos_reg[0] ),
-        .O(ser_reg),
-        .S(\colpos_reg[1] ));
-  MUXF7 ser_reg_i_27
+  MUXF7 ser_reg_i_10
        (.I0(inact__15),
         .I1(\ssin_reg[1] ),
-        .O(ser_reg_i_27_n_0),
-        .S(\colpos_reg[0]_0 ));
+        .O(ser_reg),
+        .S(\colpos_reg[0] ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -309,14 +297,14 @@ module design_1_led_shift_594_driver_0_0_delayed_0
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_35
+    ser_i_39
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  MUXF7 ser_reg_i_16
+  MUXF7 ser_reg_i_17
        (.I0(inact__15),
         .I1(\ssin_reg[11] ),
         .O(ser_reg),
@@ -400,7 +388,7 @@ module design_1_led_shift_594_driver_0_0_delayed_1
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_36
+    ser_i_40
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -486,7 +474,7 @@ module design_1_led_shift_594_driver_0_0_delayed_10
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_54
+    ser_i_22
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -501,21 +489,66 @@ module design_1_led_shift_594_driver_0_0_delayed_11
     s00_axi_aclk,
     ledclk__18,
     \slv_reg0_reg[6] ,
+    \bitno_reg[0] ,
+    \bitno_reg[1] ,
+    \bitno_reg[2] ,
+    \colpos_reg[2] ,
+    \bitno_reg[0]_0 ,
     \colpos_reg[0] ,
+    \colpos_reg[2]_0 ,
+    \colpos_reg[0]_0 ,
+    \colpos_reg[1] ,
+    \colpos_reg[0]_1 ,
+    \colpos_reg[0]_2 ,
     \ssin_reg[7] ,
     Q,
-    idle);
+    idle,
+    \bitno_reg[0]_1 ,
+    \bitno_reg[3] ,
+    clk2,
+    D,
+    SER);
   output ser_reg;
   input s00_axi_aclk;
   input ledclk__18;
   input [0:0]\slv_reg0_reg[6] ;
+  input \bitno_reg[0] ;
+  input \bitno_reg[1] ;
+  input \bitno_reg[2] ;
+  input \colpos_reg[2] ;
+  input \bitno_reg[0]_0 ;
   input \colpos_reg[0] ;
+  input \colpos_reg[2]_0 ;
+  input \colpos_reg[0]_0 ;
+  input \colpos_reg[1] ;
+  input \colpos_reg[0]_1 ;
+  input \colpos_reg[0]_2 ;
   input [0:0]\ssin_reg[7] ;
   input [0:0]Q;
   input idle;
+  input \bitno_reg[0]_1 ;
+  input \bitno_reg[3] ;
+  input clk2;
+  input [0:0]D;
+  input SER;
 
+  wire [0:0]D;
   wire [0:0]Q;
+  wire SER;
+  wire \bitno_reg[0] ;
+  wire \bitno_reg[0]_0 ;
+  wire \bitno_reg[0]_1 ;
+  wire \bitno_reg[1] ;
+  wire \bitno_reg[2] ;
+  wire \bitno_reg[3] ;
+  wire clk2;
   wire \colpos_reg[0] ;
+  wire \colpos_reg[0]_0 ;
+  wire \colpos_reg[0]_1 ;
+  wire \colpos_reg[0]_2 ;
+  wire \colpos_reg[1] ;
+  wire \colpos_reg[2] ;
+  wire \colpos_reg[2]_0 ;
   wire \counter[0]_i_1__9_n_0 ;
   wire \counter[1]_i_1__9_n_0 ;
   wire \counter[2]_i_1__9_n_0 ;
@@ -526,7 +559,10 @@ module design_1_led_shift_594_driver_0_0_delayed_11
   wire [6:6]inact__15;
   wire ledclk__18;
   wire s00_axi_aclk;
+  wire ser_i_3_n_0;
+  wire ser_i_4_n_0;
   wire ser_reg;
+  wire ser_reg_i_7_n_0;
   wire [0:0]\slv_reg0_reg[6] ;
   wire [0:0]\ssin_reg[7] ;
 
@@ -577,20 +613,50 @@ module design_1_led_shift_594_driver_0_0_delayed_11
         .D(\counter[2]_i_1__9_n_0 ),
         .Q(\counter_reg_n_0_[2] ),
         .R(1'b0));
+  LUT6 #(
+    .INIT(64'hCAFFFFFFCA000000)) 
+    ser_i_1
+       (.I0(\bitno_reg[0]_1 ),
+        .I1(ser_i_3_n_0),
+        .I2(\bitno_reg[3] ),
+        .I3(clk2),
+        .I4(D),
+        .I5(SER),
+        .O(ser_reg));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_55
+    ser_i_19
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  MUXF7 ser_reg_i_26
+  LUT6 #(
+    .INIT(64'h00CA00CA0FC000C0)) 
+    ser_i_3
+       (.I0(ser_i_4_n_0),
+        .I1(\bitno_reg[0] ),
+        .I2(\bitno_reg[1] ),
+        .I3(\bitno_reg[2] ),
+        .I4(\colpos_reg[2] ),
+        .I5(\bitno_reg[0]_0 ),
+        .O(ser_i_3_n_0));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    ser_i_4
+       (.I0(ser_reg_i_7_n_0),
+        .I1(\colpos_reg[0] ),
+        .I2(\colpos_reg[2]_0 ),
+        .I3(\colpos_reg[0]_0 ),
+        .I4(\colpos_reg[1] ),
+        .I5(\colpos_reg[0]_1 ),
+        .O(ser_i_4_n_0));
+  MUXF7 ser_reg_i_7
        (.I0(inact__15),
         .I1(\ssin_reg[7] ),
-        .O(ser_reg),
-        .S(\colpos_reg[0] ));
+        .O(ser_reg_i_7_n_0),
+        .S(\colpos_reg[0]_2 ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -670,7 +736,7 @@ module design_1_led_shift_594_driver_0_0_delayed_12
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_56
+    ser_i_20
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -685,9 +751,7 @@ module design_1_led_shift_594_driver_0_0_delayed_13
     s00_axi_aclk,
     ledclk__18,
     \slv_reg0_reg[8] ,
-    \colpos_reg[1] ,
     \colpos_reg[0] ,
-    \colpos_reg[0]_0 ,
     \ssin_reg[9] ,
     Q,
     idle);
@@ -695,17 +759,13 @@ module design_1_led_shift_594_driver_0_0_delayed_13
   input s00_axi_aclk;
   input ledclk__18;
   input [0:0]\slv_reg0_reg[8] ;
-  input \colpos_reg[1] ;
   input \colpos_reg[0] ;
-  input \colpos_reg[0]_0 ;
   input [0:0]\ssin_reg[9] ;
   input [0:0]Q;
   input idle;
 
   wire [0:0]Q;
   wire \colpos_reg[0] ;
-  wire \colpos_reg[0]_0 ;
-  wire \colpos_reg[1] ;
   wire \counter[0]_i_1__7_n_0 ;
   wire \counter[1]_i_1__7_n_0 ;
   wire \counter[2]_i_1__7_n_0 ;
@@ -717,7 +777,6 @@ module design_1_led_shift_594_driver_0_0_delayed_13
   wire ledclk__18;
   wire s00_axi_aclk;
   wire ser_reg;
-  wire ser_reg_i_15_n_0;
   wire [0:0]\slv_reg0_reg[8] ;
   wire [0:0]\ssin_reg[9] ;
 
@@ -770,23 +829,18 @@ module design_1_led_shift_594_driver_0_0_delayed_13
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_33
+    ser_i_41
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  MUXF7 ser_reg_i_15
+  MUXF7 ser_reg_i_18
        (.I0(inact__15),
         .I1(\ssin_reg[9] ),
-        .O(ser_reg_i_15_n_0),
-        .S(\colpos_reg[0]_0 ));
-  MUXF8 ser_reg_i_6
-       (.I0(ser_reg_i_15_n_0),
-        .I1(\colpos_reg[0] ),
         .O(ser_reg),
-        .S(\colpos_reg[1] ));
+        .S(\colpos_reg[0] ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -866,7 +920,7 @@ module design_1_led_shift_594_driver_0_0_delayed_14
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_34
+    ser_i_42
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -913,7 +967,7 @@ module design_1_led_shift_594_driver_0_0_delayed_15
   wire [0:0]outact__15;
   wire s00_axi_aclk;
   wire ser_reg;
-  wire ser_reg_i_23_n_0;
+  wire ser_reg_i_33_n_0;
   wire [0:0]\ssout_reg[0] ;
   wire [0:0]\ssout_reg[1] ;
 
@@ -966,22 +1020,22 @@ module design_1_led_shift_594_driver_0_0_delayed_15
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_49
+    ser_i_55
        (.I0(\ssout_reg[0] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF8 ser_reg_i_10
-       (.I0(ser_reg_i_23_n_0),
+  MUXF8 ser_reg_i_14
+       (.I0(ser_reg_i_33_n_0),
         .I1(\colpos_reg[0] ),
         .O(ser_reg),
         .S(\colpos_reg[1] ));
-  MUXF7 ser_reg_i_23
+  MUXF7 ser_reg_i_33
        (.I0(outact__15),
         .I1(\ssout_reg[1] ),
-        .O(ser_reg_i_23_n_0),
+        .O(ser_reg_i_33_n_0),
         .S(\colpos_reg[0]_0 ));
 endmodule
 
@@ -1069,14 +1123,14 @@ module design_1_led_shift_594_driver_0_0_delayed_16
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_43
+    ser_i_49
        (.I0(\ssout_reg[10] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF7 ser_reg_i_20
+  MUXF7 ser_reg_i_30
        (.I0(outact__15),
         .I1(\ssout_reg[11] ),
         .O(ser_reg),
@@ -1160,7 +1214,7 @@ module design_1_led_shift_594_driver_0_0_delayed_17
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_44
+    ser_i_50
        (.I0(\ssout_reg[11] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -1176,6 +1230,11 @@ module design_1_led_shift_594_driver_0_0_delayed_18
     ledclk__18,
     Q,
     \colpos_reg[1] ,
+    \bitno_reg[0] ,
+    \colpos_reg[1]_0 ,
+    \colpos_reg[2] ,
+    \colpos_reg[1]_1 ,
+    \colpos_reg[1]_2 ,
     \colpos_reg[0] ,
     \colpos_reg[0]_0 ,
     \ssout_reg[13] ,
@@ -1186,6 +1245,11 @@ module design_1_led_shift_594_driver_0_0_delayed_18
   input ledclk__18;
   input [0:0]Q;
   input \colpos_reg[1] ;
+  input \bitno_reg[0] ;
+  input \colpos_reg[1]_0 ;
+  input \colpos_reg[2] ;
+  input \colpos_reg[1]_1 ;
+  input \colpos_reg[1]_2 ;
   input \colpos_reg[0] ;
   input \colpos_reg[0]_0 ;
   input [0:0]\ssout_reg[13] ;
@@ -1193,9 +1257,14 @@ module design_1_led_shift_594_driver_0_0_delayed_18
   input idle;
 
   wire [0:0]Q;
+  wire \bitno_reg[0] ;
   wire \colpos_reg[0] ;
   wire \colpos_reg[0]_0 ;
   wire \colpos_reg[1] ;
+  wire \colpos_reg[1]_0 ;
+  wire \colpos_reg[1]_1 ;
+  wire \colpos_reg[1]_2 ;
+  wire \colpos_reg[2] ;
   wire \counter[0]_i_1__19_n_0 ;
   wire \counter[1]_i_1__19_n_0 ;
   wire \counter[2]_i_1__19_n_0 ;
@@ -1207,7 +1276,8 @@ module design_1_led_shift_594_driver_0_0_delayed_18
   wire [12:12]outact__15;
   wire s00_axi_aclk;
   wire ser_reg;
-  wire ser_reg_i_17_n_0;
+  wire ser_reg_i_11_n_0;
+  wire ser_reg_i_27_n_0;
   wire [0:0]\ssout_reg[12] ;
   wire [0:0]\ssout_reg[13] ;
 
@@ -1260,23 +1330,33 @@ module design_1_led_shift_594_driver_0_0_delayed_18
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_37
+    ser_i_43
        (.I0(\ssout_reg[12] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF7 ser_reg_i_17
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    ser_i_5
+       (.I0(ser_reg_i_11_n_0),
+        .I1(\colpos_reg[1] ),
+        .I2(\bitno_reg[0] ),
+        .I3(\colpos_reg[1]_0 ),
+        .I4(\colpos_reg[2] ),
+        .I5(\colpos_reg[1]_1 ),
+        .O(ser_reg));
+  MUXF8 ser_reg_i_11
+       (.I0(ser_reg_i_27_n_0),
+        .I1(\colpos_reg[0] ),
+        .O(ser_reg_i_11_n_0),
+        .S(\colpos_reg[1]_2 ));
+  MUXF7 ser_reg_i_27
        (.I0(outact__15),
         .I1(\ssout_reg[13] ),
-        .O(ser_reg_i_17_n_0),
+        .O(ser_reg_i_27_n_0),
         .S(\colpos_reg[0]_0 ));
-  MUXF8 ser_reg_i_7
-       (.I0(ser_reg_i_17_n_0),
-        .I1(\colpos_reg[0] ),
-        .O(ser_reg),
-        .S(\colpos_reg[1] ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -1356,7 +1436,7 @@ module design_1_led_shift_594_driver_0_0_delayed_19
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_38
+    ser_i_44
        (.I0(\ssout_reg[13] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -1371,66 +1451,21 @@ module design_1_led_shift_594_driver_0_0_delayed_2
     s00_axi_aclk,
     ledclk__18,
     \slv_reg0_reg[12] ,
-    CO,
-    \bitno_reg[2] ,
-    \bitno_reg[1] ,
-    \bitno_reg[0] ,
-    \bitno_reg[3] ,
-    \colpos_reg[1] ,
-    \bitno_reg[0]_0 ,
-    \colpos_reg[1]_0 ,
-    \colpos_reg[2] ,
-    \colpos_reg[1]_1 ,
-    \colpos_reg[1]_2 ,
     \colpos_reg[0] ,
-    \colpos_reg[0]_0 ,
     \ssin_reg[13] ,
     Q,
-    idle,
-    clk2,
-    D,
-    SER);
+    idle);
   output ser_reg;
   input s00_axi_aclk;
   input ledclk__18;
   input [0:0]\slv_reg0_reg[12] ;
-  input [0:0]CO;
-  input \bitno_reg[2] ;
-  input \bitno_reg[1] ;
-  input \bitno_reg[0] ;
-  input \bitno_reg[3] ;
-  input \colpos_reg[1] ;
-  input \bitno_reg[0]_0 ;
-  input \colpos_reg[1]_0 ;
-  input \colpos_reg[2] ;
-  input \colpos_reg[1]_1 ;
-  input \colpos_reg[1]_2 ;
   input \colpos_reg[0] ;
-  input \colpos_reg[0]_0 ;
   input [0:0]\ssin_reg[13] ;
   input [0:0]Q;
   input idle;
-  input clk2;
-  input [0:0]D;
-  input SER;
 
-  wire [0:0]CO;
-  wire [0:0]D;
   wire [0:0]Q;
-  wire SER;
-  wire \bitno_reg[0] ;
-  wire \bitno_reg[0]_0 ;
-  wire \bitno_reg[1] ;
-  wire \bitno_reg[2] ;
-  wire \bitno_reg[3] ;
-  wire clk2;
   wire \colpos_reg[0] ;
-  wire \colpos_reg[0]_0 ;
-  wire \colpos_reg[1] ;
-  wire \colpos_reg[1]_0 ;
-  wire \colpos_reg[1]_1 ;
-  wire \colpos_reg[1]_2 ;
-  wire \colpos_reg[2] ;
   wire \counter[0]_i_1__3_n_0 ;
   wire \counter[1]_i_1__3_n_0 ;
   wire \counter[2]_i_1__3_n_0 ;
@@ -1441,11 +1476,7 @@ module design_1_led_shift_594_driver_0_0_delayed_2
   wire [12:12]inact__15;
   wire ledclk__18;
   wire s00_axi_aclk;
-  wire ser_i_2_n_0;
-  wire ser_i_3_n_0;
   wire ser_reg;
-  wire ser_reg_i_13_n_0;
-  wire ser_reg_i_5_n_0;
   wire [0:0]\slv_reg0_reg[12] ;
   wire [0:0]\ssin_reg[13] ;
 
@@ -1496,53 +1527,20 @@ module design_1_led_shift_594_driver_0_0_delayed_2
         .D(\counter[2]_i_1__3_n_0 ),
         .Q(\counter_reg_n_0_[2] ),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'hBF80)) 
-    ser_i_1
-       (.I0(ser_i_2_n_0),
-        .I1(clk2),
-        .I2(D),
-        .I3(SER),
-        .O(ser_reg));
-  LUT6 #(
-    .INIT(64'hAFEAAAEAAAAAAAAA)) 
-    ser_i_2
-       (.I0(CO),
-        .I1(ser_i_3_n_0),
-        .I2(\bitno_reg[2] ),
-        .I3(\bitno_reg[1] ),
-        .I4(\bitno_reg[0] ),
-        .I5(\bitno_reg[3] ),
-        .O(ser_i_2_n_0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_29
+    ser_i_37
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    ser_i_3
-       (.I0(ser_reg_i_5_n_0),
-        .I1(\colpos_reg[1] ),
-        .I2(\bitno_reg[0]_0 ),
-        .I3(\colpos_reg[1]_0 ),
-        .I4(\colpos_reg[2] ),
-        .I5(\colpos_reg[1]_1 ),
-        .O(ser_i_3_n_0));
-  MUXF7 ser_reg_i_13
+  MUXF7 ser_reg_i_16
        (.I0(inact__15),
         .I1(\ssin_reg[13] ),
-        .O(ser_reg_i_13_n_0),
-        .S(\colpos_reg[0]_0 ));
-  MUXF8 ser_reg_i_5
-       (.I0(ser_reg_i_13_n_0),
-        .I1(\colpos_reg[0] ),
-        .O(ser_reg_i_5_n_0),
-        .S(\colpos_reg[1]_2 ));
+        .O(ser_reg),
+        .S(\colpos_reg[0] ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -1629,14 +1627,14 @@ module design_1_led_shift_594_driver_0_0_delayed_20
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_39
+    ser_i_45
        (.I0(\ssout_reg[14] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF7 ser_reg_i_18
+  MUXF7 ser_reg_i_28
        (.I0(outact__15),
         .I1(\ssout_reg[15] ),
         .O(ser_reg),
@@ -1720,7 +1718,7 @@ module design_1_led_shift_594_driver_0_0_delayed_21
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_40
+    ser_i_46
        (.I0(\ssout_reg[15] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -1857,7 +1855,7 @@ module design_1_led_shift_594_driver_0_0_delayed_22
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_50
+    ser_i_56
        (.I0(\ssout_reg[1] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -1950,14 +1948,14 @@ module design_1_led_shift_594_driver_0_0_delayed_23
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_51
+    ser_i_57
        (.I0(\ssout_reg[2] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF7 ser_reg_i_24
+  MUXF7 ser_reg_i_34
        (.I0(outact__15),
         .I1(\ssout_reg[3] ),
         .O(ser_reg),
@@ -2041,7 +2039,7 @@ module design_1_led_shift_594_driver_0_0_delayed_24
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_52
+    ser_i_58
        (.I0(\ssout_reg[3] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -2057,11 +2055,6 @@ module design_1_led_shift_594_driver_0_0_delayed_25
     ledclk__18,
     Q,
     \colpos_reg[1] ,
-    \bitno_reg[0] ,
-    \colpos_reg[1]_0 ,
-    \colpos_reg[2] ,
-    \colpos_reg[1]_1 ,
-    \colpos_reg[1]_2 ,
     \colpos_reg[0] ,
     \colpos_reg[0]_0 ,
     \ssout_reg[5] ,
@@ -2072,11 +2065,6 @@ module design_1_led_shift_594_driver_0_0_delayed_25
   input ledclk__18;
   input [0:0]Q;
   input \colpos_reg[1] ;
-  input \bitno_reg[0] ;
-  input \colpos_reg[1]_0 ;
-  input \colpos_reg[2] ;
-  input \colpos_reg[1]_1 ;
-  input \colpos_reg[1]_2 ;
   input \colpos_reg[0] ;
   input \colpos_reg[0]_0 ;
   input [0:0]\ssout_reg[5] ;
@@ -2084,14 +2072,9 @@ module design_1_led_shift_594_driver_0_0_delayed_25
   input idle;
 
   wire [0:0]Q;
-  wire \bitno_reg[0] ;
   wire \colpos_reg[0] ;
   wire \colpos_reg[0]_0 ;
   wire \colpos_reg[1] ;
-  wire \colpos_reg[1]_0 ;
-  wire \colpos_reg[1]_1 ;
-  wire \colpos_reg[1]_2 ;
-  wire \colpos_reg[2] ;
   wire \counter[0]_i_1__27_n_0 ;
   wire \counter[1]_i_1__27_n_0 ;
   wire \counter[2]_i_1__27_n_0 ;
@@ -2103,8 +2086,7 @@ module design_1_led_shift_594_driver_0_0_delayed_25
   wire [4:4]outact__15;
   wire s00_axi_aclk;
   wire ser_reg;
-  wire ser_reg_i_21_n_0;
-  wire ser_reg_i_9_n_0;
+  wire ser_reg_i_31_n_0;
   wire [0:0]\ssout_reg[4] ;
   wire [0:0]\ssout_reg[5] ;
 
@@ -2155,35 +2137,25 @@ module design_1_led_shift_594_driver_0_0_delayed_25
         .D(\counter[2]_i_1__27_n_0 ),
         .Q(\counter_reg_n_0_[2] ),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hAFA0CFCFAFA0C0C0)) 
-    ser_i_4
-       (.I0(ser_reg_i_9_n_0),
-        .I1(\colpos_reg[1] ),
-        .I2(\bitno_reg[0] ),
-        .I3(\colpos_reg[1]_0 ),
-        .I4(\colpos_reg[2] ),
-        .I5(\colpos_reg[1]_1 ),
-        .O(ser_reg));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_45
+    ser_i_51
        (.I0(\ssout_reg[4] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF7 ser_reg_i_21
+  MUXF8 ser_reg_i_13
+       (.I0(ser_reg_i_31_n_0),
+        .I1(\colpos_reg[0] ),
+        .O(ser_reg),
+        .S(\colpos_reg[1] ));
+  MUXF7 ser_reg_i_31
        (.I0(outact__15),
         .I1(\ssout_reg[5] ),
-        .O(ser_reg_i_21_n_0),
+        .O(ser_reg_i_31_n_0),
         .S(\colpos_reg[0]_0 ));
-  MUXF8 ser_reg_i_9
-       (.I0(ser_reg_i_21_n_0),
-        .I1(\colpos_reg[0] ),
-        .O(ser_reg_i_9_n_0),
-        .S(\colpos_reg[1]_2 ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -2263,7 +2235,7 @@ module design_1_led_shift_594_driver_0_0_delayed_26
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_46
+    ser_i_52
        (.I0(\ssout_reg[5] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -2356,14 +2328,14 @@ module design_1_led_shift_594_driver_0_0_delayed_27
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_47
+    ser_i_53
        (.I0(\ssout_reg[6] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF7 ser_reg_i_22
+  MUXF7 ser_reg_i_32
        (.I0(outact__15),
         .I1(\ssout_reg[7] ),
         .O(ser_reg),
@@ -2447,7 +2419,7 @@ module design_1_led_shift_594_driver_0_0_delayed_28
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_48
+    ser_i_54
        (.I0(\ssout_reg[7] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -2494,7 +2466,7 @@ module design_1_led_shift_594_driver_0_0_delayed_29
   wire [8:8]outact__15;
   wire s00_axi_aclk;
   wire ser_reg;
-  wire ser_reg_i_19_n_0;
+  wire ser_reg_i_29_n_0;
   wire [0:0]\ssout_reg[8] ;
   wire [0:0]\ssout_reg[9] ;
 
@@ -2547,23 +2519,23 @@ module design_1_led_shift_594_driver_0_0_delayed_29
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_41
+    ser_i_47
        (.I0(\ssout_reg[8] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(outact__15));
-  MUXF7 ser_reg_i_19
-       (.I0(outact__15),
-        .I1(\ssout_reg[9] ),
-        .O(ser_reg_i_19_n_0),
-        .S(\colpos_reg[0]_0 ));
-  MUXF8 ser_reg_i_8
-       (.I0(ser_reg_i_19_n_0),
+  MUXF8 ser_reg_i_12
+       (.I0(ser_reg_i_29_n_0),
         .I1(\colpos_reg[0] ),
         .O(ser_reg),
         .S(\colpos_reg[1] ));
+  MUXF7 ser_reg_i_29
+       (.I0(outact__15),
+        .I1(\ssout_reg[9] ),
+        .O(ser_reg_i_29_n_0),
+        .S(\colpos_reg[0]_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -2643,7 +2615,7 @@ module design_1_led_shift_594_driver_0_0_delayed_3
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_30
+    ser_i_38
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -2729,7 +2701,7 @@ module design_1_led_shift_594_driver_0_0_delayed_30
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_42
+    ser_i_48
        (.I0(\ssout_reg[9] ),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -2745,6 +2717,11 @@ module design_1_led_shift_594_driver_0_0_delayed_4
     ledclk__18,
     \slv_reg0_reg[14] ,
     \colpos_reg[0] ,
+    \colpos_reg[2] ,
+    \colpos_reg[0]_0 ,
+    \colpos_reg[1] ,
+    \colpos_reg[0]_1 ,
+    \colpos_reg[0]_2 ,
     \ssin_reg[15] ,
     Q,
     idle);
@@ -2753,12 +2730,22 @@ module design_1_led_shift_594_driver_0_0_delayed_4
   input ledclk__18;
   input [0:0]\slv_reg0_reg[14] ;
   input \colpos_reg[0] ;
+  input \colpos_reg[2] ;
+  input \colpos_reg[0]_0 ;
+  input \colpos_reg[1] ;
+  input \colpos_reg[0]_1 ;
+  input \colpos_reg[0]_2 ;
   input [0:0]\ssin_reg[15] ;
   input [0:0]Q;
   input idle;
 
   wire [0:0]Q;
   wire \colpos_reg[0] ;
+  wire \colpos_reg[0]_0 ;
+  wire \colpos_reg[0]_1 ;
+  wire \colpos_reg[0]_2 ;
+  wire \colpos_reg[1] ;
+  wire \colpos_reg[2] ;
   wire \counter[0]_i_1__1_n_0 ;
   wire \counter[1]_i_1__1_n_0 ;
   wire \counter[2]_i_1__1_n_0 ;
@@ -2770,6 +2757,7 @@ module design_1_led_shift_594_driver_0_0_delayed_4
   wire ledclk__18;
   wire s00_axi_aclk;
   wire ser_reg;
+  wire ser_reg_i_15_n_0;
   wire [0:0]\slv_reg0_reg[14] ;
   wire [0:0]\ssin_reg[15] ;
 
@@ -2822,18 +2810,28 @@ module design_1_led_shift_594_driver_0_0_delayed_4
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_31
+    ser_i_35
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  MUXF7 ser_reg_i_14
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    ser_i_6
+       (.I0(ser_reg_i_15_n_0),
+        .I1(\colpos_reg[0] ),
+        .I2(\colpos_reg[2] ),
+        .I3(\colpos_reg[0]_0 ),
+        .I4(\colpos_reg[1] ),
+        .I5(\colpos_reg[0]_1 ),
+        .O(ser_reg));
+  MUXF7 ser_reg_i_15
        (.I0(inact__15),
         .I1(\ssin_reg[15] ),
-        .O(ser_reg),
-        .S(\colpos_reg[0] ));
+        .O(ser_reg_i_15_n_0),
+        .S(\colpos_reg[0]_2 ));
 endmodule
 
 (* ORIG_REF_NAME = "delayed" *) 
@@ -2913,7 +2911,7 @@ module design_1_led_shift_594_driver_0_0_delayed_5
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_32
+    ser_i_36
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -2999,7 +2997,7 @@ module design_1_led_shift_594_driver_0_0_delayed_6
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_58
+    ser_i_26
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -3092,14 +3090,14 @@ module design_1_led_shift_594_driver_0_0_delayed_7
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_59
+    ser_i_23
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  MUXF7 ser_reg_i_28
+  MUXF7 ser_reg_i_9
        (.I0(inact__15),
         .I1(\ssin_reg[3] ),
         .O(ser_reg),
@@ -3183,7 +3181,7 @@ module design_1_led_shift_594_driver_0_0_delayed_8
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_60
+    ser_i_24
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
@@ -3198,9 +3196,7 @@ module design_1_led_shift_594_driver_0_0_delayed_9
     s00_axi_aclk,
     ledclk__18,
     \slv_reg0_reg[4] ,
-    \colpos_reg[1] ,
     \colpos_reg[0] ,
-    \colpos_reg[0]_0 ,
     \ssin_reg[5] ,
     Q,
     idle);
@@ -3208,17 +3204,13 @@ module design_1_led_shift_594_driver_0_0_delayed_9
   input s00_axi_aclk;
   input ledclk__18;
   input [0:0]\slv_reg0_reg[4] ;
-  input \colpos_reg[1] ;
   input \colpos_reg[0] ;
-  input \colpos_reg[0]_0 ;
   input [0:0]\ssin_reg[5] ;
   input [0:0]Q;
   input idle;
 
   wire [0:0]Q;
   wire \colpos_reg[0] ;
-  wire \colpos_reg[0]_0 ;
-  wire \colpos_reg[1] ;
   wire \counter[0]_i_1__11_n_0 ;
   wire \counter[1]_i_1__11_n_0 ;
   wire \counter[2]_i_1__11_n_0 ;
@@ -3230,7 +3222,6 @@ module design_1_led_shift_594_driver_0_0_delayed_9
   wire ledclk__18;
   wire s00_axi_aclk;
   wire ser_reg;
-  wire ser_reg_i_25_n_0;
   wire [0:0]\slv_reg0_reg[4] ;
   wire [0:0]\ssin_reg[5] ;
 
@@ -3283,23 +3274,18 @@ module design_1_led_shift_594_driver_0_0_delayed_9
         .R(1'b0));
   LUT5 #(
     .INIT(32'hBBBBBBB8)) 
-    ser_i_53
+    ser_i_21
        (.I0(Q),
         .I1(idle),
         .I2(\counter_reg_n_0_[1] ),
         .I3(\counter_reg_n_0_[2] ),
         .I4(\counter_reg_n_0_[0] ),
         .O(inact__15));
-  MUXF8 ser_reg_i_11
-       (.I0(ser_reg_i_25_n_0),
-        .I1(\colpos_reg[0] ),
-        .O(ser_reg),
-        .S(\colpos_reg[1] ));
-  MUXF7 ser_reg_i_25
+  MUXF7 ser_reg_i_8
        (.I0(inact__15),
         .I1(\ssin_reg[5] ),
-        .O(ser_reg_i_25_n_0),
-        .S(\colpos_reg[0]_0 ));
+        .O(ser_reg),
+        .S(\colpos_reg[0] ));
 endmodule
 
 (* ORIG_REF_NAME = "led_shift_594_driver_v1_0" *) 
@@ -5475,28 +5461,7 @@ module design_1_led_shift_594_driver_0_0_leds
   wire s00_axi_aclk;
   wire sck_i_1_n_0;
   wire sel;
-  wire ser1_carry__0_i_1_n_0;
-  wire ser1_carry__0_i_2_n_0;
-  wire ser1_carry__0_i_3_n_0;
-  wire ser1_carry__0_i_4_n_0;
-  wire ser1_carry__0_n_0;
-  wire ser1_carry__0_n_1;
-  wire ser1_carry__0_n_2;
-  wire ser1_carry__0_n_3;
-  wire ser1_carry__1_i_1_n_0;
-  wire ser1_carry__1_i_2_n_0;
-  wire ser1_carry__1_i_3_n_0;
-  wire ser1_carry__1_n_1;
-  wire ser1_carry__1_n_2;
-  wire ser1_carry__1_n_3;
-  wire ser1_carry_i_1_n_0;
-  wire ser1_carry_i_2_n_0;
-  wire ser1_carry_i_3_n_0;
-  wire ser1_carry_i_4_n_0;
-  wire ser1_carry_n_0;
-  wire ser1_carry_n_1;
-  wire ser1_carry_n_2;
-  wire ser1_carry_n_3;
+  wire ser_i_2_n_0;
   wire [15:0]\slv_reg0_reg[15] ;
   wire [2:0]ssbitno;
   wire \ssbitno[0]_i_1_n_0 ;
@@ -5596,7 +5561,7 @@ module design_1_led_shift_594_driver_0_0_leds
   wire \ssclk_cntr_reg_n_0_[7] ;
   wire \ssclk_cntr_reg_n_0_[8] ;
   wire \ssclk_cntr_reg_n_0_[9] ;
-  wire [7:0]ssin;
+  wire [15:8]ssin;
   wire \ssin[15]_i_3_n_0 ;
   wire \ssin[15]_i_5_n_0 ;
   wire \ssin[15]_i_6_n_0 ;
@@ -5634,10 +5599,6 @@ module design_1_led_shift_594_driver_0_0_leds
   wire [3:3]\NLW_clk_cntr_reg[8]_i_1_O_UNCONNECTED ;
   wire [3:3]\NLW_idle_count_reg[28]_i_1_CO_UNCONNECTED ;
   wire [3:3]\NLW_ledclk_c_reg[16]_i_1_CO_UNCONNECTED ;
-  wire [3:0]NLW_ser1_carry_O_UNCONNECTED;
-  wire [3:0]NLW_ser1_carry__0_O_UNCONNECTED;
-  wire [3:3]NLW_ser1_carry__1_CO_UNCONNECTED;
-  wire [3:0]NLW_ser1_carry__1_O_UNCONNECTED;
   wire [2:2]\NLW_ssclk_cntr_reg[20]_i_1_CO_UNCONNECTED ;
   wire [3:3]\NLW_ssclk_cntr_reg[20]_i_1_O_UNCONNECTED ;
 
@@ -6307,9 +6268,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .R(notidle));
   design_1_led_shift_594_driver_0_0_delayed \input_leds_inst[0] 
        (.Q(\ssin_reg_n_0_[0] ),
-        .\colpos_reg[0] (\input_leds_inst_n_0_[2] ),
-        .\colpos_reg[0]_0 (\colpos_reg_n_0_[0] ),
-        .\colpos_reg[1] (\colpos_reg_n_0_[1] ),
+        .\colpos_reg[0] (\colpos_reg_n_0_[0] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6333,23 +6292,8 @@ module design_1_led_shift_594_driver_0_0_leds
         .ser_reg(inact__15[11]),
         .\slv_reg0_reg[11] (\slv_reg0_reg[15] [11]));
   design_1_led_shift_594_driver_0_0_delayed_2 \input_leds_inst[12] 
-       (.CO(ser1_carry__1_n_1),
-        .D(\FSM_onehot_state_reg_n_0_[1] ),
-        .Q(\ssin_reg_n_0_[12] ),
-        .SER(SER),
-        .\bitno_reg[0] (\output_leds_inst_n_0_[4] ),
-        .\bitno_reg[0]_0 (\bitno_reg_n_0_[0] ),
-        .\bitno_reg[1] (\bitno_reg_n_0_[1] ),
-        .\bitno_reg[2] (\bitno_reg_n_0_[2] ),
-        .\bitno_reg[3] (\bitno_reg_n_0_[3] ),
-        .clk2(clk2),
-        .\colpos_reg[0] (\input_leds_inst_n_0_[14] ),
-        .\colpos_reg[0]_0 (\colpos_reg_n_0_[0] ),
-        .\colpos_reg[1] (\input_leds_inst_n_0_[8] ),
-        .\colpos_reg[1]_0 (\output_leds_inst_n_0_[12] ),
-        .\colpos_reg[1]_1 (\output_leds_inst_n_0_[8] ),
-        .\colpos_reg[1]_2 (\colpos_reg_n_0_[1] ),
-        .\colpos_reg[2] (\colpos_reg_n_0_[2] ),
+       (.Q(\ssin_reg_n_0_[12] ),
+        .\colpos_reg[0] (\colpos_reg_n_0_[0] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6365,7 +6309,12 @@ module design_1_led_shift_594_driver_0_0_leds
         .\slv_reg0_reg[13] (\slv_reg0_reg[15] [13]));
   design_1_led_shift_594_driver_0_0_delayed_4 \input_leds_inst[14] 
        (.Q(\ssin_reg_n_0_[14] ),
-        .\colpos_reg[0] (\colpos_reg_n_0_[0] ),
+        .\colpos_reg[0] (\input_leds_inst_n_0_[12] ),
+        .\colpos_reg[0]_0 (\input_leds_inst_n_0_[10] ),
+        .\colpos_reg[0]_1 (\input_leds_inst_n_0_[8] ),
+        .\colpos_reg[0]_2 (\colpos_reg_n_0_[0] ),
+        .\colpos_reg[1] (\colpos_reg_n_0_[1] ),
+        .\colpos_reg[2] (\colpos_reg_n_0_[2] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6404,9 +6353,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .\slv_reg0_reg[3] (\slv_reg0_reg[15] [3]));
   design_1_led_shift_594_driver_0_0_delayed_9 \input_leds_inst[4] 
        (.Q(\ssin_reg_n_0_[4] ),
-        .\colpos_reg[0] (\input_leds_inst_n_0_[6] ),
-        .\colpos_reg[0]_0 (\colpos_reg_n_0_[0] ),
-        .\colpos_reg[1] (\colpos_reg_n_0_[1] ),
+        .\colpos_reg[0] (\colpos_reg_n_0_[0] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6421,8 +6368,23 @@ module design_1_led_shift_594_driver_0_0_leds
         .ser_reg(inact__15[5]),
         .\slv_reg0_reg[5] (\slv_reg0_reg[15] [5]));
   design_1_led_shift_594_driver_0_0_delayed_11 \input_leds_inst[6] 
-       (.Q(\ssin_reg_n_0_[6] ),
-        .\colpos_reg[0] (\colpos_reg_n_0_[0] ),
+       (.D(\FSM_onehot_state_reg_n_0_[1] ),
+        .Q(\ssin_reg_n_0_[6] ),
+        .SER(SER),
+        .\bitno_reg[0] (\output_leds_inst_n_0_[12] ),
+        .\bitno_reg[0]_0 (\bitno_reg_n_0_[0] ),
+        .\bitno_reg[0]_1 (ser_i_2_n_0),
+        .\bitno_reg[1] (\bitno_reg_n_0_[1] ),
+        .\bitno_reg[2] (\bitno_reg_n_0_[2] ),
+        .\bitno_reg[3] (\bitno_reg_n_0_[3] ),
+        .clk2(clk2),
+        .\colpos_reg[0] (\input_leds_inst_n_0_[4] ),
+        .\colpos_reg[0]_0 (\input_leds_inst_n_0_[2] ),
+        .\colpos_reg[0]_1 (\input_leds_inst_n_0_[0] ),
+        .\colpos_reg[0]_2 (\colpos_reg_n_0_[0] ),
+        .\colpos_reg[1] (\colpos_reg_n_0_[1] ),
+        .\colpos_reg[2] (\input_leds_inst_n_0_[14] ),
+        .\colpos_reg[2]_0 (\colpos_reg_n_0_[2] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6438,9 +6400,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .\slv_reg0_reg[7] (\slv_reg0_reg[15] [7]));
   design_1_led_shift_594_driver_0_0_delayed_13 \input_leds_inst[8] 
        (.Q(\ssin_reg_n_0_[8] ),
-        .\colpos_reg[0] (\input_leds_inst_n_0_[10] ),
-        .\colpos_reg[0]_0 (\colpos_reg_n_0_[0] ),
-        .\colpos_reg[1] (\colpos_reg_n_0_[1] ),
+        .\colpos_reg[0] (\colpos_reg_n_0_[0] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6643,9 +6603,14 @@ module design_1_led_shift_594_driver_0_0_leds
         .\ssout_reg[11] (ssout[11]));
   design_1_led_shift_594_driver_0_0_delayed_18 \output_leds_inst[12] 
        (.Q(Q[12]),
+        .\bitno_reg[0] (\bitno_reg_n_0_[0] ),
         .\colpos_reg[0] (\output_leds_inst_n_0_[14] ),
         .\colpos_reg[0]_0 (\colpos_reg_n_0_[0] ),
-        .\colpos_reg[1] (\colpos_reg_n_0_[1] ),
+        .\colpos_reg[1] (\output_leds_inst_n_0_[8] ),
+        .\colpos_reg[1]_0 (\output_leds_inst_n_0_[4] ),
+        .\colpos_reg[1]_1 (\output_leds_inst_n_0_[0] ),
+        .\colpos_reg[1]_2 (\colpos_reg_n_0_[1] ),
+        .\colpos_reg[2] (\colpos_reg_n_0_[2] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6701,14 +6666,9 @@ module design_1_led_shift_594_driver_0_0_leds
         .\ssout_reg[3] (ssout[3]));
   design_1_led_shift_594_driver_0_0_delayed_25 \output_leds_inst[4] 
        (.Q(Q[4]),
-        .\bitno_reg[0] (\bitno_reg_n_0_[0] ),
         .\colpos_reg[0] (\output_leds_inst_n_0_[6] ),
         .\colpos_reg[0]_0 (\colpos_reg_n_0_[0] ),
-        .\colpos_reg[1] (\output_leds_inst_n_0_[0] ),
-        .\colpos_reg[1]_0 (\input_leds_inst_n_0_[4] ),
-        .\colpos_reg[1]_1 (\input_leds_inst_n_0_[0] ),
-        .\colpos_reg[1]_2 (\colpos_reg_n_0_[1] ),
-        .\colpos_reg[2] (\colpos_reg_n_0_[2] ),
+        .\colpos_reg[1] (\colpos_reg_n_0_[1] ),
         .idle(idle),
         .ledclk__18(ledclk__18),
         .s00_axi_aclk(s00_axi_aclk),
@@ -6785,121 +6745,20 @@ module design_1_led_shift_594_driver_0_0_leds
         .D(sck_i_1_n_0),
         .Q(SCK),
         .R(1'b0));
-  CARRY4 ser1_carry
-       (.CI(1'b0),
-        .CO({ser1_carry_n_0,ser1_carry_n_1,ser1_carry_n_2,ser1_carry_n_3}),
-        .CYINIT(1'b1),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(NLW_ser1_carry_O_UNCONNECTED[3:0]),
-        .S({ser1_carry_i_1_n_0,ser1_carry_i_2_n_0,ser1_carry_i_3_n_0,ser1_carry_i_4_n_0}));
-  CARRY4 ser1_carry__0
-       (.CI(ser1_carry_n_0),
-        .CO({ser1_carry__0_n_0,ser1_carry__0_n_1,ser1_carry__0_n_2,ser1_carry__0_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(NLW_ser1_carry__0_O_UNCONNECTED[3:0]),
-        .S({ser1_carry__0_i_1_n_0,ser1_carry__0_i_2_n_0,ser1_carry__0_i_3_n_0,ser1_carry__0_i_4_n_0}));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry__0_i_1
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry__0_i_1_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry__0_i_2
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry__0_i_2_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry__0_i_3
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry__0_i_3_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry__0_i_4
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry__0_i_4_n_0));
-  CARRY4 ser1_carry__1
-       (.CI(ser1_carry__0_n_0),
-        .CO({NLW_ser1_carry__1_CO_UNCONNECTED[3],ser1_carry__1_n_1,ser1_carry__1_n_2,ser1_carry__1_n_3}),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O(NLW_ser1_carry__1_O_UNCONNECTED[3:0]),
-        .S({1'b0,ser1_carry__1_i_1_n_0,ser1_carry__1_i_2_n_0,ser1_carry__1_i_3_n_0}));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry__1_i_1
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry__1_i_1_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry__1_i_2
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry__1_i_2_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry__1_i_3
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry__1_i_3_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry_i_1
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry_i_1_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ser1_carry_i_2
-       (.I0(\bitno_reg_n_0_[2] ),
-        .I1(\bitno_reg_n_0_[0] ),
-        .I2(\bitno_reg_n_0_[1] ),
-        .I3(\bitno_reg_n_0_[3] ),
-        .O(ser1_carry_i_2_n_0));
-  LUT4 #(
-    .INIT(16'h5556)) 
-    ser1_carry_i_3
-       (.I0(\bitno_reg_n_0_[3] ),
-        .I1(\bitno_reg_n_0_[1] ),
-        .I2(\bitno_reg_n_0_[0] ),
-        .I3(\bitno_reg_n_0_[2] ),
-        .O(ser1_carry_i_3_n_0));
   LUT6 #(
-    .INIT(64'h4100002800824100)) 
-    ser1_carry_i_4
-       (.I0(\colpos_reg_n_0_[0] ),
-        .I1(\colpos_reg_n_0_[2] ),
-        .I2(\bitno_reg_n_0_[2] ),
-        .I3(\bitno_reg_n_0_[0] ),
-        .I4(\bitno_reg_n_0_[1] ),
-        .I5(\colpos_reg_n_0_[1] ),
-        .O(ser1_carry_i_4_n_0));
+    .INIT(64'h9009000000009009)) 
+    ser_i_2
+       (.I0(\bitno_reg_n_0_[0] ),
+        .I1(\colpos_reg_n_0_[0] ),
+        .I2(\colpos_reg_n_0_[2] ),
+        .I3(\bitno_reg_n_0_[2] ),
+        .I4(\colpos_reg_n_0_[1] ),
+        .I5(\bitno_reg_n_0_[1] ),
+        .O(ser_i_2_n_0));
   FDRE ser_reg
        (.C(s00_axi_aclk),
         .CE(1'b1),
-        .D(\input_leds_inst_n_0_[12] ),
+        .D(\input_leds_inst_n_0_[6] ),
         .Q(SER),
         .R(1'b0));
   LUT3 #(
@@ -7289,7 +7148,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[1]),
         .I2(ssbitno[0]),
         .I3(ssbitno[2]),
-        .O(ssin[2]));
+        .O(ssin[10]));
   LUT4 #(
     .INIT(16'h0200)) 
     \ssin[11]_i_1 
@@ -7297,7 +7156,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[1]),
         .I2(ssbitno[0]),
         .I3(ssbitno[2]),
-        .O(ssin[3]));
+        .O(ssin[11]));
   LUT4 #(
     .INIT(16'h0080)) 
     \ssin[12]_i_1 
@@ -7305,7 +7164,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[1]),
         .I2(ssbitno[0]),
         .I3(ssbitno[2]),
-        .O(ssin[4]));
+        .O(ssin[12]));
   LUT4 #(
     .INIT(16'h0020)) 
     \ssin[13]_i_1 
@@ -7313,7 +7172,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[0]),
         .I2(ssbitno[1]),
         .I3(ssbitno[2]),
-        .O(ssin[5]));
+        .O(ssin[13]));
   LUT4 #(
     .INIT(16'h0020)) 
     \ssin[14]_i_1 
@@ -7321,7 +7180,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[1]),
         .I2(ssbitno[0]),
         .I3(ssbitno[2]),
-        .O(ssin[6]));
+        .O(ssin[14]));
   LUT1 #(
     .INIT(2'h1)) 
     \ssin[15]_i_1 
@@ -7334,7 +7193,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[1]),
         .I2(ssbitno[0]),
         .I3(ssbitno[2]),
-        .O(ssin[7]));
+        .O(ssin[15]));
   LUT1 #(
     .INIT(2'h1)) 
     \ssin[15]_i_3 
@@ -7392,7 +7251,7 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[1]),
         .I2(ssbitno[0]),
         .I3(ssbitno[2]),
-        .O(ssin[0]));
+        .O(ssin[8]));
   LUT4 #(
     .INIT(16'h2000)) 
     \ssin[9]_i_1 
@@ -7400,12 +7259,12 @@ module design_1_led_shift_594_driver_0_0_leds
         .I1(ssbitno[0]),
         .I2(ssbitno[1]),
         .I3(ssbitno[2]),
-        .O(ssin[1]));
+        .O(ssin[9]));
   FDRE #(
     .INIT(1'b0)) 
     \ssin_reg[0] 
        (.C(s00_axi_aclk),
-        .CE(ssin[0]),
+        .CE(ssin[8]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[0] ),
         .R(sel));
@@ -7413,7 +7272,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[10] 
        (.C(s00_axi_aclk),
-        .CE(ssin[2]),
+        .CE(ssin[10]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[10] ),
         .R(sel));
@@ -7421,7 +7280,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[11] 
        (.C(s00_axi_aclk),
-        .CE(ssin[3]),
+        .CE(ssin[11]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[11] ),
         .R(sel));
@@ -7429,7 +7288,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[12] 
        (.C(s00_axi_aclk),
-        .CE(ssin[4]),
+        .CE(ssin[12]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[12] ),
         .R(sel));
@@ -7437,7 +7296,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[13] 
        (.C(s00_axi_aclk),
-        .CE(ssin[5]),
+        .CE(ssin[13]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[13] ),
         .R(sel));
@@ -7445,7 +7304,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[14] 
        (.C(s00_axi_aclk),
-        .CE(ssin[6]),
+        .CE(ssin[14]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[14] ),
         .R(sel));
@@ -7453,7 +7312,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[15] 
        (.C(s00_axi_aclk),
-        .CE(ssin[7]),
+        .CE(ssin[15]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[15] ),
         .R(sel));
@@ -7466,7 +7325,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[1] 
        (.C(s00_axi_aclk),
-        .CE(ssin[1]),
+        .CE(ssin[9]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[1] ),
         .R(sel));
@@ -7474,7 +7333,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[2] 
        (.C(s00_axi_aclk),
-        .CE(ssin[2]),
+        .CE(ssin[10]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[2] ),
         .R(sel));
@@ -7482,7 +7341,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[3] 
        (.C(s00_axi_aclk),
-        .CE(ssin[3]),
+        .CE(ssin[11]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[3] ),
         .R(sel));
@@ -7490,7 +7349,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[4] 
        (.C(s00_axi_aclk),
-        .CE(ssin[4]),
+        .CE(ssin[12]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[4] ),
         .R(sel));
@@ -7498,7 +7357,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[5] 
        (.C(s00_axi_aclk),
-        .CE(ssin[5]),
+        .CE(ssin[13]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[5] ),
         .R(sel));
@@ -7506,7 +7365,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[6] 
        (.C(s00_axi_aclk),
-        .CE(ssin[6]),
+        .CE(ssin[14]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[6] ),
         .R(sel));
@@ -7514,7 +7373,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[7] 
        (.C(s00_axi_aclk),
-        .CE(ssin[7]),
+        .CE(ssin[15]),
         .D(\ssin[7]_i_1_n_0 ),
         .Q(\ssin_reg_n_0_[7] ),
         .R(sel));
@@ -7527,7 +7386,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[8] 
        (.C(s00_axi_aclk),
-        .CE(ssin[0]),
+        .CE(ssin[8]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[8] ),
         .R(sel));
@@ -7535,7 +7394,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssin_reg[9] 
        (.C(s00_axi_aclk),
-        .CE(ssin[1]),
+        .CE(ssin[9]),
         .D(\ssin[15]_i_3_n_0 ),
         .Q(\ssin_reg_n_0_[9] ),
         .R(sel));
@@ -7593,7 +7452,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[0] 
        (.C(s00_axi_aclk),
-        .CE(ssin[0]),
+        .CE(ssin[8]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[0]),
         .R(sel));
@@ -7601,7 +7460,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[10] 
        (.C(s00_axi_aclk),
-        .CE(ssin[2]),
+        .CE(ssin[10]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[10]),
         .R(sel));
@@ -7609,7 +7468,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[11] 
        (.C(s00_axi_aclk),
-        .CE(ssin[3]),
+        .CE(ssin[11]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[11]),
         .R(sel));
@@ -7617,7 +7476,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[12] 
        (.C(s00_axi_aclk),
-        .CE(ssin[4]),
+        .CE(ssin[12]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[12]),
         .R(sel));
@@ -7625,7 +7484,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[13] 
        (.C(s00_axi_aclk),
-        .CE(ssin[5]),
+        .CE(ssin[13]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[13]),
         .R(sel));
@@ -7633,7 +7492,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[14] 
        (.C(s00_axi_aclk),
-        .CE(ssin[6]),
+        .CE(ssin[14]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[14]),
         .R(sel));
@@ -7641,7 +7500,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[15] 
        (.C(s00_axi_aclk),
-        .CE(ssin[7]),
+        .CE(ssin[15]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[15]),
         .R(sel));
@@ -7654,7 +7513,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[1] 
        (.C(s00_axi_aclk),
-        .CE(ssin[1]),
+        .CE(ssin[9]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[1]),
         .R(sel));
@@ -7662,7 +7521,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[2] 
        (.C(s00_axi_aclk),
-        .CE(ssin[2]),
+        .CE(ssin[10]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[2]),
         .R(sel));
@@ -7670,7 +7529,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[3] 
        (.C(s00_axi_aclk),
-        .CE(ssin[3]),
+        .CE(ssin[11]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[3]),
         .R(sel));
@@ -7678,7 +7537,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[4] 
        (.C(s00_axi_aclk),
-        .CE(ssin[4]),
+        .CE(ssin[12]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[4]),
         .R(sel));
@@ -7686,7 +7545,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[5] 
        (.C(s00_axi_aclk),
-        .CE(ssin[5]),
+        .CE(ssin[13]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[5]),
         .R(sel));
@@ -7694,7 +7553,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[6] 
        (.C(s00_axi_aclk),
-        .CE(ssin[6]),
+        .CE(ssin[14]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[6]),
         .R(sel));
@@ -7702,7 +7561,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[7] 
        (.C(s00_axi_aclk),
-        .CE(ssin[7]),
+        .CE(ssin[15]),
         .D(\ssout[7]_i_1_n_0 ),
         .Q(ssout[7]),
         .R(sel));
@@ -7715,7 +7574,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[8] 
        (.C(s00_axi_aclk),
-        .CE(ssin[0]),
+        .CE(ssin[8]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[8]),
         .R(sel));
@@ -7723,7 +7582,7 @@ module design_1_led_shift_594_driver_0_0_leds
     .INIT(1'b0)) 
     \ssout_reg[9] 
        (.C(s00_axi_aclk),
-        .CE(ssin[1]),
+        .CE(ssin[9]),
         .D(\ssout[15]_i_1_n_0 ),
         .Q(ssout[9]),
         .R(sel));

@@ -1,14 +1,14 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
--- Date        : Sat Dec 28 20:42:18 2019
--- Host        : debian running 64-bit Debian GNU/Linux 9.11 (stretch)
+-- Date        : Sun May 24 12:50:39 2020
+-- Host        : debian running 64-bit Debian GNU/Linux 10 (buster)
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/tommy/src/tomarus/midirouter/midirouter.srcs/sources_1/bd/design_1/ip/design_1_led_shift_594_driver_0_0/design_1_led_shift_594_driver_0_0_sim_netlist.vhdl
 -- Design      : design_1_led_shift_594_driver_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7a15tcpg236-1
+-- Device      : xc7a35tcpg236-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -20,9 +20,7 @@ entity design_1_led_shift_594_driver_0_0_delayed is
     s00_axi_aclk : in STD_LOGIC;
     \ledclk__18\ : in STD_LOGIC;
     \slv_reg0_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \colpos_reg[1]\ : in STD_LOGIC;
     \colpos_reg[0]\ : in STD_LOGIC;
-    \colpos_reg[0]_0\ : in STD_LOGIC;
     \ssin_reg[1]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     idle : in STD_LOGIC
@@ -39,7 +37,6 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \inact__15\ : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ser_reg_i_27_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__15\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \counter[2]_i_1__15\ : label is "soft_lutpair2";
@@ -104,7 +101,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_57: unisim.vcomponents.LUT5
+ser_i_25: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -116,19 +113,12 @@ ser_i_57: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(0)
     );
-ser_reg_i_12: unisim.vcomponents.MUXF8
-     port map (
-      I0 => ser_reg_i_27_n_0,
-      I1 => \colpos_reg[0]\,
-      O => ser_reg,
-      S => \colpos_reg[1]\
-    );
-ser_reg_i_27: unisim.vcomponents.MUXF7
+ser_reg_i_10: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(0),
       I1 => \ssin_reg[1]\(0),
-      O => ser_reg_i_27_n_0,
-      S => \colpos_reg[0]_0\
+      O => ser_reg,
+      S => \colpos_reg[0]\
     );
 end STRUCTURE;
 library IEEE;
@@ -222,7 +212,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_35: unisim.vcomponents.LUT5
+ser_i_39: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -234,7 +224,7 @@ ser_i_35: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(10)
     );
-ser_reg_i_16: unisim.vcomponents.MUXF7
+ser_reg_i_17: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(10),
       I1 => \ssin_reg[11]\(0),
@@ -330,7 +320,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_36: unisim.vcomponents.LUT5
+ser_i_40: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -431,7 +421,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_54: unisim.vcomponents.LUT5
+ser_i_22: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -454,10 +444,25 @@ entity design_1_led_shift_594_driver_0_0_delayed_11 is
     s00_axi_aclk : in STD_LOGIC;
     \ledclk__18\ : in STD_LOGIC;
     \slv_reg0_reg[6]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
+    \bitno_reg[0]\ : in STD_LOGIC;
+    \bitno_reg[1]\ : in STD_LOGIC;
+    \bitno_reg[2]\ : in STD_LOGIC;
+    \colpos_reg[2]\ : in STD_LOGIC;
+    \bitno_reg[0]_0\ : in STD_LOGIC;
     \colpos_reg[0]\ : in STD_LOGIC;
+    \colpos_reg[2]_0\ : in STD_LOGIC;
+    \colpos_reg[0]_0\ : in STD_LOGIC;
+    \colpos_reg[1]\ : in STD_LOGIC;
+    \colpos_reg[0]_1\ : in STD_LOGIC;
+    \colpos_reg[0]_2\ : in STD_LOGIC;
     \ssin_reg[7]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
-    idle : in STD_LOGIC
+    idle : in STD_LOGIC;
+    \bitno_reg[0]_1\ : in STD_LOGIC;
+    \bitno_reg[3]\ : in STD_LOGIC;
+    clk2 : in STD_LOGIC;
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    SER : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of design_1_led_shift_594_driver_0_0_delayed_11 : entity is "delayed";
@@ -471,6 +476,9 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_11 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \inact__15\ : STD_LOGIC_VECTOR ( 6 to 6 );
+  signal ser_i_3_n_0 : STD_LOGIC;
+  signal ser_i_4_n_0 : STD_LOGIC;
+  signal ser_reg_i_7_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__9\ : label is "soft_lutpair14";
   attribute SOFT_HLUTNM of \counter[2]_i_1__9\ : label is "soft_lutpair14";
@@ -535,7 +543,20 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_55: unisim.vcomponents.LUT5
+ser_i_1: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"CAFFFFFFCA000000"
+    )
+        port map (
+      I0 => \bitno_reg[0]_1\,
+      I1 => ser_i_3_n_0,
+      I2 => \bitno_reg[3]\,
+      I3 => clk2,
+      I4 => D(0),
+      I5 => SER,
+      O => ser_reg
+    );
+ser_i_19: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -547,12 +568,38 @@ ser_i_55: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(6)
     );
-ser_reg_i_26: unisim.vcomponents.MUXF7
+ser_i_3: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00CA00CA0FC000C0"
+    )
+        port map (
+      I0 => ser_i_4_n_0,
+      I1 => \bitno_reg[0]\,
+      I2 => \bitno_reg[1]\,
+      I3 => \bitno_reg[2]\,
+      I4 => \colpos_reg[2]\,
+      I5 => \bitno_reg[0]_0\,
+      O => ser_i_3_n_0
+    );
+ser_i_4: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => ser_reg_i_7_n_0,
+      I1 => \colpos_reg[0]\,
+      I2 => \colpos_reg[2]_0\,
+      I3 => \colpos_reg[0]_0\,
+      I4 => \colpos_reg[1]\,
+      I5 => \colpos_reg[0]_1\,
+      O => ser_i_4_n_0
+    );
+ser_reg_i_7: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(6),
       I1 => \ssin_reg[7]\(0),
-      O => ser_reg,
-      S => \colpos_reg[0]\
+      O => ser_reg_i_7_n_0,
+      S => \colpos_reg[0]_2\
     );
 end STRUCTURE;
 library IEEE;
@@ -643,7 +690,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_56: unisim.vcomponents.LUT5
+ser_i_20: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -666,9 +713,7 @@ entity design_1_led_shift_594_driver_0_0_delayed_13 is
     s00_axi_aclk : in STD_LOGIC;
     \ledclk__18\ : in STD_LOGIC;
     \slv_reg0_reg[8]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \colpos_reg[1]\ : in STD_LOGIC;
     \colpos_reg[0]\ : in STD_LOGIC;
-    \colpos_reg[0]_0\ : in STD_LOGIC;
     \ssin_reg[9]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     idle : in STD_LOGIC
@@ -685,7 +730,6 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_13 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \inact__15\ : STD_LOGIC_VECTOR ( 8 to 8 );
-  signal ser_reg_i_15_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__7\ : label is "soft_lutpair16";
   attribute SOFT_HLUTNM of \counter[2]_i_1__7\ : label is "soft_lutpair16";
@@ -750,7 +794,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_33: unisim.vcomponents.LUT5
+ser_i_41: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -762,19 +806,12 @@ ser_i_33: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(8)
     );
-ser_reg_i_15: unisim.vcomponents.MUXF7
+ser_reg_i_18: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(8),
       I1 => \ssin_reg[9]\(0),
-      O => ser_reg_i_15_n_0,
-      S => \colpos_reg[0]_0\
-    );
-ser_reg_i_6: unisim.vcomponents.MUXF8
-     port map (
-      I0 => ser_reg_i_15_n_0,
-      I1 => \colpos_reg[0]\,
       O => ser_reg,
-      S => \colpos_reg[1]\
+      S => \colpos_reg[0]\
     );
 end STRUCTURE;
 library IEEE;
@@ -865,7 +902,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_34: unisim.vcomponents.LUT5
+ser_i_42: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -907,7 +944,7 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_15 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \outact__15\ : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ser_reg_i_23_n_0 : STD_LOGIC;
+  signal ser_reg_i_33_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1\ : label is "soft_lutpair18";
   attribute SOFT_HLUTNM of \counter[2]_i_1\ : label is "soft_lutpair18";
@@ -972,7 +1009,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_49: unisim.vcomponents.LUT5
+ser_i_55: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -984,18 +1021,18 @@ ser_i_49: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(0)
     );
-ser_reg_i_10: unisim.vcomponents.MUXF8
+ser_reg_i_14: unisim.vcomponents.MUXF8
      port map (
-      I0 => ser_reg_i_23_n_0,
+      I0 => ser_reg_i_33_n_0,
       I1 => \colpos_reg[0]\,
       O => ser_reg,
       S => \colpos_reg[1]\
     );
-ser_reg_i_23: unisim.vcomponents.MUXF7
+ser_reg_i_33: unisim.vcomponents.MUXF7
      port map (
       I0 => \outact__15\(0),
       I1 => \ssout_reg[1]\(0),
-      O => ser_reg_i_23_n_0,
+      O => ser_reg_i_33_n_0,
       S => \colpos_reg[0]_0\
     );
 end STRUCTURE;
@@ -1090,7 +1127,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_43: unisim.vcomponents.LUT5
+ser_i_49: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -1102,7 +1139,7 @@ ser_i_43: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(10)
     );
-ser_reg_i_20: unisim.vcomponents.MUXF7
+ser_reg_i_30: unisim.vcomponents.MUXF7
      port map (
       I0 => \outact__15\(10),
       I1 => \ssout_reg[11]\(0),
@@ -1198,7 +1235,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_44: unisim.vcomponents.LUT5
+ser_i_50: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -1222,6 +1259,11 @@ entity design_1_led_shift_594_driver_0_0_delayed_18 is
     \ledclk__18\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     \colpos_reg[1]\ : in STD_LOGIC;
+    \bitno_reg[0]\ : in STD_LOGIC;
+    \colpos_reg[1]_0\ : in STD_LOGIC;
+    \colpos_reg[2]\ : in STD_LOGIC;
+    \colpos_reg[1]_1\ : in STD_LOGIC;
+    \colpos_reg[1]_2\ : in STD_LOGIC;
     \colpos_reg[0]\ : in STD_LOGIC;
     \colpos_reg[0]_0\ : in STD_LOGIC;
     \ssout_reg[13]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -1240,7 +1282,8 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_18 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \outact__15\ : STD_LOGIC_VECTOR ( 12 to 12 );
-  signal ser_reg_i_17_n_0 : STD_LOGIC;
+  signal ser_reg_i_11_n_0 : STD_LOGIC;
+  signal ser_reg_i_27_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__19\ : label is "soft_lutpair21";
   attribute SOFT_HLUTNM of \counter[2]_i_1__19\ : label is "soft_lutpair21";
@@ -1305,7 +1348,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_37: unisim.vcomponents.LUT5
+ser_i_43: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -1317,19 +1360,32 @@ ser_i_37: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(12)
     );
-ser_reg_i_17: unisim.vcomponents.MUXF7
+ser_i_5: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => ser_reg_i_11_n_0,
+      I1 => \colpos_reg[1]\,
+      I2 => \bitno_reg[0]\,
+      I3 => \colpos_reg[1]_0\,
+      I4 => \colpos_reg[2]\,
+      I5 => \colpos_reg[1]_1\,
+      O => ser_reg
+    );
+ser_reg_i_11: unisim.vcomponents.MUXF8
+     port map (
+      I0 => ser_reg_i_27_n_0,
+      I1 => \colpos_reg[0]\,
+      O => ser_reg_i_11_n_0,
+      S => \colpos_reg[1]_2\
+    );
+ser_reg_i_27: unisim.vcomponents.MUXF7
      port map (
       I0 => \outact__15\(12),
       I1 => \ssout_reg[13]\(0),
-      O => ser_reg_i_17_n_0,
+      O => ser_reg_i_27_n_0,
       S => \colpos_reg[0]_0\
-    );
-ser_reg_i_7: unisim.vcomponents.MUXF8
-     port map (
-      I0 => ser_reg_i_17_n_0,
-      I1 => \colpos_reg[0]\,
-      O => ser_reg,
-      S => \colpos_reg[1]\
     );
 end STRUCTURE;
 library IEEE;
@@ -1420,7 +1476,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_38: unisim.vcomponents.LUT5
+ser_i_44: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -1443,25 +1499,10 @@ entity design_1_led_shift_594_driver_0_0_delayed_2 is
     s00_axi_aclk : in STD_LOGIC;
     \ledclk__18\ : in STD_LOGIC;
     \slv_reg0_reg[12]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CO : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \bitno_reg[2]\ : in STD_LOGIC;
-    \bitno_reg[1]\ : in STD_LOGIC;
-    \bitno_reg[0]\ : in STD_LOGIC;
-    \bitno_reg[3]\ : in STD_LOGIC;
-    \colpos_reg[1]\ : in STD_LOGIC;
-    \bitno_reg[0]_0\ : in STD_LOGIC;
-    \colpos_reg[1]_0\ : in STD_LOGIC;
-    \colpos_reg[2]\ : in STD_LOGIC;
-    \colpos_reg[1]_1\ : in STD_LOGIC;
-    \colpos_reg[1]_2\ : in STD_LOGIC;
     \colpos_reg[0]\ : in STD_LOGIC;
-    \colpos_reg[0]_0\ : in STD_LOGIC;
     \ssin_reg[13]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
-    idle : in STD_LOGIC;
-    clk2 : in STD_LOGIC;
-    D : in STD_LOGIC_VECTOR ( 0 to 0 );
-    SER : in STD_LOGIC
+    idle : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of design_1_led_shift_594_driver_0_0_delayed_2 : entity is "delayed";
@@ -1475,10 +1516,6 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_2 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \inact__15\ : STD_LOGIC_VECTOR ( 12 to 12 );
-  signal ser_i_2_n_0 : STD_LOGIC;
-  signal ser_i_3_n_0 : STD_LOGIC;
-  signal ser_reg_i_13_n_0 : STD_LOGIC;
-  signal ser_reg_i_5_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__3\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \counter[2]_i_1__3\ : label is "soft_lutpair5";
@@ -1543,31 +1580,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_1: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"BF80"
-    )
-        port map (
-      I0 => ser_i_2_n_0,
-      I1 => clk2,
-      I2 => D(0),
-      I3 => SER,
-      O => ser_reg
-    );
-ser_i_2: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AFEAAAEAAAAAAAAA"
-    )
-        port map (
-      I0 => CO(0),
-      I1 => ser_i_3_n_0,
-      I2 => \bitno_reg[2]\,
-      I3 => \bitno_reg[1]\,
-      I4 => \bitno_reg[0]\,
-      I5 => \bitno_reg[3]\,
-      O => ser_i_2_n_0
-    );
-ser_i_29: unisim.vcomponents.LUT5
+ser_i_37: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -1579,32 +1592,12 @@ ser_i_29: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(12)
     );
-ser_i_3: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AFA0CFCFAFA0C0C0"
-    )
-        port map (
-      I0 => ser_reg_i_5_n_0,
-      I1 => \colpos_reg[1]\,
-      I2 => \bitno_reg[0]_0\,
-      I3 => \colpos_reg[1]_0\,
-      I4 => \colpos_reg[2]\,
-      I5 => \colpos_reg[1]_1\,
-      O => ser_i_3_n_0
-    );
-ser_reg_i_13: unisim.vcomponents.MUXF7
+ser_reg_i_16: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(12),
       I1 => \ssin_reg[13]\(0),
-      O => ser_reg_i_13_n_0,
-      S => \colpos_reg[0]_0\
-    );
-ser_reg_i_5: unisim.vcomponents.MUXF8
-     port map (
-      I0 => ser_reg_i_13_n_0,
-      I1 => \colpos_reg[0]\,
-      O => ser_reg_i_5_n_0,
-      S => \colpos_reg[1]_2\
+      O => ser_reg,
+      S => \colpos_reg[0]\
     );
 end STRUCTURE;
 library IEEE;
@@ -1698,7 +1691,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_39: unisim.vcomponents.LUT5
+ser_i_45: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -1710,7 +1703,7 @@ ser_i_39: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(14)
     );
-ser_reg_i_18: unisim.vcomponents.MUXF7
+ser_reg_i_28: unisim.vcomponents.MUXF7
      port map (
       I0 => \outact__15\(14),
       I1 => \ssout_reg[15]\(0),
@@ -1806,7 +1799,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_40: unisim.vcomponents.LUT5
+ser_i_46: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -1973,7 +1966,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_50: unisim.vcomponents.LUT5
+ser_i_56: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2077,7 +2070,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_51: unisim.vcomponents.LUT5
+ser_i_57: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2089,7 +2082,7 @@ ser_i_51: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(2)
     );
-ser_reg_i_24: unisim.vcomponents.MUXF7
+ser_reg_i_34: unisim.vcomponents.MUXF7
      port map (
       I0 => \outact__15\(2),
       I1 => \ssout_reg[3]\(0),
@@ -2185,7 +2178,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_52: unisim.vcomponents.LUT5
+ser_i_58: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2209,11 +2202,6 @@ entity design_1_led_shift_594_driver_0_0_delayed_25 is
     \ledclk__18\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     \colpos_reg[1]\ : in STD_LOGIC;
-    \bitno_reg[0]\ : in STD_LOGIC;
-    \colpos_reg[1]_0\ : in STD_LOGIC;
-    \colpos_reg[2]\ : in STD_LOGIC;
-    \colpos_reg[1]_1\ : in STD_LOGIC;
-    \colpos_reg[1]_2\ : in STD_LOGIC;
     \colpos_reg[0]\ : in STD_LOGIC;
     \colpos_reg[0]_0\ : in STD_LOGIC;
     \ssout_reg[5]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2232,8 +2220,7 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_25 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \outact__15\ : STD_LOGIC_VECTOR ( 4 to 4 );
-  signal ser_reg_i_21_n_0 : STD_LOGIC;
-  signal ser_reg_i_9_n_0 : STD_LOGIC;
+  signal ser_reg_i_31_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__27\ : label is "soft_lutpair28";
   attribute SOFT_HLUTNM of \counter[2]_i_1__27\ : label is "soft_lutpair28";
@@ -2298,20 +2285,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_4: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"AFA0CFCFAFA0C0C0"
-    )
-        port map (
-      I0 => ser_reg_i_9_n_0,
-      I1 => \colpos_reg[1]\,
-      I2 => \bitno_reg[0]\,
-      I3 => \colpos_reg[1]_0\,
-      I4 => \colpos_reg[2]\,
-      I5 => \colpos_reg[1]_1\,
-      O => ser_reg
-    );
-ser_i_45: unisim.vcomponents.LUT5
+ser_i_51: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2323,19 +2297,19 @@ ser_i_45: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(4)
     );
-ser_reg_i_21: unisim.vcomponents.MUXF7
+ser_reg_i_13: unisim.vcomponents.MUXF8
+     port map (
+      I0 => ser_reg_i_31_n_0,
+      I1 => \colpos_reg[0]\,
+      O => ser_reg,
+      S => \colpos_reg[1]\
+    );
+ser_reg_i_31: unisim.vcomponents.MUXF7
      port map (
       I0 => \outact__15\(4),
       I1 => \ssout_reg[5]\(0),
-      O => ser_reg_i_21_n_0,
+      O => ser_reg_i_31_n_0,
       S => \colpos_reg[0]_0\
-    );
-ser_reg_i_9: unisim.vcomponents.MUXF8
-     port map (
-      I0 => ser_reg_i_21_n_0,
-      I1 => \colpos_reg[0]\,
-      O => ser_reg_i_9_n_0,
-      S => \colpos_reg[1]_2\
     );
 end STRUCTURE;
 library IEEE;
@@ -2426,7 +2400,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_46: unisim.vcomponents.LUT5
+ser_i_52: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2530,7 +2504,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_47: unisim.vcomponents.LUT5
+ser_i_53: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2542,7 +2516,7 @@ ser_i_47: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(6)
     );
-ser_reg_i_22: unisim.vcomponents.MUXF7
+ser_reg_i_32: unisim.vcomponents.MUXF7
      port map (
       I0 => \outact__15\(6),
       I1 => \ssout_reg[7]\(0),
@@ -2638,7 +2612,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_48: unisim.vcomponents.LUT5
+ser_i_54: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2680,7 +2654,7 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_29 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \outact__15\ : STD_LOGIC_VECTOR ( 8 to 8 );
-  signal ser_reg_i_19_n_0 : STD_LOGIC;
+  signal ser_reg_i_29_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__23\ : label is "soft_lutpair32";
   attribute SOFT_HLUTNM of \counter[2]_i_1__23\ : label is "soft_lutpair32";
@@ -2745,7 +2719,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_41: unisim.vcomponents.LUT5
+ser_i_47: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2757,19 +2731,19 @@ ser_i_41: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \outact__15\(8)
     );
-ser_reg_i_19: unisim.vcomponents.MUXF7
+ser_reg_i_12: unisim.vcomponents.MUXF8
      port map (
-      I0 => \outact__15\(8),
-      I1 => \ssout_reg[9]\(0),
-      O => ser_reg_i_19_n_0,
-      S => \colpos_reg[0]_0\
-    );
-ser_reg_i_8: unisim.vcomponents.MUXF8
-     port map (
-      I0 => ser_reg_i_19_n_0,
+      I0 => ser_reg_i_29_n_0,
       I1 => \colpos_reg[0]\,
       O => ser_reg,
       S => \colpos_reg[1]\
+    );
+ser_reg_i_29: unisim.vcomponents.MUXF7
+     port map (
+      I0 => \outact__15\(8),
+      I1 => \ssout_reg[9]\(0),
+      O => ser_reg_i_29_n_0,
+      S => \colpos_reg[0]_0\
     );
 end STRUCTURE;
 library IEEE;
@@ -2860,7 +2834,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_30: unisim.vcomponents.LUT5
+ser_i_38: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2961,7 +2935,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_42: unisim.vcomponents.LUT5
+ser_i_48: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -2985,6 +2959,11 @@ entity design_1_led_shift_594_driver_0_0_delayed_4 is
     \ledclk__18\ : in STD_LOGIC;
     \slv_reg0_reg[14]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \colpos_reg[0]\ : in STD_LOGIC;
+    \colpos_reg[2]\ : in STD_LOGIC;
+    \colpos_reg[0]_0\ : in STD_LOGIC;
+    \colpos_reg[1]\ : in STD_LOGIC;
+    \colpos_reg[0]_1\ : in STD_LOGIC;
+    \colpos_reg[0]_2\ : in STD_LOGIC;
     \ssin_reg[15]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     idle : in STD_LOGIC
@@ -3001,6 +2980,7 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_4 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \inact__15\ : STD_LOGIC_VECTOR ( 14 to 14 );
+  signal ser_reg_i_15_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \counter[2]_i_1__1\ : label is "soft_lutpair7";
@@ -3065,7 +3045,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_31: unisim.vcomponents.LUT5
+ser_i_35: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -3077,12 +3057,25 @@ ser_i_31: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(14)
     );
-ser_reg_i_14: unisim.vcomponents.MUXF7
+ser_i_6: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AFA0CFCFAFA0C0C0"
+    )
+        port map (
+      I0 => ser_reg_i_15_n_0,
+      I1 => \colpos_reg[0]\,
+      I2 => \colpos_reg[2]\,
+      I3 => \colpos_reg[0]_0\,
+      I4 => \colpos_reg[1]\,
+      I5 => \colpos_reg[0]_1\,
+      O => ser_reg
+    );
+ser_reg_i_15: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(14),
       I1 => \ssin_reg[15]\(0),
-      O => ser_reg,
-      S => \colpos_reg[0]\
+      O => ser_reg_i_15_n_0,
+      S => \colpos_reg[0]_2\
     );
 end STRUCTURE;
 library IEEE;
@@ -3173,7 +3166,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_32: unisim.vcomponents.LUT5
+ser_i_36: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -3274,7 +3267,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_58: unisim.vcomponents.LUT5
+ser_i_26: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -3378,7 +3371,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_59: unisim.vcomponents.LUT5
+ser_i_23: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -3390,7 +3383,7 @@ ser_i_59: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(2)
     );
-ser_reg_i_28: unisim.vcomponents.MUXF7
+ser_reg_i_9: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(2),
       I1 => \ssin_reg[3]\(0),
@@ -3486,7 +3479,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_60: unisim.vcomponents.LUT5
+ser_i_24: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -3509,9 +3502,7 @@ entity design_1_led_shift_594_driver_0_0_delayed_9 is
     s00_axi_aclk : in STD_LOGIC;
     \ledclk__18\ : in STD_LOGIC;
     \slv_reg0_reg[4]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \colpos_reg[1]\ : in STD_LOGIC;
     \colpos_reg[0]\ : in STD_LOGIC;
-    \colpos_reg[0]_0\ : in STD_LOGIC;
     \ssin_reg[5]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     idle : in STD_LOGIC
@@ -3528,7 +3519,6 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_delayed_9 is
   signal \counter_reg_n_0_[1]\ : STD_LOGIC;
   signal \counter_reg_n_0_[2]\ : STD_LOGIC;
   signal \inact__15\ : STD_LOGIC_VECTOR ( 4 to 4 );
-  signal ser_reg_i_25_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1__11\ : label is "soft_lutpair12";
   attribute SOFT_HLUTNM of \counter[2]_i_1__11\ : label is "soft_lutpair12";
@@ -3593,7 +3583,7 @@ begin
       Q => \counter_reg_n_0_[2]\,
       R => '0'
     );
-ser_i_53: unisim.vcomponents.LUT5
+ser_i_21: unisim.vcomponents.LUT5
     generic map(
       INIT => X"BBBBBBB8"
     )
@@ -3605,19 +3595,12 @@ ser_i_53: unisim.vcomponents.LUT5
       I4 => \counter_reg_n_0_[0]\,
       O => \inact__15\(4)
     );
-ser_reg_i_11: unisim.vcomponents.MUXF8
-     port map (
-      I0 => ser_reg_i_25_n_0,
-      I1 => \colpos_reg[0]\,
-      O => ser_reg,
-      S => \colpos_reg[1]\
-    );
-ser_reg_i_25: unisim.vcomponents.MUXF7
+ser_reg_i_8: unisim.vcomponents.MUXF7
      port map (
       I0 => \inact__15\(4),
       I1 => \ssin_reg[5]\(0),
-      O => ser_reg_i_25_n_0,
-      S => \colpos_reg[0]_0\
+      O => ser_reg,
+      S => \colpos_reg[0]\
     );
 end STRUCTURE;
 library IEEE;
@@ -6202,28 +6185,7 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_leds is
   signal rck_i_1_n_0 : STD_LOGIC;
   signal sck_i_1_n_0 : STD_LOGIC;
   signal sel : STD_LOGIC;
-  signal \ser1_carry__0_i_1_n_0\ : STD_LOGIC;
-  signal \ser1_carry__0_i_2_n_0\ : STD_LOGIC;
-  signal \ser1_carry__0_i_3_n_0\ : STD_LOGIC;
-  signal \ser1_carry__0_i_4_n_0\ : STD_LOGIC;
-  signal \ser1_carry__0_n_0\ : STD_LOGIC;
-  signal \ser1_carry__0_n_1\ : STD_LOGIC;
-  signal \ser1_carry__0_n_2\ : STD_LOGIC;
-  signal \ser1_carry__0_n_3\ : STD_LOGIC;
-  signal \ser1_carry__1_i_1_n_0\ : STD_LOGIC;
-  signal \ser1_carry__1_i_2_n_0\ : STD_LOGIC;
-  signal \ser1_carry__1_i_3_n_0\ : STD_LOGIC;
-  signal \ser1_carry__1_n_1\ : STD_LOGIC;
-  signal \ser1_carry__1_n_2\ : STD_LOGIC;
-  signal \ser1_carry__1_n_3\ : STD_LOGIC;
-  signal ser1_carry_i_1_n_0 : STD_LOGIC;
-  signal ser1_carry_i_2_n_0 : STD_LOGIC;
-  signal ser1_carry_i_3_n_0 : STD_LOGIC;
-  signal ser1_carry_i_4_n_0 : STD_LOGIC;
-  signal ser1_carry_n_0 : STD_LOGIC;
-  signal ser1_carry_n_1 : STD_LOGIC;
-  signal ser1_carry_n_2 : STD_LOGIC;
-  signal ser1_carry_n_3 : STD_LOGIC;
+  signal ser_i_2_n_0 : STD_LOGIC;
   signal ssbitno : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \ssbitno[0]_i_1_n_0\ : STD_LOGIC;
   signal \ssbitno[1]_i_1_n_0\ : STD_LOGIC;
@@ -6322,7 +6284,7 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_leds is
   signal \ssclk_cntr_reg_n_0_[7]\ : STD_LOGIC;
   signal \ssclk_cntr_reg_n_0_[8]\ : STD_LOGIC;
   signal \ssclk_cntr_reg_n_0_[9]\ : STD_LOGIC;
-  signal ssin : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal ssin : STD_LOGIC_VECTOR ( 15 downto 8 );
   signal \ssin[15]_i_3_n_0\ : STD_LOGIC;
   signal \ssin[15]_i_5_n_0\ : STD_LOGIC;
   signal \ssin[15]_i_6_n_0\ : STD_LOGIC;
@@ -6360,10 +6322,6 @@ architecture STRUCTURE of design_1_led_shift_594_driver_0_0_leds is
   signal \NLW_clk_cntr_reg[8]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal \NLW_idle_count_reg[28]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal \NLW_ledclk_c_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal NLW_ser1_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_ser1_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_ser1_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW_ser1_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_ssclk_cntr_reg[20]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 to 2 );
   signal \NLW_ssclk_cntr_reg[20]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute FSM_ENCODED_STATES : string;
@@ -7389,9 +7347,7 @@ begin
 \input_leds_inst[0]\: entity work.design_1_led_shift_594_driver_0_0_delayed
      port map (
       Q(0) => \ssin_reg_n_0_[0]\,
-      \colpos_reg[0]\ => \input_leds_inst_n_0_[2]\,
-      \colpos_reg[0]_0\ => \colpos_reg_n_0_[0]\,
-      \colpos_reg[1]\ => \colpos_reg_n_0_[1]\,
+      \colpos_reg[0]\ => \colpos_reg_n_0_[0]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -7421,23 +7377,8 @@ begin
     );
 \input_leds_inst[12]\: entity work.design_1_led_shift_594_driver_0_0_delayed_2
      port map (
-      CO(0) => \ser1_carry__1_n_1\,
-      D(0) => \FSM_onehot_state_reg_n_0_[1]\,
       Q(0) => \ssin_reg_n_0_[12]\,
-      SER => \^ser\,
-      \bitno_reg[0]\ => \output_leds_inst_n_0_[4]\,
-      \bitno_reg[0]_0\ => \bitno_reg_n_0_[0]\,
-      \bitno_reg[1]\ => \bitno_reg_n_0_[1]\,
-      \bitno_reg[2]\ => \bitno_reg_n_0_[2]\,
-      \bitno_reg[3]\ => \bitno_reg_n_0_[3]\,
-      clk2 => clk2,
-      \colpos_reg[0]\ => \input_leds_inst_n_0_[14]\,
-      \colpos_reg[0]_0\ => \colpos_reg_n_0_[0]\,
-      \colpos_reg[1]\ => \input_leds_inst_n_0_[8]\,
-      \colpos_reg[1]_0\ => \output_leds_inst_n_0_[12]\,
-      \colpos_reg[1]_1\ => \output_leds_inst_n_0_[8]\,
-      \colpos_reg[1]_2\ => \colpos_reg_n_0_[1]\,
-      \colpos_reg[2]\ => \colpos_reg_n_0_[2]\,
+      \colpos_reg[0]\ => \colpos_reg_n_0_[0]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -7457,7 +7398,12 @@ begin
 \input_leds_inst[14]\: entity work.design_1_led_shift_594_driver_0_0_delayed_4
      port map (
       Q(0) => \ssin_reg_n_0_[14]\,
-      \colpos_reg[0]\ => \colpos_reg_n_0_[0]\,
+      \colpos_reg[0]\ => \input_leds_inst_n_0_[12]\,
+      \colpos_reg[0]_0\ => \input_leds_inst_n_0_[10]\,
+      \colpos_reg[0]_1\ => \input_leds_inst_n_0_[8]\,
+      \colpos_reg[0]_2\ => \colpos_reg_n_0_[0]\,
+      \colpos_reg[1]\ => \colpos_reg_n_0_[1]\,
+      \colpos_reg[2]\ => \colpos_reg_n_0_[2]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -7506,9 +7452,7 @@ begin
 \input_leds_inst[4]\: entity work.design_1_led_shift_594_driver_0_0_delayed_9
      port map (
       Q(0) => \ssin_reg_n_0_[4]\,
-      \colpos_reg[0]\ => \input_leds_inst_n_0_[6]\,
-      \colpos_reg[0]_0\ => \colpos_reg_n_0_[0]\,
-      \colpos_reg[1]\ => \colpos_reg_n_0_[1]\,
+      \colpos_reg[0]\ => \colpos_reg_n_0_[0]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -7527,8 +7471,23 @@ begin
     );
 \input_leds_inst[6]\: entity work.design_1_led_shift_594_driver_0_0_delayed_11
      port map (
+      D(0) => \FSM_onehot_state_reg_n_0_[1]\,
       Q(0) => \ssin_reg_n_0_[6]\,
-      \colpos_reg[0]\ => \colpos_reg_n_0_[0]\,
+      SER => \^ser\,
+      \bitno_reg[0]\ => \output_leds_inst_n_0_[12]\,
+      \bitno_reg[0]_0\ => \bitno_reg_n_0_[0]\,
+      \bitno_reg[0]_1\ => ser_i_2_n_0,
+      \bitno_reg[1]\ => \bitno_reg_n_0_[1]\,
+      \bitno_reg[2]\ => \bitno_reg_n_0_[2]\,
+      \bitno_reg[3]\ => \bitno_reg_n_0_[3]\,
+      clk2 => clk2,
+      \colpos_reg[0]\ => \input_leds_inst_n_0_[4]\,
+      \colpos_reg[0]_0\ => \input_leds_inst_n_0_[2]\,
+      \colpos_reg[0]_1\ => \input_leds_inst_n_0_[0]\,
+      \colpos_reg[0]_2\ => \colpos_reg_n_0_[0]\,
+      \colpos_reg[1]\ => \colpos_reg_n_0_[1]\,
+      \colpos_reg[2]\ => \input_leds_inst_n_0_[14]\,
+      \colpos_reg[2]_0\ => \colpos_reg_n_0_[2]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -7548,9 +7507,7 @@ begin
 \input_leds_inst[8]\: entity work.design_1_led_shift_594_driver_0_0_delayed_13
      port map (
       Q(0) => \ssin_reg_n_0_[8]\,
-      \colpos_reg[0]\ => \input_leds_inst_n_0_[10]\,
-      \colpos_reg[0]_0\ => \colpos_reg_n_0_[0]\,
-      \colpos_reg[1]\ => \colpos_reg_n_0_[1]\,
+      \colpos_reg[0]\ => \colpos_reg_n_0_[0]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -7847,9 +7804,14 @@ begin
 \output_leds_inst[12]\: entity work.design_1_led_shift_594_driver_0_0_delayed_18
      port map (
       Q(0) => Q(12),
+      \bitno_reg[0]\ => \bitno_reg_n_0_[0]\,
       \colpos_reg[0]\ => \output_leds_inst_n_0_[14]\,
       \colpos_reg[0]_0\ => \colpos_reg_n_0_[0]\,
-      \colpos_reg[1]\ => \colpos_reg_n_0_[1]\,
+      \colpos_reg[1]\ => \output_leds_inst_n_0_[8]\,
+      \colpos_reg[1]_0\ => \output_leds_inst_n_0_[4]\,
+      \colpos_reg[1]_1\ => \output_leds_inst_n_0_[0]\,
+      \colpos_reg[1]_2\ => \colpos_reg_n_0_[1]\,
+      \colpos_reg[2]\ => \colpos_reg_n_0_[2]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -7919,14 +7881,9 @@ begin
 \output_leds_inst[4]\: entity work.design_1_led_shift_594_driver_0_0_delayed_25
      port map (
       Q(0) => Q(4),
-      \bitno_reg[0]\ => \bitno_reg_n_0_[0]\,
       \colpos_reg[0]\ => \output_leds_inst_n_0_[6]\,
       \colpos_reg[0]_0\ => \colpos_reg_n_0_[0]\,
-      \colpos_reg[1]\ => \output_leds_inst_n_0_[0]\,
-      \colpos_reg[1]_0\ => \input_leds_inst_n_0_[4]\,
-      \colpos_reg[1]_1\ => \input_leds_inst_n_0_[0]\,
-      \colpos_reg[1]_2\ => \colpos_reg_n_0_[1]\,
-      \colpos_reg[2]\ => \colpos_reg_n_0_[2]\,
+      \colpos_reg[1]\ => \colpos_reg_n_0_[1]\,
       idle => idle,
       \ledclk__18\ => \ledclk__18\,
       s00_axi_aclk => s00_axi_aclk,
@@ -8024,179 +7981,24 @@ sck_reg: unisim.vcomponents.FDRE
       Q => \^sck\,
       R => '0'
     );
-ser1_carry: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => ser1_carry_n_0,
-      CO(2) => ser1_carry_n_1,
-      CO(1) => ser1_carry_n_2,
-      CO(0) => ser1_carry_n_3,
-      CYINIT => '1',
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => NLW_ser1_carry_O_UNCONNECTED(3 downto 0),
-      S(3) => ser1_carry_i_1_n_0,
-      S(2) => ser1_carry_i_2_n_0,
-      S(1) => ser1_carry_i_3_n_0,
-      S(0) => ser1_carry_i_4_n_0
-    );
-\ser1_carry__0\: unisim.vcomponents.CARRY4
-     port map (
-      CI => ser1_carry_n_0,
-      CO(3) => \ser1_carry__0_n_0\,
-      CO(2) => \ser1_carry__0_n_1\,
-      CO(1) => \ser1_carry__0_n_2\,
-      CO(0) => \ser1_carry__0_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => \NLW_ser1_carry__0_O_UNCONNECTED\(3 downto 0),
-      S(3) => \ser1_carry__0_i_1_n_0\,
-      S(2) => \ser1_carry__0_i_2_n_0\,
-      S(1) => \ser1_carry__0_i_3_n_0\,
-      S(0) => \ser1_carry__0_i_4_n_0\
-    );
-\ser1_carry__0_i_1\: unisim.vcomponents.LUT4
+ser_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
+      INIT => X"9009000000009009"
     )
         port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => \ser1_carry__0_i_1_n_0\
-    );
-\ser1_carry__0_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => \ser1_carry__0_i_2_n_0\
-    );
-\ser1_carry__0_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => \ser1_carry__0_i_3_n_0\
-    );
-\ser1_carry__0_i_4\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => \ser1_carry__0_i_4_n_0\
-    );
-\ser1_carry__1\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \ser1_carry__0_n_0\,
-      CO(3) => \NLW_ser1_carry__1_CO_UNCONNECTED\(3),
-      CO(2) => \ser1_carry__1_n_1\,
-      CO(1) => \ser1_carry__1_n_2\,
-      CO(0) => \ser1_carry__1_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3 downto 0) => \NLW_ser1_carry__1_O_UNCONNECTED\(3 downto 0),
-      S(3) => '0',
-      S(2) => \ser1_carry__1_i_1_n_0\,
-      S(1) => \ser1_carry__1_i_2_n_0\,
-      S(0) => \ser1_carry__1_i_3_n_0\
-    );
-\ser1_carry__1_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => \ser1_carry__1_i_1_n_0\
-    );
-\ser1_carry__1_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => \ser1_carry__1_i_2_n_0\
-    );
-\ser1_carry__1_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => \ser1_carry__1_i_3_n_0\
-    );
-ser1_carry_i_1: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => ser1_carry_i_1_n_0
-    );
-ser1_carry_i_2: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[2]\,
-      I1 => \bitno_reg_n_0_[0]\,
-      I2 => \bitno_reg_n_0_[1]\,
-      I3 => \bitno_reg_n_0_[3]\,
-      O => ser1_carry_i_2_n_0
-    );
-ser1_carry_i_3: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"5556"
-    )
-        port map (
-      I0 => \bitno_reg_n_0_[3]\,
-      I1 => \bitno_reg_n_0_[1]\,
-      I2 => \bitno_reg_n_0_[0]\,
+      I0 => \bitno_reg_n_0_[0]\,
+      I1 => \colpos_reg_n_0_[0]\,
+      I2 => \colpos_reg_n_0_[2]\,
       I3 => \bitno_reg_n_0_[2]\,
-      O => ser1_carry_i_3_n_0
-    );
-ser1_carry_i_4: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"4100002800824100"
-    )
-        port map (
-      I0 => \colpos_reg_n_0_[0]\,
-      I1 => \colpos_reg_n_0_[2]\,
-      I2 => \bitno_reg_n_0_[2]\,
-      I3 => \bitno_reg_n_0_[0]\,
-      I4 => \bitno_reg_n_0_[1]\,
-      I5 => \colpos_reg_n_0_[1]\,
-      O => ser1_carry_i_4_n_0
+      I4 => \colpos_reg_n_0_[1]\,
+      I5 => \bitno_reg_n_0_[1]\,
+      O => ser_i_2_n_0
     );
 ser_reg: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => '1',
-      D => \input_leds_inst_n_0_[12]\,
+      D => \input_leds_inst_n_0_[6]\,
       Q => \^ser\,
       R => '0'
     );
@@ -8792,7 +8594,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(1),
       I2 => ssbitno(0),
       I3 => ssbitno(2),
-      O => ssin(2)
+      O => ssin(10)
     );
 \ssin[11]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -8803,7 +8605,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(1),
       I2 => ssbitno(0),
       I3 => ssbitno(2),
-      O => ssin(3)
+      O => ssin(11)
     );
 \ssin[12]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -8814,7 +8616,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(1),
       I2 => ssbitno(0),
       I3 => ssbitno(2),
-      O => ssin(4)
+      O => ssin(12)
     );
 \ssin[13]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -8825,7 +8627,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(0),
       I2 => ssbitno(1),
       I3 => ssbitno(2),
-      O => ssin(5)
+      O => ssin(13)
     );
 \ssin[14]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -8836,7 +8638,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(1),
       I2 => ssbitno(0),
       I3 => ssbitno(2),
-      O => ssin(6)
+      O => ssin(14)
     );
 \ssin[15]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -8855,7 +8657,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(1),
       I2 => ssbitno(0),
       I3 => ssbitno(2),
-      O => ssin(7)
+      O => ssin(15)
     );
 \ssin[15]_i_3\: unisim.vcomponents.LUT1
     generic map(
@@ -8934,7 +8736,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(1),
       I2 => ssbitno(0),
       I3 => ssbitno(2),
-      O => ssin(0)
+      O => ssin(8)
     );
 \ssin[9]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -8945,7 +8747,7 @@ ser_reg: unisim.vcomponents.FDRE
       I1 => ssbitno(0),
       I2 => ssbitno(1),
       I3 => ssbitno(2),
-      O => ssin(1)
+      O => ssin(9)
     );
 \ssin_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -8953,7 +8755,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(0),
+      CE => ssin(8),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[0]\,
       R => sel
@@ -8964,7 +8766,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(2),
+      CE => ssin(10),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[10]\,
       R => sel
@@ -8975,7 +8777,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(3),
+      CE => ssin(11),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[11]\,
       R => sel
@@ -8986,7 +8788,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(4),
+      CE => ssin(12),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[12]\,
       R => sel
@@ -8997,7 +8799,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(5),
+      CE => ssin(13),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[13]\,
       R => sel
@@ -9008,7 +8810,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(6),
+      CE => ssin(14),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[14]\,
       R => sel
@@ -9019,7 +8821,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(7),
+      CE => ssin(15),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[15]\,
       R => sel
@@ -9037,7 +8839,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(1),
+      CE => ssin(9),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[1]\,
       R => sel
@@ -9048,7 +8850,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(2),
+      CE => ssin(10),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[2]\,
       R => sel
@@ -9059,7 +8861,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(3),
+      CE => ssin(11),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[3]\,
       R => sel
@@ -9070,7 +8872,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(4),
+      CE => ssin(12),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[4]\,
       R => sel
@@ -9081,7 +8883,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(5),
+      CE => ssin(13),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[5]\,
       R => sel
@@ -9092,7 +8894,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(6),
+      CE => ssin(14),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[6]\,
       R => sel
@@ -9103,7 +8905,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(7),
+      CE => ssin(15),
       D => \ssin[7]_i_1_n_0\,
       Q => \ssin_reg_n_0_[7]\,
       R => sel
@@ -9121,7 +8923,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(0),
+      CE => ssin(8),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[8]\,
       R => sel
@@ -9132,7 +8934,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(1),
+      CE => ssin(9),
       D => \ssin[15]_i_3_n_0\,
       Q => \ssin_reg_n_0_[9]\,
       R => sel
@@ -9211,7 +9013,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(0),
+      CE => ssin(8),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(0),
       R => sel
@@ -9222,7 +9024,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(2),
+      CE => ssin(10),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(10),
       R => sel
@@ -9233,7 +9035,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(3),
+      CE => ssin(11),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(11),
       R => sel
@@ -9244,7 +9046,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(4),
+      CE => ssin(12),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(12),
       R => sel
@@ -9255,7 +9057,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(5),
+      CE => ssin(13),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(13),
       R => sel
@@ -9266,7 +9068,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(6),
+      CE => ssin(14),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(14),
       R => sel
@@ -9277,7 +9079,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(7),
+      CE => ssin(15),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(15),
       R => sel
@@ -9295,7 +9097,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(1),
+      CE => ssin(9),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(1),
       R => sel
@@ -9306,7 +9108,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(2),
+      CE => ssin(10),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(2),
       R => sel
@@ -9317,7 +9119,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(3),
+      CE => ssin(11),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(3),
       R => sel
@@ -9328,7 +9130,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(4),
+      CE => ssin(12),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(4),
       R => sel
@@ -9339,7 +9141,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(5),
+      CE => ssin(13),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(5),
       R => sel
@@ -9350,7 +9152,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(6),
+      CE => ssin(14),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(6),
       R => sel
@@ -9361,7 +9163,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(7),
+      CE => ssin(15),
       D => \ssout[7]_i_1_n_0\,
       Q => ssout(7),
       R => sel
@@ -9379,7 +9181,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(0),
+      CE => ssin(8),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(8),
       R => sel
@@ -9390,7 +9192,7 @@ ser_reg: unisim.vcomponents.FDRE
     )
         port map (
       C => s00_axi_aclk,
-      CE => ssin(1),
+      CE => ssin(9),
       D => \ssout[15]_i_1_n_0\,
       Q => ssout(9),
       R => sel

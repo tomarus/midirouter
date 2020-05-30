@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:led_shift_594_driver:1.0
-// IP Revision: 17
+// IP Revision: 22
 
 (* X_CORE_INFO = "led_shift_594_driver_v1_0,Vivado 2018.2" *)
 (* CHECK_LICENSE_TYPE = "design_1_led_shift_594_driver_0_0,led_shift_594_driver_v1_0,{}" *)

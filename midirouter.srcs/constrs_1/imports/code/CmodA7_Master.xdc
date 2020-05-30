@@ -90,9 +90,9 @@ set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports { reset 
 #set_property -dict { PACKAGE_PIN V8    IOSTANDARD LVCMOS33 } [get_ports { pio[48] }]; #IO_L14N_T2_SRCC_34 Sch=pio[48]
 
 # pin 26, 27, 28
-set_property -dict { PACKAGE_PIN R3    IOSTANDARD LVCMOS33 } [get_ports { RCK_0 }]; #IO_L2P_T0_34 Sch=SR_RCK
-set_property -dict { PACKAGE_PIN T3    IOSTANDARD LVCMOS33 } [get_ports { SCK_0 }]; #IO_L2N_T0_34 Sch=SR_SCK
-set_property -dict { PACKAGE_PIN R2    IOSTANDARD LVCMOS33 } [get_ports { SER_0 }]; #IO_L1P_T0_34 Sch=SR_SER
+#set_property -dict { PACKAGE_PIN R3    IOSTANDARD LVCMOS33 } [get_ports { RCK_0 }]; #IO_L2P_T0_34 Sch=SR_RCK
+#set_property -dict { PACKAGE_PIN T3    IOSTANDARD LVCMOS33 } [get_ports { SCK_0 }]; #IO_L2N_T0_34 Sch=SR_SCK
+#set_property -dict { PACKAGE_PIN R2    IOSTANDARD LVCMOS33 } [get_ports { SER_0 }]; #IO_L1P_T0_34 Sch=SR_SER
 
 ## MIDI Pins
 ## Pins 15 and 16 should remain commented if using them as analog inputs
@@ -123,9 +123,10 @@ set_property -dict { PACKAGE_PIN N3    IOSTANDARD LVCMOS33 } [get_ports { rx_15 
 #set_property -dict { PACKAGE_PIN T3    IOSTANDARD LVCMOS33 } [get_ports { pio[27] }]; #IO_L2N_T0_34 Sch=pio[27]
 #set_property -dict { PACKAGE_PIN R2    IOSTANDARD LVCMOS33 } [get_ports { pio[28] }]; #IO_L1P_T0_34 Sch=pio[28]
 #set_property -dict { PACKAGE_PIN T1    IOSTANDARD LVCMOS33 } [get_ports { pio[29] }]; #IO_L3P_T0_DQS_34 Sch=pio[29]
-#set_property -dict { PACKAGE_PIN T2    IOSTANDARD LVCMOS33 } [get_ports { pio[30] }]; #IO_L1N_T0_34 Sch=pio[30]
-#set_property -dict { PACKAGE_PIN U1    IOSTANDARD LVCMOS33 } [get_ports { pio[31] }]; #IO_L3N_T0_DQS_34 Sch=pio[31]
-#set_property -dict { PACKAGE_PIN W2    IOSTANDARD LVCMOS33 } [get_ports { pio[32] }]; #IO_L5N_T0_34 Sch=pio[32]
+set_property -dict { PACKAGE_PIN T2    IOSTANDARD LVCMOS33 } [get_ports { RCK_0 }]; #IO_L1N_T0_34 Sch=SR_RCK
+set_property -dict { PACKAGE_PIN U1    IOSTANDARD LVCMOS33 } [get_ports { SCK_0 }]; #IO_L3N_T0_DQS_34 Sch=SR_SCK
+set_property -dict { PACKAGE_PIN W2    IOSTANDARD LVCMOS33 } [get_ports { SER_0 }]; #IO_L5N_T0_34 Sch=SR_SER
+
 set_property -dict { PACKAGE_PIN V2    IOSTANDARD LVCMOS33 } [get_ports { tx_15 }]; #IO_L5P_T0_34 Sch=mout[15]
 set_property -dict { PACKAGE_PIN W3    IOSTANDARD LVCMOS33 } [get_ports { tx_14 }]; #IO_L6N_T0_VREF_34 Sch=mout[14]
 set_property -dict { PACKAGE_PIN V3    IOSTANDARD LVCMOS33 } [get_ports { tx_13 }]; #IO_L6P_T0_34 Sch=mout[13]

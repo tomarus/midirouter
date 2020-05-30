@@ -38,4 +38,10 @@ int config_write(config *c);
 int config_read(config *c);
 int config_debug(config *c);
 
+void config_set_default(config *c);
+void config_set_all(config *c, u8 port);
+void config_set_none(config *c, u8 port);
+void config_set_add_port(config *c, u8 port, u8 dstport);
+void config_set_rm_port(config *c, u8 port, u8 dstport);
+
 #endif
